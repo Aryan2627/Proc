@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowRight, FileText, Gavel, Users, Receipt, CheckCircle2, Menu, Sparkles, X, Check, Swords, Activity, Network, ShieldCheck, Zap, BarChart3 , Mail} from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -11,6 +11,19 @@ export default function LandingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
+
+  const [mockTimer, setMockTimer] = useState(252);
+  const [savings, setSavings] = useState(1400000);
+
+  useEffect(() => {
+    const timerInterval = setInterval(() => setMockTimer(p => (p > 0 ? p - 1 : 252)), 1000);
+    const savingsInterval = setInterval(() => setSavings(p => p + Math.floor(Math.random() * 2500) + 100), 2000);
+    return () => { clearInterval(timerInterval); clearInterval(savingsInterval); };
+  }, []);
+
+  const formatTime = (s: number) => `${Math.floor(s / 60).toString().padStart(2, '0')}:${(s % 60).toString().padStart(2, '0')}`;
+  const formatSavings = (val: number) => `${(val / 1000000).toFixed(3)}M`;
+
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -150,12 +163,7 @@ export default function LandingPage() {
                   <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
                   <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
                 </div>
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                  <div className="flex items-center gap-2 px-4 py-1.5 bg-[#111] rounded-lg border border-white/5">
-                    <ShieldCheck size={12} className="text-emerald-500" />
-                    <span className="text-[10px] text-zinc-400 font-mono tracking-widest">app.procgen.in/auctions/live</span>
-                  </div>
-                </div>
+
               </div>
 
               <div className="flex w-full aspect-[16/10] sm:aspect-[21/9]">
@@ -177,7 +185,7 @@ export default function LandingPage() {
                    
                    <div className="mt-auto hidden sm:block bg-white/5 border border-white/5 rounded-xl p-3">
                      <p className="text-[10px] text-zinc-500 font-bold uppercase mb-2">Total Savings</p>
-                     <p className="text-emerald-400 font-mono font-bold text-lg">$1.4M</p>
+                     <p className="text-emerald-400 font-mono font-bold text-lg">{formatSavings(savings)}</p>
                    </div>
                 </div>
 
@@ -201,7 +209,7 @@ export default function LandingPage() {
                     </div>
                     <div className="text-right bg-white/5 px-4 py-2 rounded-xl border border-white/10 backdrop-blur-md">
                       <p className="text-zinc-500 text-[10px] font-bold uppercase mb-1">Time Remaining</p>
-                      <p className="text-white font-mono text-xl sm:text-2xl font-bold animate-pulse">04:12</p>
+                      <p className="text-white font-mono text-xl sm:text-2xl font-bold">{formatTime(mockTimer)}</p>
                     </div>
                   </div>
 
