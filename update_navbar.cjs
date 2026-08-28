@@ -1,4 +1,6 @@
+﻿const fs = require('fs');
 
+const code = `
 "use client";
 
 import React, { useState } from 'react';
@@ -79,7 +81,7 @@ export default function LandingPage() {
           
           <div className="hidden md:flex items-center gap-8 text-sm font-medium relative z-10">
             {['Features', 'Pricing'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="relative group text-zinc-400 hover:text-white transition-colors py-2">
+              <a key={item} href={\`#\${item.toLowerCase()}\`} className="relative group text-zinc-400 hover:text-white transition-colors py-2">
                 {item}
                 <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-violet-400 transition-all group-hover:w-full group-hover:left-0 rounded-full shadow-[0_0_10px_rgba(139,92,246,0.8)]"></span>
               </a>
@@ -186,7 +188,7 @@ export default function LandingPage() {
               { icon: Users, title: "Vendor Portal", desc: "A sleek, private hub for your suppliers to chat, bid, and deliver.", color: "group-hover:border-blue-500 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.15)]" },
               { icon: Receipt, title: "PO Automation", desc: "Awards turn into purchase orders automatically. Integrated instantly.", color: "group-hover:border-emerald-500 group-hover:shadow-[0_0_30px_rgba(16,185,129,0.15)]" }
             ].map((feature, i) => (
-              <motion.div key={i} variants={fadeIn} className={`group bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 p-10 rounded-[2rem] hover:bg-[#111] transition-all duration-500 ${feature.color}`}>
+              <motion.div key={i} variants={fadeIn} className={\`group bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 p-10 rounded-[2rem] hover:bg-[#111] transition-all duration-500 \${feature.color}\`}>
                 <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 text-white group-hover:scale-110 transition-transform duration-500 relative overflow-hidden">
                   <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   <feature.icon size={32} className="relative z-10" />
@@ -331,3 +333,6 @@ export default function LandingPage() {
     </div>
   );
 }
+`;
+fs.writeFileSync('src/app/page.tsx', code, 'utf8');
+console.log("Updated navbar and background animations");
