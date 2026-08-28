@@ -1,7 +1,9 @@
 
 "use client";
+import Link from "next/link";
 
-import React, { useState } from 'react';
+import React from 'react';
+import { useState } from 'react';
 import { ArrowRight, FileText, Gavel, Users, Receipt, CheckCircle2, Menu, Sparkles, X, Check } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -325,9 +327,9 @@ export default function LandingPage() {
                 </p>
 
                 <div className="flex flex-wrap gap-4 items-center">
-                  <button onClick={() => setIsModalOpen(true)} className="px-8 py-4 bg-white text-black font-bold rounded-xl hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.3)]">
+                  <Link href="/vip" className="px-8 py-4 bg-white text-black font-bold rounded-xl hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.3)] inline-flex items-center justify-center">
                     Claim Free VIP Pass
-                  </button>
+                  </Link>
                   <p className="text-sm font-semibold text-zinc-500">Only 142 spots remaining.</p>
                 </div>
               </div>
