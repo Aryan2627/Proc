@@ -1,4 +1,6 @@
+﻿const fs = require('fs');
 
+const code = `
 "use client";
 
 import React from 'react';
@@ -7,12 +9,12 @@ import { ArrowRight, FileText, Gavel, Users, Receipt, CheckCircle2, Menu } from 
 import { motion } from 'framer-motion';
 
 export default function LandingPage() {
-  const fadeIn: any = {
+  const fadeIn = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
   };
   
-  const staggerContainer: any = {
+  const staggerContainer = {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
   };
@@ -255,3 +257,6 @@ export default function LandingPage() {
     </div>
   );
 }
+`;
+fs.writeFileSync('src/app/page.tsx', code, 'utf8');
+console.log("Updated page.tsx via Node");
