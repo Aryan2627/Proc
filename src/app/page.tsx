@@ -5,13 +5,15 @@ import Link from "next/link";
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Star, ArrowRight, FileText, Gavel, Users, Receipt, CheckCircle2, Menu, Sparkles, X, Check, Swords, Activity, Network, ShieldCheck, Zap, BarChart3 , Mail} from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring, useTransform } from 'framer-motion';
 
 export default function LandingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
 
+    const { scrollYProgress } = useScroll();
+  const scaleY = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
   const [mockTimer, setMockTimer] = useState(252);
   const [savings, setSavings] = useState(1400000);
 
@@ -50,6 +52,23 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#030303] font-sans text-white selection:bg-violet-500/30 overflow-hidden relative">
       
+      
+      {/* --- SCROLL PROGRESS THREAD --- */}
+      <div className="fixed top-0 left-2 md:left-8 bottom-0 w-[1px] bg-white/5 z-50 pointer-events-none hidden sm:block">
+        <motion.div 
+          className="w-[2px] absolute top-0 left-[-0.5px] bg-gradient-to-b from-transparent via-blue-400 to-cyan-300 origin-top shadow-[0_0_20px_#38bdf8]"
+          style={{ scaleY, height: "100%" }}
+        />
+        {/* Glowing tip */}
+        <motion.div 
+          className="absolute left-[-2px] w-[5px] h-[30px] bg-cyan-300 rounded-full shadow-[0_0_20px_#22d3ee]"
+          style={{ 
+             top: useTransform(scaleY, (s) => `calc(${s * 100}% - 30px)`),
+             opacity: useTransform(scaleY, [0, 0.02], [0, 1]) 
+          }}
+        />
+      </div>
+
       {/* --- ADVANCED ANIMATED BACKGROUND --- */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Animated Grid */}
