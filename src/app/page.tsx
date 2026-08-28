@@ -53,22 +53,16 @@ export default function LandingPage() {
     <div className="min-h-screen bg-[#030303] font-sans text-white selection:bg-violet-500/30 overflow-hidden relative">
       
       
-      {/* --- SCROLL PROGRESS THREAD --- */}
-      <div className="fixed top-0 left-2 md:left-8 bottom-0 w-[1px] bg-white/5 z-50 pointer-events-none hidden sm:block">
+      {/* --- SUBTLE BACKGROUND SCROLL THREAD --- */}
+      <div className="fixed top-0 left-1/2 -translate-x-1/2 bottom-0 w-[1px] bg-white/[0.02] z-0 pointer-events-none hidden md:block">
         <motion.div 
-          className="w-[2px] absolute top-0 left-[-0.5px] bg-gradient-to-b from-transparent via-blue-400 to-cyan-300 origin-top shadow-[0_0_20px_#38bdf8]"
-          style={{ scaleY, height: "100%" }}
-        />
-        {/* Glowing tip */}
-        <motion.div 
-          className="absolute left-[-2px] w-[5px] h-[30px] bg-cyan-300 rounded-full shadow-[0_0_20px_#22d3ee]"
+          className="w-[1px] absolute left-0 bg-gradient-to-b from-transparent via-violet-500/40 to-transparent blur-[1px]"
           style={{ 
-             top: useTransform(scaleY, (s) => `calc(${s * 100}% - 30px)`),
-             opacity: useTransform(scaleY, [0, 0.02], [0, 1]) 
+             height: "30vh",
+             top: useTransform(scrollYProgress, [0, 1], ["-30%", "100%"]) 
           }}
         />
       </div>
-
       {/* --- ADVANCED ANIMATED BACKGROUND --- */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         {/* Animated Grid */}
