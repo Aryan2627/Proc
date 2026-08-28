@@ -1,4 +1,6 @@
+﻿const fs = require('fs');
 
+const code = `
 "use client";
 
 import React, { useState } from 'react';
@@ -157,7 +159,7 @@ export default function LandingPage() {
               { icon: Users, title: "Vendor Portal", desc: "A sleek, private hub for your suppliers to chat, bid, and deliver.", color: "group-hover:border-blue-500" },
               { icon: Receipt, title: "PO Automation", desc: "Awards turn into purchase orders automatically. Integrated instantly.", color: "group-hover:border-emerald-500" }
             ].map((feature, i) => (
-              <motion.div key={i} variants={fadeIn} className={`group bg-[#0a0a0a] border border-white/5 p-10 rounded-[2rem] hover:bg-[#111] transition-all duration-500 ${feature.color}`}>
+              <motion.div key={i} variants={fadeIn} className={\`group bg-[#0a0a0a] border border-white/5 p-10 rounded-[2rem] hover:bg-[#111] transition-all duration-500 \${feature.color}\`}>
                 <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mb-8 text-white group-hover:scale-110 transition-transform duration-500">
                   <feature.icon size={32} />
                 </div>
@@ -301,3 +303,6 @@ export default function LandingPage() {
     </div>
   );
 }
+`;
+fs.writeFileSync('src/app/page.tsx', code, 'utf8');
+console.log("Updated with modal form");
