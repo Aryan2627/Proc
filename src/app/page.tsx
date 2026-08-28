@@ -165,7 +165,7 @@ export default function LandingPage() {
             <motion.div variants={fadeIn} className="bg-[#0a0a0a] border border-white/5 rounded-[2rem] p-8 flex flex-col hover:border-white/20 transition-colors">
               <h3 className="text-xl font-bold text-white mb-2">Starter</h3>
               <p className="text-zinc-500 text-sm mb-8 h-10">Perfect for small teams standardizing purchasing.</p>
-              <div className="mb-8"><span className="text-5xl font-black text-white tracking-tighter">₹14k</span><span className="text-zinc-500">/mo</span></div>
+              <div className="mb-8"><span className="text-5xl font-black text-white tracking-tighter">$199</span><span className="text-zinc-500">/mo</span></div>
               <ul className="space-y-4 mb-10 flex-1">
                 {['Up to 10 vendors', 'Standard RFQs', 'Basic Workflows'].map((f, i) => (
                   <li key={i} className="flex items-center gap-3 text-zinc-300 text-sm"><CheckCircle2 size={18} className="text-zinc-500 shrink-0" /> {f}</li>
@@ -179,7 +179,7 @@ export default function LandingPage() {
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest shadow-lg">Most Popular</div>
               <h3 className="text-2xl font-bold text-white mb-2">Professional</h3>
               <p className="text-zinc-400 text-sm mb-8 h-10">For enterprises dominating the market with auctions.</p>
-              <div className="mb-8"><span className="text-6xl font-black text-white tracking-tighter">₹39k</span><span className="text-zinc-400">/mo</span></div>
+              <div className="mb-8"><span className="text-6xl font-black text-white tracking-tighter">$499</span><span className="text-zinc-400">/mo</span></div>
               <ul className="space-y-4 mb-10 flex-1">
                 {['Unlimited vendors', 'Live Reverse Auctions', 'Multi-level Approvals', 'Vendor Portal Chat'].map((f, i) => (
                   <li key={i} className="flex items-center gap-3 text-zinc-200 text-sm"><CheckCircle2 size={18} className="text-violet-400 shrink-0" /> {f}</li>
