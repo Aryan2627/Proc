@@ -521,7 +521,7 @@ export default function LandingPage() {
                 <li><a href="#features" className="hover:text-violet-400 transition-colors">Features</a></li>
                 <li><a href="#pricing" className="hover:text-violet-400 transition-colors">Pricing</a></li>
                 <li><a href="/vip" className="hover:text-violet-400 transition-colors flex items-center gap-2">Global Summit <span className="bg-fuchsia-500/20 text-fuchsia-400 text-[10px] px-2 py-0.5 rounded-full font-bold uppercase">Live</span></a></li>
-                <li><a href="https://app.procgen.in/login" className="hover:text-violet-400 transition-colors">Client Login</a></li>
+                
               </ul>
             </div>
 
