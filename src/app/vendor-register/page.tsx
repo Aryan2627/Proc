@@ -42,7 +42,7 @@ export default function VendorRegister() {
     setStatus('loading');
     
     try {
-      const res = await fetch('https://cpanel.procgen.in/api/vendors/register', {
+      const res = await fetch('https://cpanel-swart.vercel.app/api/vendors/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
