@@ -121,17 +121,19 @@ export default function VendorRegister() {
 
               <div>
                 <label className="block text-sm font-medium text-zinc-400 mb-1.5">Material / Category</label>
-                <select
+                <input
+                  list="vendor-industries"
                   required
                   value={formData.industry}
                   onChange={e => setFormData(p => ({ ...p, industry: e.target.value }))}
-                  className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500/50"
-                >
-                  <option value="">Select the category you deal in...</option>
+                  className="w-full bg-black/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-blue-500/50"
+                  placeholder="Type to search or select category..."
+                />
+                <datalist id="vendor-industries">
                   {industries.map(i => (
-                    <option key={i} value={i}>{i}</option>
+                    <option key={i} value={i} />
                   ))}
-                </select>
+                </datalist>
               </div>
             </div>
 
