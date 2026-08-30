@@ -127,9 +127,7 @@ export default function LandingPage() {
           />
 
           <div className="flex items-center gap-3 relative z-10">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.4)]">
-              <span className="text-white font-bold text-xl tracking-tighter">P</span>
-            </div>
+            <img src="/logo_cyan.png" alt="ProcGen Logo" className="w-10 h-10 object-contain drop-shadow-[0_0_15px_rgba(0,255,255,0.4)]" style={{ mixBlendMode: 'screen', filter: 'contrast(1.2)' }} />
             <span className="font-bold text-xl tracking-tight text-white">ProcGen</span>
           </div>
           
@@ -918,9 +916,7 @@ export default function LandingPage() {
             {/* Brand Col */}
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-violet-500 to-fuchsia-500 flex items-center justify-center shadow-[0_0_20px_rgba(139,92,246,0.3)]">
-                  <span className="text-white font-bold text-xl tracking-tighter">P</span>
-                </div>
+                <img src="/logo_cyan.png" alt="ProcGen Logo" className="w-12 h-12 object-contain drop-shadow-[0_0_15px_rgba(0,255,255,0.4)]" style={{ mixBlendMode: 'screen', filter: 'contrast(1.2)' }} />
                 <span className="font-bold text-2xl tracking-tight text-white">ProcGen</span>
               </div>
               <p className="text-zinc-400 max-w-sm mb-8 leading-relaxed">
