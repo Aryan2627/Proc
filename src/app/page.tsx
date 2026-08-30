@@ -16,6 +16,7 @@ export default function LandingPage() {
   const scaleY = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
   const [mockTimer, setMockTimer] = useState(252);
   const [savings, setSavings] = useState(1400000);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
     const timerInterval = setInterval(() => setMockTimer(p => (p > 0 ? p - 1 : 252)), 1000);
@@ -369,19 +370,37 @@ export default function LandingPage() {
 
           <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(37,99,235,0.2)] bg-[#050505] group">
             
-            {/* Highly reliable YouTube embed placeholder */}
-            <iframe 
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/LXb3EKWsInQ?autoplay=1&mute=1&loop=1&playlist=LXb3EKWsInQ&controls=1" 
-              title="ProcGen AI Video Player" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen>
-            </iframe>
+            {/* Cinematic Image Slideshow (Pseudo-Video) */}
+            <div className="w-full h-full relative">
+              {[1, 2, 3, 4].map((num, idx) => (
+                <div 
+                  key={num}
+                  className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+                  style={{ 
+                    opacity: currentSlide === idx ? 1 : 0,
+                    zIndex: currentSlide === idx ? 10 : 0
+                  }}
+                >
+                  <img 
+                    src={`/slide${num}.jpg`}
+                    alt={`ProcGen AI Demo Scene ${num}`}
+                    className="w-full h-full object-cover transition-transform duration-[4000ms] ease-linear"
+                    style={{ transform: currentSlide === idx ? 'scale(1.05)' : 'scale(1)' }}
+                  />
+                </div>
+              ))}
+              
+              {/* Play Button Overlay (For visual effect) */}
+              <div className="absolute inset-0 bg-black/20 z-20 flex items-center justify-center pointer-events-none">
+                <div className="w-16 h-16 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shadow-[0_0_40px_rgba(255,255,255,0.1)]">
+                  <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[12px] border-l-white border-b-[8px] border-b-transparent ml-1"></div>
+                </div>
+              </div>
+            </div>
             
             {/* Note for the User */}
             <div className="absolute bottom-4 left-4 z-30 bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-lg pointer-events-none">
-              <p className="text-xs text-zinc-300 font-mono"><span className="text-emerald-400">► Note:</span> Swap the YouTube URL in page.tsx with your own video!</p>
+              <p className="text-xs text-zinc-300 font-mono"><span className="text-emerald-400">► Note:</span> Using cinematic AI mockups as an animated presentation loop.</p>
             </div>
           </div>
         </motion.div>
