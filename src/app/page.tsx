@@ -350,41 +350,6 @@ export default function LandingPage() {
         </div>
       </header>
 
-      
-      
-      
-        {/* --- CINEMATIC AI VIDEO SECTION --- */}
-        <motion.div 
-          initial={{ opacity: 0, y: 100 }} 
-          whileInView={{ opacity: 1, y: 0 }} 
-          viewport={{ once: true }}
-          transition={{ duration: 1.0, delay: 0.2 }}
-          className="pb-40 relative max-w-[1200px] mx-auto z-20 w-full px-6"
-        >
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black text-white mb-6 tracking-tight">See <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">ProcGen AI</span> in Action.</h2>
-            <p className="text-zinc-400 text-lg max-w-2xl mx-auto font-light">Watch how our autonomous agents negotiate contracts, analyze macroeconomic trends, and onboard global vendors instantly.</p>
-          </div>
-
-          <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_100px_rgba(37,99,235,0.2)] bg-[#050505] group">
-            
-            {/* Clickable YouTube Video Player */}
-            <iframe 
-              className="w-full h-full"
-              src="https://www.youtube.com/embed/zM7I7-y0qZc?controls=1&rel=0" 
-              title="ProcGen AI Video Player" 
-              frameBorder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-              allowFullScreen>
-            </iframe>
-            
-            {/* Note for the User */}
-            <div className="absolute bottom-4 left-4 z-30 bg-black/60 backdrop-blur-md border border-white/10 px-4 py-2 rounded-lg pointer-events-none">
-              <p className="text-xs text-zinc-300 font-mono"><span className="text-emerald-400">► Note:</span> Click the Play Button! Swap this YouTube link with your own later.</p>
-            </div>
-          </div>
-        </motion.div>
-
         {/* --- MEGA FEATURES GRID --- */}
       <section id="features" className="py-32 relative z-10">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-7xl mx-auto px-6">
