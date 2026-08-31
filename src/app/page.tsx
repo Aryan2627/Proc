@@ -133,11 +133,15 @@ export default function LandingPage() {
           
           <div className="hidden md:flex items-center gap-8 text-sm font-medium relative z-10">
             {['Features', 'Pricing'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="relative group text-zinc-400 hover:text-white transition-colors py-2">
-                {item}
+                <a key={item} href={`#${item.toLowerCase()}`} className="relative group text-zinc-400 hover:text-white transition-colors py-2">
+                  {item}
+                  <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-violet-400 transition-all group-hover:w-full group-hover:left-0 rounded-full shadow-[0_0_10px_rgba(139,92,246,0.8)]"></span>
+                </a>
+              ))}
+              <Link href="/careers" className="relative group text-zinc-400 hover:text-white transition-colors py-2">
+                Careers
                 <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-violet-400 transition-all group-hover:w-full group-hover:left-0 rounded-full shadow-[0_0_10px_rgba(139,92,246,0.8)]"></span>
-              </a>
-            ))}
+              </Link>
           </div>
 
           <div className="hidden md:flex items-center gap-4 relative z-10">
