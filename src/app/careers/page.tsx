@@ -5,6 +5,7 @@ import Link from 'next/link';
 
 export default function CareersPage() {
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
+  const [isApplying, setIsApplying] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -21,7 +22,9 @@ export default function CareersPage() {
       department: 'Corporate Strategy',
       type: 'Internship',
       location: 'Remote / Global',
-      description: 'Work closely with our executive team to shape the future of enterprise procurement. You will analyze market trends, evaluate potential partnerships, and build strategic growth models.'
+      description: 'Work closely with our executive team to shape the future of enterprise procurement. You will analyze market trends, evaluate potential partnerships, and build strategic growth models.',
+      requirements: ['Strong analytical skills', 'Familiarity with SaaS business models', 'Excellent written communication'],
+      responsibilities: ['Conduct market research', 'Draft internal strategy memos', 'Assist in partnership evaluation']
     },
     {
       id: 'research-intern',
@@ -29,15 +32,19 @@ export default function CareersPage() {
       department: 'Data & Insights',
       type: 'Internship',
       location: 'Remote / Global',
-      description: 'Dive deep into B2B software pricing and vendor landscapes. Your research will directly power our AI Negotiator models and provide critical insights to our top-tier enterprise clients.'
+      description: 'Dive deep into B2B software pricing and vendor landscapes. Your research will directly power our AI Negotiator models and provide critical insights to our top-tier enterprise clients.',
+      requirements: ['Data-driven mindset', 'Attention to detail', 'Experience with Excel/Sheets'],
+      responsibilities: ['Gather pricing data for major SaaS tools', 'Structure data for AI training', 'Publish internal market reports']
     },
     {
       id: 'bdr-intern',
-      title: 'Business Development Representative (BDR) Intern',
+      title: 'Business Development (BDR) Intern',
       department: 'Sales',
       type: 'Internship',
       location: 'Remote / Global',
-      description: 'Be the tip of the spear for ProcGen\'s growth. You will identify key enterprise prospects, craft compelling outreach, and learn the fundamentals of high-ticket B2B SaaS sales.'
+      description: 'Be the tip of the spear for ProcGen\'s growth. You will identify key enterprise prospects, craft compelling outreach, and learn the fundamentals of high-ticket B2B SaaS sales.',
+      requirements: ['High energy and resilience', 'Desire to learn enterprise sales', 'Strong interpersonal skills'],
+      responsibilities: ['Identify target enterprise accounts', 'Craft personalized outreach campaigns', 'Shadow discovery calls with Account Executives']
     }
   ];
 
@@ -62,6 +69,8 @@ export default function CareersPage() {
       setStatus('error');
     }
   };
+
+  const selectedPos = positions.find(p => p.id === selectedRole);
 
   return (
     <div className="min-h-screen bg-[#050505] text-white selection:bg-violet-500/30 overflow-x-hidden font-sans">
@@ -102,7 +111,7 @@ export default function CareersPage() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Roles List */}
+          {/* Left Panel: Roles List */}
           <div className="space-y-6">
             <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-violet-500/20 flex items-center justify-center text-violet-400 text-sm">1</div>
@@ -115,6 +124,7 @@ export default function CareersPage() {
                 whileTap={{ scale: 0.98 }}
                 onClick={() => {
                   setSelectedRole(pos.id);
+                  setIsApplying(false);
                   setStatus('idle');
                 }}
                 className={`p-6 rounded-2xl border cursor-pointer transition-all duration-300 ${selectedRole === pos.id ? 'bg-violet-500/10 border-violet-500/50 shadow-[0_0_30px_rgba(139,92,246,0.15)]' : 'bg-white/5 border-white/10 hover:border-white/20 hover:bg-white/10'}`}
@@ -131,83 +141,122 @@ export default function CareersPage() {
             ))}
           </div>
 
-          {/* Application Form */}
+          {/* Right Panel: Details or Form */}
           <div className="lg:sticky lg:top-32">
-            <h2 className="text-2xl font-bold mb-8 flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-cyan-500/20 flex items-center justify-center text-cyan-400 text-sm">2</div>
-              Submit Application
-            </h2>
-            
-            <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md">
-              <AnimatePresence mode="wait">
-                {status === 'success' ? (
-                  <motion.div 
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="text-center py-12"
+            <AnimatePresence mode="wait">
+              {!selectedRole && (
+                <motion.div 
+                  key="empty"
+                  initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
+                  className="h-full min-h-[400px] border border-dashed border-white/20 rounded-3xl flex items-center justify-center bg-white/5 backdrop-blur-md"
+                >
+                  <p className="text-zinc-500 font-medium text-lg">Select a position to view details</p>
+                </motion.div>
+              )}
+
+              {selectedRole && !isApplying && selectedPos && (
+                <motion.div 
+                  key="details"
+                  initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
+                  className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md"
+                >
+                  <span className="inline-block px-3 py-1 bg-cyan-500/10 text-cyan-400 text-xs font-bold rounded-full mb-4 uppercase tracking-wider">{selectedPos.department}</span>
+                  <h2 className="text-3xl font-black mb-6">{selectedPos.title}</h2>
+                  
+                  <div className="space-y-6 mb-8">
+                    <div>
+                      <h4 className="text-white font-bold mb-2">What you'll do</h4>
+                      <ul className="list-disc list-inside text-zinc-400 space-y-1 text-sm">
+                        {selectedPos.responsibilities.map((r, i) => <li key={i}>{r}</li>)}
+                      </ul>
+                    </div>
+                    <div>
+                      <h4 className="text-white font-bold mb-2">What we're looking for</h4>
+                      <ul className="list-disc list-inside text-zinc-400 space-y-1 text-sm">
+                        {selectedPos.requirements.map((r, i) => <li key={i}>{r}</li>)}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <button 
+                    onClick={() => setIsApplying(true)}
+                    className="w-full py-4 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-bold text-lg transition-colors shadow-[0_0_20px_rgba(139,92,246,0.3)]"
                   >
-                    <div className="w-16 h-16 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">✓</div>
-                    <h3 className="text-2xl font-bold mb-2">Application Received!</h3>
-                    <p className="text-zinc-400">Thank you for applying. Our team will review your profile and get back to you shortly.</p>
-                    <button onClick={() => {setStatus('idle'); setSelectedRole(null);}} className="mt-8 text-sm text-violet-400 hover:text-violet-300">Submit another application</button>
-                  </motion.div>
-                ) : (
-                  <motion.form 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    onSubmit={handleSubmit} 
-                    className="space-y-5"
-                  >
-                    {!selectedRole && (
-                      <div className="absolute inset-0 z-10 bg-[#0a0a0a]/80 backdrop-blur-sm rounded-3xl flex items-center justify-center">
-                        <p className="text-zinc-400 font-medium">Please select a position first.</p>
-                      </div>
-                    )}
-                    
-                    <div className="grid grid-cols-2 gap-5">
-                      <div className="space-y-2">
-                        <label className="text-sm font-medium text-zinc-400">Full Name</label>
-                        <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-violet-500 transition-colors" placeholder="Jane Doe" />
-                      </div>
-                      <div className="space-y-2">
-                        <label className="text-sm font-medium text-zinc-400">Email Address</label>
-                        <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-violet-500 transition-colors" placeholder="jane@example.com" />
-                      </div>
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-zinc-400">Phone Number</label>
-                      <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-violet-500 transition-colors" placeholder="+1 (555) 000-0000" />
-                    </div>
+                    Apply Now
+                  </button>
+                </motion.div>
+              )}
 
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-zinc-400">Resume Link (Google Drive, LinkedIn, etc.)</label>
-                      <input required type="url" value={formData.resume} onChange={e => setFormData({...formData, resume: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-violet-500 transition-colors" placeholder="https://..." />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-sm font-medium text-zinc-400">Why ProcGen? (Cover Letter)</label>
-                      <textarea required rows={4} value={formData.coverLetter} onChange={e => setFormData({...formData, coverLetter: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-violet-500 transition-colors resize-none" placeholder="Tell us why you'd be a great fit..."></textarea>
-                    </div>
-
-                    {status === 'error' && (
-                      <p className="text-red-400 text-sm">Something went wrong. Please try again.</p>
-                    )}
-
-                    <button 
-                      type="submit" 
-                      disabled={status === 'submitting' || !selectedRole}
-                      className="w-full py-4 rounded-xl bg-white text-black font-bold text-lg hover:bg-zinc-200 transition-colors disabled:opacity-50 flex justify-center items-center gap-2"
-                    >
-                      {status === 'submitting' ? (
-                        <span className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin"></span>
-                      ) : 'Submit Application'}
+              {selectedRole && isApplying && (
+                <motion.div 
+                  key="form"
+                  initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}
+                  className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-md"
+                >
+                  <div className="flex items-center gap-4 mb-8">
+                    <button onClick={() => setIsApplying(false)} className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors">
+                      ←
                     </button>
-                  </motion.form>
-                )}
-              </AnimatePresence>
-            </div>
+                    <h2 className="text-2xl font-bold">Submit Application</h2>
+                  </div>
+                  
+                  {status === 'success' ? (
+                    <motion.div 
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      className="text-center py-12"
+                    >
+                      <div className="w-16 h-16 bg-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto mb-6 text-3xl">✓</div>
+                      <h3 className="text-2xl font-bold mb-2">Application Received!</h3>
+                      <p className="text-zinc-400">Thank you for applying. Our team will review your profile and get back to you shortly.</p>
+                      <button onClick={() => {setStatus('idle'); setSelectedRole(null); setIsApplying(false);}} className="mt-8 text-sm text-violet-400 hover:text-violet-300">Browse other roles</button>
+                    </motion.div>
+                  ) : (
+                    <form onSubmit={handleSubmit} className="space-y-5">
+                      <div className="grid grid-cols-2 gap-5">
+                        <div className="space-y-2">
+                          <label className="text-sm font-medium text-zinc-400">Full Name</label>
+                          <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-violet-500 transition-colors" placeholder="Jane Doe" />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-sm font-medium text-zinc-400">Email Address</label>
+                          <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-violet-500 transition-colors" placeholder="jane@example.com" />
+                        </div>
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-zinc-400">Phone Number</label>
+                        <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-violet-500 transition-colors" placeholder="+1 (555) 000-0000" />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-zinc-400">Resume Link (Google Drive, LinkedIn, etc.)</label>
+                        <input required type="url" value={formData.resume} onChange={e => setFormData({...formData, resume: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-violet-500 transition-colors" placeholder="https://..." />
+                      </div>
+
+                      <div className="space-y-2">
+                        <label className="text-sm font-medium text-zinc-400">Why ProcGen? (Cover Letter)</label>
+                        <textarea required rows={4} value={formData.coverLetter} onChange={e => setFormData({...formData, coverLetter: e.target.value})} className="w-full bg-black/50 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-violet-500 transition-colors resize-none" placeholder="Tell us why you'd be a great fit..."></textarea>
+                      </div>
+
+                      {status === 'error' && (
+                        <p className="text-red-400 text-sm">Something went wrong. Please try again.</p>
+                      )}
+
+                      <button 
+                        type="submit" 
+                        disabled={status === 'submitting'}
+                        className="w-full py-4 rounded-xl bg-white text-black font-bold text-lg hover:bg-zinc-200 transition-colors disabled:opacity-50 flex justify-center items-center gap-2"
+                      >
+                        {status === 'submitting' ? (
+                          <span className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin"></span>
+                        ) : 'Submit Application'}
+                      </button>
+                    </form>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
       </main>
