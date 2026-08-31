@@ -4,30 +4,37 @@ export async function POST(req: Request) {
   try {
     const data = await req.json();
 
-    // Push to Google Sheets if configured
-    if (process.env.GOOGLE_SHEET_WEBHOOK_URL) {
-      try {
-        const response = await fetch(process.env.GOOGLE_SHEET_WEBHOOK_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        
-        if (!response.ok) {
-            console.error("Google Sheets returned an error:", response.status);
-        }
-      } catch (e) {
-        console.error("Failed to push to Google Sheets", e);
-        // We still continue to return success so the user doesn't get stuck if webhook drops
-      }
+    if (!process.env.GOOGLE_SHEET_WEBHOOK_URL) {
+      return NextResponse.json({ error: "Vercel Error: GOOGLE_SHEET_WEBHOOK_URL is missing. Please check Vercel Environment Variables." }, { status: 500 });
     }
 
-    // Artificial delay for UI
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    try {
+      const response = await fetch(process.env.GOOGLE_SHEET_WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      
+      if (!response.ok) {
+          const errText = await response.text();
+          return NextResponse.json({ error: `Google Sheets Error (${response.status}): ${errText.substring(0, 100)}` }, { status: 500 });
+      }
+
+      // Check if it's a redirect that we didn't follow properly, or a weird Google HTML response
+      const resText = await response.text();
+      if (resText.includes("error") || resText.includes("html>")) {
+          // If google returned an HTML page (like a login page), it means permissions are wrong
+          if (resText.includes("html>")) {
+             return NextResponse.json({ error: "Google Permissions Error: Your Web App is not set to 'Anyone' access. Google is asking for a login." }, { status: 500 });
+          }
+      }
+
+    } catch (e: any) {
+      return NextResponse.json({ error: "Fetch Crash: " + e.message }, { status: 500 });
+    }
 
     return NextResponse.json({ success: true });
   } catch (error: any) {
-    console.error('Application Error:', error);
-    return NextResponse.json({ error: error.message || 'Failed to process application' }, { status: 500 });
+    return NextResponse.json({ error: 'Failed to process application: ' + error.message }, { status: 500 });
   }
 }
