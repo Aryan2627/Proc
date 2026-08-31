@@ -136,7 +136,24 @@ export default function CareersPage() {
                   </div>
                   <span className="text-xs font-semibold px-2 py-1 rounded-full bg-white/10 text-zinc-300">{pos.location}</span>
                 </div>
-                <p className="text-zinc-400 text-sm leading-relaxed">{pos.description}</p>
+                <p className="text-zinc-400 text-sm leading-relaxed mb-4">{pos.description}</p>
+                <div className="pt-4 border-t border-white/10 flex justify-between items-center mt-4">
+                  <span className="text-sm font-medium text-zinc-500 transition-colors">View details</span>
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedRole(pos.id);
+                      setIsApplying(true);
+                      setStatus('idle');
+                      if (window.innerWidth < 1024) {
+                        setTimeout(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }), 100);
+                      }
+                    }}
+                    className="bg-violet-600/20 border border-violet-500/30 text-violet-300 hover:bg-violet-600 hover:text-white hover:shadow-[0_0_15px_rgba(139,92,246,0.5)] px-4 py-2 rounded-lg text-sm font-bold transition-all"
+                  >
+                    Apply Now
+                  </button>
+                </div>
               </motion.div>
             ))}
           </div>
