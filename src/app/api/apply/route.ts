@@ -28,6 +28,6 @@ export async function POST(req: Request) {
     return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error('Application Error:', error);
-    return NextResponse.json({ error: 'Failed to process application' }, { status: 500 });
+    return NextResponse.json({ error: error.message || 'Failed to process application' }, { status: 500 });
   }
 }

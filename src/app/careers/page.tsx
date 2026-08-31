@@ -14,6 +14,7 @@ export default function CareersPage() {
     coverLetter: ''
   });
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [errorMsg, setErrorMsg] = useState('');
 
   const positions = [
     {
@@ -63,9 +64,12 @@ export default function CareersPage() {
         setStatus('success');
         setFormData({ name: '', email: '', phone: '', resume: '', coverLetter: '' });
       } else {
+        const errData = await res.json().catch(() => ({}));
+        setErrorMsg(errData.error || 'Server returned ' + res.status);
         setStatus('error');
       }
-    } catch (error) {
+    } catch (error: any) {
+      setErrorMsg(error.message || 'Network error');
       setStatus('error');
     }
   };
@@ -257,7 +261,10 @@ export default function CareersPage() {
                       </div>
 
                       {status === 'error' && (
-                        <p className="text-red-400 text-sm">Something went wrong. Please try again.</p>
+                        <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20">
+                          <p className="text-red-400 text-sm font-bold mb-1">Application Failed</p>
+                          <p className="text-red-400/80 text-xs font-mono break-words">{errorMsg || 'Please try again.'}</p>
+                        </div>
                       )}
 
                       <button 
