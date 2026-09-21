@@ -182,10 +182,6 @@ export default function VIPRegistration() {
                       <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest">Time</p>
                       <p className="text-white font-semibold text-lg">10:00 AM PST</p>
                     </div>
-                    <div className="col-span-2">
-                      <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest">Keynote Speaker</p>
-                      <p className="text-white font-semibold text-lg">Aryan, Founder @ ProcGen</p>
-                    </div>
                   </div>
                 </div>
 

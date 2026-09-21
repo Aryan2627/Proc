@@ -805,10 +805,6 @@ export default function LandingPage() {
                       <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest">Date</p>
                       <p className="text-white font-semibold">October 14th, 2026</p>
                     </div>
-                    <div>
-                      <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest">Speaker</p>
-                      <p className="text-white font-semibold">Aryan, Founder @ ProcGen</p>
-                    </div>
                   </div>
                   
                   {/* Fake Barcode */}
