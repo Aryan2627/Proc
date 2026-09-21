@@ -3,14 +3,59 @@
 import Link from "next/link";
 
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Bot, Star, ArrowRight, FileText, Gavel, Users, Receipt, CheckCircle2, Menu, Sparkles, X, Check, Swords, Activity, Network, ShieldCheck, Zap, BarChart3 , Mail} from 'lucide-react';
-import { motion, AnimatePresence, useScroll, useSpring, useTransform, useMotionValue } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useSpring, useTransform, useMotionValue, useInView } from 'framer-motion';
+
+function useCountUp(target: number, duration = 2000, inView = true) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    let start = 0;
+    const step = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += step;
+      if (start >= target) { setCount(target); clearInterval(timer); }
+      else setCount(Math.floor(start));
+    }, 16);
+    return () => clearInterval(timer);
+  }, [target, duration, inView]);
+  return count;
+}
 
 export default function LandingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
   const [formData, setFormData] = useState({ name: '', email: '', company: '', message: '' });
+
+  // ── Typewriter ──
+  const words = ['Supercharged.', 'Automated.', 'Transformed.', 'Dominated.'];
+  const [wordIndex, setWordIndex] = useState(0);
+  const [displayed, setDisplayed] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  useEffect(() => {
+    const current = words[wordIndex];
+    let t: ReturnType<typeof setTimeout>;
+    if (!isDeleting && displayed.length < current.length) t = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 80);
+    else if (!isDeleting && displayed.length === current.length) t = setTimeout(() => setIsDeleting(true), 1800);
+    else if (isDeleting && displayed.length > 0) t = setTimeout(() => setDisplayed(current.slice(0, displayed.length - 1)), 45);
+    else { setIsDeleting(false); setWordIndex(i => (i + 1) % words.length); }
+    return () => clearTimeout(t);
+  }, [displayed, isDeleting, wordIndex]);
+
+  // ── Live bid ──
+  const [topBid, setTopBid] = useState(438500);
+  useEffect(() => {
+    const t = setInterval(() => setTopBid(p => Math.max(390000, p - Math.floor(Math.random() * 3000 + 500))), 3500);
+    return () => clearInterval(t);
+  }, []);
+
+  // ── Animated counters ──
+  const statsRef = useRef(null);
+  const statsInView = useInView(statsRef, { once: true, margin: '-80px' });
+  const vendorCount = useCountUp(12400, 2200, statsInView);
+  const savingsCount = useCountUp(340, 2000, statsInView);
+  const eventsCount = useCountUp(89000, 2500, statsInView);
 
     const { scrollYProgress } = useScroll();
   const scaleY = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
@@ -76,6 +121,9 @@ export default function LandingPage() {
     <div className="min-h-screen bg-[#030303] font-sans text-white selection:bg-violet-500/30 overflow-hidden relative">
       
       
+      {/* Scroll Progress Bar */}
+      <motion.div className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-violet-500 via-fuchsia-500 to-blue-500 origin-left z-[200] shadow-[0_0_10px_rgba(139,92,246,0.8)]" style={{ scaleX: scrollYProgress }} />
+
       {/* --- SUBTLE BACKGROUND SCROLL THREAD --- */}
       <div className="fixed top-0 left-1/2 -translate-x-1/2 bottom-0 w-[1px] bg-white/[0.02] z-0 pointer-events-none hidden md:block">
         <motion.div 
@@ -322,7 +370,7 @@ export default function LandingPage() {
                           { vendor: 'Acme Steel Co.', bid: '$580,000', time: '12m ago', color: 'bg-zinc-600' },
                           { vendor: 'Global Ind.', bid: '$525,000', time: '4m ago', color: 'bg-zinc-600' },
                           { vendor: 'Stellar Metal', bid: '$490,000', time: '30s ago', color: 'bg-blue-500' },
-                          { vendor: 'Acme Steel Co.', bid: '$438,500', time: 'Just now', color: 'bg-emerald-500', isNew: true },
+                          { vendor: 'Acme Steel Co.', bid: ('$' + topBid.toLocaleString()), time: 'Just now', color: 'bg-emerald-500', isNew: true },
                         ].map((bid, i) => (
                           <motion.div 
                             key={i}
@@ -354,7 +402,26 @@ export default function LandingPage() {
         </div>
       </header>
 
-        {/* --- MEGA FEATURES GRID --- */}
+  
+      {/* --- ANIMATED STATS BAR --- */}
+      <section className="relative z-10 py-12 border-y border-white/5 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-violet-900/10 via-transparent to-fuchsia-900/10 pointer-events-none" />
+        <div ref={statsRef} className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center relative z-10">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={statsInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
+            <div className="text-4xl md:text-5xl font-black text-white font-mono">{vendorCount.toLocaleString()}+</div>
+            <div className="text-zinc-500 text-sm font-medium mt-2 uppercase tracking-widest">Verified Vendors</div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={statsInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.15 }}>
+            <div className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 font-mono">{savingsCount}%</div>
+            <div className="text-zinc-500 text-sm font-medium mt-2 uppercase tracking-widest">Avg Cost Reduction</div>
+          </motion.div>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={statsInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.3 }}>
+            <div className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400 font-mono">{eventsCount.toLocaleString()}+</div>
+            <div className="text-zinc-500 text-sm font-medium mt-2 uppercase tracking-widest">Auctions Completed</div>
+          </motion.div>
+        </div>
+      </section>
+      {/* --- MEGA FEATURES GRID --- */}
       <section id="features" className="py-32 relative z-10">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-7xl mx-auto px-6">
           <motion.div variants={fadeIn} className="text-center max-w-4xl mx-auto mb-20">
@@ -370,7 +437,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[340px]">
             
             {/* 1. Auctions (Spans 2 columns) */}
-            <motion.div variants={fadeIn} className="md:col-span-2 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-fuchsia-500/50 transition-all duration-500">
+            <motion.div variants={fadeIn} whileHover={{ scale: 1.015, rotateX: -1, rotateY: 1 }} style={{ transformPerspective: 1000 }} className="md:col-span-2 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-fuchsia-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 flex flex-col h-full justify-between">
                 <div>
@@ -392,7 +459,7 @@ export default function LandingPage() {
             </motion.div>
 
             {/* 2. Risk Scoring (Spans 1 column) */}
-            <motion.div variants={fadeIn} className="md:col-span-1 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-red-500/50 transition-all duration-500">
+            <motion.div variants={fadeIn} whileHover={{ scale: 1.02, rotateX: 1.5, rotateY: -1.5 }} style={{ transformPerspective: 1000 }} className="md:col-span-1 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-red-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-bl from-red-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 flex flex-col h-full">
                 <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center mb-6 text-red-400 group-hover:scale-110 group-hover:bg-red-500/20 transition-all duration-500">
@@ -412,7 +479,7 @@ export default function LandingPage() {
             </motion.div>
 
             {/* 3. Intakes (Spans 1 column) */}
-            <motion.div variants={fadeIn} className="md:col-span-1 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-blue-500/50 transition-all duration-500">
+            <motion.div variants={fadeIn} whileHover={{ scale: 1.02, rotateX: -1.5, rotateY: 1 }} style={{ transformPerspective: 1000 }} className="md:col-span-1 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-blue-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 flex flex-col h-full">
                 <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center mb-6 text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-500">
@@ -433,7 +500,7 @@ export default function LandingPage() {
             </motion.div>
 
             {/* 4. ERP Sync (Spans 2 columns) */}
-            <motion.div variants={fadeIn} className="md:col-span-2 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-violet-500/50 transition-all duration-500">
+            <motion.div variants={fadeIn} whileHover={{ scale: 1.015, rotateX: 1, rotateY: -1 }} style={{ transformPerspective: 1000 }} className="md:col-span-2 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-violet-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-tl from-violet-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 flex flex-col md:flex-row h-full items-center justify-between gap-8">
                 <div className="flex-1">
@@ -463,7 +530,7 @@ export default function LandingPage() {
             </motion.div>
 
             {/* 5. Analytics (Spans 1 column) */}
-            <motion.div variants={fadeIn} className="md:col-span-1 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-emerald-500/50 transition-all duration-500">
+            <motion.div variants={fadeIn} whileHover={{ scale: 1.02, rotateX: 1.5, rotateY: 1 }} style={{ transformPerspective: 1000 }} className="md:col-span-1 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-emerald-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 flex flex-col h-full">
                 <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center mb-6 text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-500">
@@ -488,7 +555,7 @@ export default function LandingPage() {
             </motion.div>
 
             {/* 6. Vendor Portal (Spans 2 columns) */}
-            <motion.div variants={fadeIn} className="md:col-span-2 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-amber-500/50 transition-all duration-500">
+            <motion.div variants={fadeIn} whileHover={{ scale: 1.015, rotateX: -1, rotateY: 1.5 }} style={{ transformPerspective: 1000 }} className="md:col-span-2 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-amber-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-r from-amber-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 flex flex-col md:flex-row h-full items-center justify-between gap-8">
                 <div className="flex-1">
