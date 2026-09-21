@@ -703,7 +703,7 @@ export default function LandingPage() {
                     </div>
                     <div>
                       <p className="text-white text-xs font-bold">Cortex AI</p>
-                      <p className="text-violet-400 text-[9px] font-mono tracking-widest uppercase">Intelligence Active</p>
+                      <p className="text-violet-400 text-[8px] sm:text-[9px] font-mono tracking-wider sm:tracking-widest uppercase hidden sm:block">Intelligence Active</p><p className="text-violet-400 text-[8px] font-mono uppercase sm:hidden">Active</p>
                     </div>
                   </div>
                   <div className="flex gap-1.5">
@@ -714,17 +714,17 @@ export default function LandingPage() {
                 </div>
 
                 {/* Chat messages */}
-                <div className="p-5 space-y-4 min-h-[340px]">
+                <div className="p-3 sm:p-5 space-y-4 min-h-[300px] sm:min-h-[340px]">
 
                   {/* User message */}
                   <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} viewport={{ once: true }} className="flex gap-3 flex-row-reverse">
                     <div className="w-7 h-7 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-xs font-bold text-zinc-300 flex-shrink-0">U</div>
-                    <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tr-sm px-4 py-3 text-sm text-zinc-200 max-w-[85%] font-mono">/vendor-scorecard Tata Steel</div>
+                    <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tr-sm px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-sm text-zinc-200 max-w-[90%] sm:max-w-[85%] font-mono break-all sm:break-normal">/vendor-scorecard Tata Steel</div>
                   </motion.div>
 
                   {/* AI thinking */}
                   <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} viewport={{ once: true }} className="pl-10">
-                    <div className="bg-violet-900/20 border border-violet-500/20 rounded-xl px-4 py-2.5 text-[11px] font-mono text-violet-300 flex items-center gap-2">
+                    <div className="bg-violet-900/20 border border-violet-500/20 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-[9px] sm:text-[11px] font-mono text-violet-300 flex items-start sm:items-center gap-2">
                       <Sparkles size={11} className="text-fuchsia-400 flex-shrink-0" />
                       <span>Fetching lifetime delivery data, quality audits, ESG score, risk tier...</span>
                     </div>
@@ -735,7 +735,7 @@ export default function LandingPage() {
                     <div className="w-7 h-7 rounded-full bg-gradient-to-br from-violet-600 to-fuchsia-600 flex-shrink-0 flex items-center justify-center shadow-[0_0_10px_rgba(139,92,246,0.4)]">
                       <Bot size={12} className="text-white" />
                     </div>
-                    <div className="flex-1 bg-[#0a0d18] border border-violet-500/20 rounded-2xl rounded-tl-sm p-4 shadow-xl">
+                    <div className="flex-1 bg-[#0a0d18] border border-violet-500/20 rounded-2xl rounded-tl-sm p-3 sm:p-4 shadow-xl">
                       <p className="text-white text-xs font-bold mb-3 flex items-center gap-2">
                         <CheckCircle2 size={13} className="text-emerald-400" /> Scorecard: Tata Steel
                       </p>
@@ -757,14 +757,14 @@ export default function LandingPage() {
                   {/* Second command */}
                   <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 3.0 }} viewport={{ once: true }} className="flex gap-3 flex-row-reverse">
                     <div className="w-7 h-7 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-xs font-bold text-zinc-300 flex-shrink-0">U</div>
-                    <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tr-sm px-4 py-3 text-sm text-zinc-200 max-w-[85%] font-mono">/draft-contract Tata Steel</div>
+                    <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tr-sm px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-sm text-zinc-200 max-w-[90%] sm:max-w-[85%] font-mono break-all sm:break-normal">/draft-contract Tata Steel</div>
                   </motion.div>
 
                   <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 3.8, type: 'spring' }} viewport={{ once: true }} className="flex gap-3">
                     <div className="w-7 h-7 rounded-full bg-gradient-to-br from-violet-600 to-fuchsia-600 flex-shrink-0 flex items-center justify-center shadow-[0_0_10px_rgba(139,92,246,0.4)]">
                       <Bot size={12} className="text-white" />
                     </div>
-                    <div className="bg-[#0a0d18] border border-emerald-500/20 rounded-2xl rounded-tl-sm px-4 py-3 text-xs text-zinc-300 max-w-[90%]">
+                    <div className="bg-[#0a0d18] border border-emerald-500/20 rounded-2xl rounded-tl-sm px-3 sm:px-4 py-2 sm:py-3 text-[10px] sm:text-xs text-zinc-300 max-w-[95%] sm:max-w-[90%]">
                       <p className="text-emerald-400 font-bold mb-1 flex items-center gap-1.5"><CheckCircle2 size={11}/> MSA Generated</p>
                       <p className="text-zinc-500">MASTER SERVICE AGREEMENT drafted for Tata Steel with Incoterms 2020 and liability cap at 2x contract value. <span className="text-violet-400 cursor-pointer hover:underline">Download PDF ↗</span></p>
                     </div>
