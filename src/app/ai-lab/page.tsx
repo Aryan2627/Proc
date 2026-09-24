@@ -73,7 +73,7 @@ export default function AILab() {
           ))}
         </div>
         
-        <div className="max-w-4xl mx-auto px-6 relative z-10 flex flex-col items-center">
+        <div className="max-w-5xl mx-auto px-6 relative z-10 flex flex-col items-center">
           <motion.div 
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-bold tracking-wide mb-8"
@@ -85,7 +85,7 @@ export default function AILab() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl md:text-7xl font-black tracking-tighter mb-8 leading-[1.1] text-white"
           >
-            Inventing the <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Autonomous</span> Supply Chain.
+            Inventing the <br className="hidden md:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Autonomous</span> Supply Chain.
           </motion.h1>
           
           <motion.p 
