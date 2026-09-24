@@ -148,7 +148,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-8 lg:gap-12">
             <div className="flex items-center gap-3">
-              <img src="/logo_transparent.png" alt="ProcGen" className="w-8 h-8 object-contain" />
+              <img src="/dorc-logo.png" alt="Dorc AI" className="w-8 h-8 object-contain" />
               <span className="font-bold text-xl tracking-tight text-slate-900">ProcGen</span>
             </div>
             
@@ -686,11 +686,11 @@ export default function LandingPage() {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
               <div className="col-span-2">
                 <div className="flex items-center gap-3 mb-6">
-                  <img src="/logo_transparent.png" alt="ProcGen" className="w-8 h-8 object-contain filter brightness-0 invert" />
-                  <span className="font-bold text-xl tracking-tight text-white">ProcGen</span>
+                  <img src="/dorc-logo.png" alt="Dorc AI" className="w-8 h-8 object-contain filter brightness-0 invert" />
+                  <span className="font-bold text-xl tracking-tight text-white">Dorc AI</span>
                 </div>
                 <p className="text-slate-400 leading-relaxed max-w-sm mb-8">
-                  ProcGen is the enterprise AI agent platform for modern supply chains. Unify your context, automate your workflows, and negotiate at scale.
+                  Dorc AI is the enterprise AI agent platform for modern supply chains. Unify your context, automate your workflows, and negotiate at scale.
                 </p>
                 <div className="flex gap-4">
                   <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer text-white"><Globe size={18} /></div>
@@ -701,31 +701,31 @@ export default function LandingPage() {
               <div>
                 <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Platform</h4>
                 <ul className="space-y-4">
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">Dorc AI Agents</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">Enterprise Data Graph</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">Live Vision OCR</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">Security & Trust</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">Pricing</a></li>
+                  <li><a href="/p/dorc-ai-agents" className="hover:text-blue-400 transition-colors">Dorc AI Agents</a></li>
+                  <li><a href="/p/enterprise-data-graph" className="hover:text-blue-400 transition-colors">Enterprise Data Graph</a></li>
+                  <li><a href="/p/live-vision-ocr" className="hover:text-blue-400 transition-colors">Live Vision OCR</a></li>
+                  <li><a href="/p/security" className="hover:text-blue-400 transition-colors">Security & Trust</a></li>
+                  <li><a href="/#pricing" className="hover:text-blue-400 transition-colors">Pricing</a></li>
                 </ul>
               </div>
 
               <div>
                 <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Solutions</h4>
                 <ul className="space-y-4">
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">For Direct Spend</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">For Indirect Spend</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">For SAP Ariba Users</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">For Finance Teams</a></li>
+                  <li><a href="/p/direct-spend" className="hover:text-blue-400 transition-colors">For Direct Spend</a></li>
+                  <li><a href="/p/indirect-spend" className="hover:text-blue-400 transition-colors">For Indirect Spend</a></li>
+                  <li><a href="/p/sap-ariba" className="hover:text-blue-400 transition-colors">For SAP Ariba Users</a></li>
+                  <li><a href="/p/finance-teams" className="hover:text-blue-400 transition-colors">For Finance Teams</a></li>
                 </ul>
               </div>
 
               <div>
                 <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Company</h4>
                 <ul className="space-y-4">
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">About Us</a></li>
+                  <li><a href="/p/about-us" className="hover:text-blue-400 transition-colors">About Us</a></li>
                   <li><a href="/careers" className="hover:text-blue-400 transition-colors">Careers (We're Hiring!)</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">Blog & News</a></li>
-                  <li><a href="#" className="hover:text-blue-400 transition-colors">Contact Sales</a></li>
+                  <li><a href="/p/blog-news" className="hover:text-blue-400 transition-colors">Blog & News</a></li>
+                  <li><a href="/p/contact-sales" className="hover:text-blue-400 transition-colors">Contact Sales</a></li>
                 </ul>
               </div>
             </div>
