@@ -205,10 +205,12 @@ export default function WarRoomSimulator() {
           <Link href="/ai-lab" className="w-8 h-8 rounded-full flex items-center justify-center text-slate-500 hover:text-slate-900 hover:bg-slate-100 transition-all">
             <ArrowLeft size={18} />
           </Link>
-          <div className="flex flex-col">
-             <div className="flex items-center gap-2 text-slate-900 font-bold text-sm">
-               Negotiation Training Simulator
-             </div>
+          <div className="flex items-center gap-3 border-l border-slate-200 pl-4">
+            <img src="/logo_transparent.png" alt="ProcGen" className="w-7 h-7 object-contain" />
+            <span className="font-bold text-lg text-slate-900 tracking-tight">ProcGen</span>
+          </div>
+          <div className="flex items-center gap-2 text-slate-500 font-medium text-sm ml-2 border-l border-slate-200 pl-4">
+            Negotiation Training Simulator
           </div>
         </div>
         <div className="flex items-center gap-4">
