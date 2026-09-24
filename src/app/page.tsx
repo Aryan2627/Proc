@@ -10,6 +10,23 @@ export default function LandingPage() {
   const [formData, setFormData] = useState({ name: '', email: '', company: '' });
 
   const [meteors, setMeteors] = useState<{x: number, y: number, delay: number, duration: number}[]>([]);
+
+  // Auto-open chat logic: Trigger 3s after first scroll
+  const hasAutoOpened = useRef(false);
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!hasAutoOpened.current && window.scrollY > 100) {
+        hasAutoOpened.current = true;
+        setTimeout(() => {
+          setIsChatOpen(true);
+        }, 3000);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   useEffect(() => {
     setMeteors([...Array(15)].map(() => ({
       x: Math.random() * 2000, // Spanning wider
