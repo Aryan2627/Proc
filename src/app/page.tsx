@@ -233,48 +233,95 @@ export default function LandingPage() {
       </section>
 
       
+      
       {/* --- PLATFORM INTEGRATIONS (UNIFY SYSTEMS) --- */}
-      <section className="py-24 bg-white border-t border-slate-200 overflow-hidden relative">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6">
-              Unify business systems in the <span className="text-blue-600">Enterprise Data Graph</span>
+      <section className="py-32 bg-white relative overflow-hidden">
+        {/* Aesthetic Background Blobs */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-blue-50/50 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="text-center max-w-4xl mx-auto mb-24">
+            <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-slate-900 mb-6 leading-tight">
+              Unify business systems in the <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-600">Enterprise Data Graph</span>
             </h2>
-            <p className="text-lg text-slate-600 leading-relaxed">
-              Procurement doesn't live in a silo. Dorc AI natively hooks into your ERPs, active directories, and communication tools to build a living graph of your supply chain context.
+            <p className="text-xl text-slate-500 leading-relaxed font-medium">
+              Procurement doesn't live in a silo. Dorc AI natively hooks into your ERPs, active directories, and communication tools to build a living, breathing graph of your supply chain.
             </p>
           </div>
 
-          <div className="relative w-full max-w-5xl mx-auto h-[400px] flex items-center justify-center">
-            {/* Center Node */}
-            <div className="absolute z-20 w-32 h-32 bg-slate-900 rounded-3xl flex items-center justify-center shadow-2xl border border-slate-700">
-              <img src="/logo_transparent.png" alt="Dorc" className="w-16 h-16 filter brightness-0 invert" />
-            </div>
+          <div className="relative w-full max-w-5xl mx-auto h-[600px] flex items-center justify-center mt-10">
             
-            {/* Connecting Lines (SVG) */}
-            <svg className="absolute inset-0 w-full h-full z-10" style={{ filter: 'drop-shadow(0px 0px 4px rgba(37,99,235,0.3))' }}>
-              <path d="M 500 200 Q 250 100 150 100" fill="none" stroke="#E2E8F0" strokeWidth="2" strokeDasharray="6 6" className="animate-pulse" />
-              <path d="M 500 200 Q 750 100 850 100" fill="none" stroke="#E2E8F0" strokeWidth="2" strokeDasharray="6 6" className="animate-pulse" />
-              <path d="M 500 200 Q 250 300 150 300" fill="none" stroke="#E2E8F0" strokeWidth="2" strokeDasharray="6 6" className="animate-pulse" />
-              <path d="M 500 200 Q 750 300 850 300" fill="none" stroke="#E2E8F0" strokeWidth="2" strokeDasharray="6 6" className="animate-pulse" />
+            {/* Center Node / Hub */}
+            <motion.div 
+              animate={{ boxShadow: ['0px 0px 0px rgba(37,99,235,0)', '0px 0px 40px rgba(37,99,235,0.4)', '0px 0px 0px rgba(37,99,235,0)'] }}
+              transition={{ duration: 3, repeat: Infinity }}
+              className="absolute z-30 w-32 h-32 bg-slate-900 rounded-3xl flex items-center justify-center shadow-2xl border border-slate-700 backdrop-blur-md"
+            >
+              <img src="/logo_transparent.png" alt="Dorc" className="w-16 h-16 filter brightness-0 invert drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
+            </motion.div>
+            
+            {/* Pulsing Radar Rings */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[250px] h-[250px] border border-blue-200 rounded-full animate-ping opacity-20"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[450px] h-[450px] border border-slate-100 rounded-full"></div>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] border border-slate-50 rounded-full border-dashed"></div>
+
+            {/* Connecting Lines (SVG) - Perfectly aligned via percentages */}
+            <svg className="absolute inset-0 w-full h-full z-10 pointer-events-none opacity-40">
+              <line x1="50%" y1="50%" x2="20%" y2="20%" stroke="#94a3b8" strokeWidth="2" strokeDasharray="6 6" />
+              <line x1="50%" y1="50%" x2="80%" y2="20%" stroke="#94a3b8" strokeWidth="2" strokeDasharray="6 6" />
+              <line x1="50%" y1="50%" x2="20%" y2="80%" stroke="#94a3b8" strokeWidth="2" strokeDasharray="6 6" />
+              <line x1="50%" y1="50%" x2="80%" y2="80%" stroke="#94a3b8" strokeWidth="2" strokeDasharray="6 6" />
             </svg>
 
-            {/* Orbiting Nodes */}
-            <div className="absolute top-[60px] left-[100px] z-20 bg-white border border-slate-200 p-4 rounded-2xl shadow-xl flex items-center gap-3">
-              <Database className="text-blue-500" /> <span className="font-bold text-slate-700">SAP Ariba</span>
-            </div>
-            <div className="absolute top-[60px] right-[100px] z-20 bg-white border border-slate-200 p-4 rounded-2xl shadow-xl flex items-center gap-3">
-              <Globe className="text-emerald-500" /> <span className="font-bold text-slate-700">Oracle NetSuite</span>
-            </div>
-            <div className="absolute bottom-[60px] left-[100px] z-20 bg-white border border-slate-200 p-4 rounded-2xl shadow-xl flex items-center gap-3">
-              <Lock className="text-purple-500" /> <span className="font-bold text-slate-700">Microsoft AD</span>
-            </div>
-            <div className="absolute bottom-[60px] right-[100px] z-20 bg-white border border-slate-200 p-4 rounded-2xl shadow-xl flex items-center gap-3">
-              <MessageCircle className="text-cyan-500" /> <span className="font-bold text-slate-700">Slack / Teams</span>
-            </div>
+            {/* Orbiting Satellites with floating animation */}
+            {/* Top Left */}
+            <motion.div 
+              animate={{ y: [0, -12, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-[15%] left-[5%] md:left-[10%] z-20 bg-white/80 backdrop-blur-xl border border-white p-3 pr-6 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer"
+            >
+              <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center border border-blue-100">
+                <Database className="text-blue-600" size={22} />
+              </div>
+              <span className="font-bold text-slate-800 text-lg tracking-tight">SAP Ariba</span>
+            </motion.div>
+
+            {/* Top Right */}
+            <motion.div 
+              animate={{ y: [0, -12, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute top-[15%] right-[5%] md:right-[10%] z-20 bg-white/80 backdrop-blur-xl border border-white p-3 pr-6 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer"
+            >
+              <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center border border-emerald-100">
+                <Globe className="text-emerald-600" size={22} />
+              </div>
+              <span className="font-bold text-slate-800 text-lg tracking-tight">Oracle NetSuite</span>
+            </motion.div>
+
+            {/* Bottom Left */}
+            <motion.div 
+              animate={{ y: [0, 12, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+              className="absolute bottom-[15%] left-[5%] md:left-[10%] z-20 bg-white/80 backdrop-blur-xl border border-white p-3 pr-6 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer"
+            >
+              <div className="w-12 h-12 rounded-full bg-purple-50 flex items-center justify-center border border-purple-100">
+                <Lock className="text-purple-600" size={22} />
+              </div>
+              <span className="font-bold text-slate-800 text-lg tracking-tight">Microsoft AD</span>
+            </motion.div>
+
+            {/* Bottom Right */}
+            <motion.div 
+              animate={{ y: [0, 12, 0] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+              className="absolute bottom-[15%] right-[5%] md:right-[10%] z-20 bg-white/80 backdrop-blur-xl border border-white p-3 pr-6 rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.08)] flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer"
+            >
+              <div className="w-12 h-12 rounded-full bg-cyan-50 flex items-center justify-center border border-cyan-100">
+                <MessageCircle className="text-cyan-600" size={22} />
+              </div>
+              <span className="font-bold text-slate-800 text-lg tracking-tight">Slack / Teams</span>
+            </motion.div>
           </div>
         </div>
       </section>
+
 
       {/* --- G2 / SOCIAL PROOF SECTION (ATLAN STYLE) --- */}
       <section className="py-24 bg-slate-900 text-white overflow-hidden relative border-y border-slate-800">
