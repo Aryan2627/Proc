@@ -547,40 +547,7 @@ export default function LandingPage() {
       </section>
 
 
-      {/* --- G2 / SOCIAL PROOF SECTION (ATLAN STYLE) --- */}
-      <section className="py-24 bg-slate-900 text-white overflow-hidden relative border-y border-slate-800"><motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }}>
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-6">A leader across every context category</h2>
-            <p className="text-lg text-slate-400">95% of enterprise users see ProcGen as a true partner, not just a software vendor.</p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-colors">
-              <Trophy size={40} className="text-amber-400 mb-6" />
-              <h3 className="text-2xl font-bold mb-4">G2 Leader Fall 2026</h3>
-              <p className="text-slate-400 leading-relaxed mb-6">Ranked #1 in Autonomous Procurement, Strategic Sourcing, and Spend Analytics.</p>
-              <div className="flex text-amber-400 gap-1"><Star size={16} fill="currentColor"/><Star size={16} fill="currentColor"/><Star size={16} fill="currentColor"/><Star size={16} fill="currentColor"/><Star size={16} fill="currentColor"/></div>
-            </div>
-            
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-colors">
-              <Trophy size={40} className="text-emerald-400 mb-6" />
-              <h3 className="text-2xl font-bold mb-4">Forrester Wave™</h3>
-              <p className="text-slate-400 leading-relaxed mb-6">Named a Strong Performer in the 2026 Forrester Wave for Supplier Value Management.</p>
-              <div className="flex text-amber-400 gap-1"><Star size={16} fill="currentColor"/><Star size={16} fill="currentColor"/><Star size={16} fill="currentColor"/><Star size={16} fill="currentColor"/><Star size={16} fill="currentColor"/></div>
-            </div>
-
-            <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition-colors">
-              <Trophy size={40} className="text-blue-400 mb-6" />
-              <h3 className="text-2xl font-bold mb-4">Gartner Cool Vendor</h3>
-              <p className="text-slate-400 leading-relaxed mb-6">Recognized for pioneering Multi-Agent Swarm architectures in traditional S2P workflows.</p>
-              <div className="flex text-amber-400 gap-1"><Star size={16} fill="currentColor"/><Star size={16} fill="currentColor"/><Star size={16} fill="currentColor"/><Star size={16} fill="currentColor"/><Star size={16} fill="currentColor"/></div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-      </section>
+      
       {/* --- SECURITY & CERTIFICATION SECTION --- */}
       <section className="py-24 bg-[#F9F9FC]">
         <div className="max-w-7xl mx-auto px-6">
