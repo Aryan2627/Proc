@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from 'react';
+import Lenis from 'lenis';
 import { Bot, ArrowRight, CheckCircle2, Menu, Sparkles, X, Swords, Activity, Network, Receipt, Monitor, ChevronRight, ChevronDown, Plus, Shield, Zap, Target, MessageCircle, Send, Globe, Database, Lock, Trophy, Star, ArrowUpRight, PlayCircle, TerminalSquare } from 'lucide-react';;
 import { motion, AnimatePresence, useScroll, useSpring, useInView } from 'framer-motion';
 
@@ -43,6 +44,29 @@ export default function LandingPage() {
   };
 
   // Auto-open chat logic: Trigger 3s after first scroll
+// Smooth Scrolling (Lenis)
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+    });
+
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.destroy();
+    };
+  }, []);
+
   const hasAutoOpened = useRef(false);
   useEffect(() => {
     const handleScroll = () => {

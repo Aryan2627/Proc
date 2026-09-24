@@ -1,5 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
+import Lenis from 'lenis';
 import Link from 'next/link';
 import { Sparkles, Network, ShieldAlert, Cpu, ArrowRight, ArrowLeft, ChevronDown, Menu, Globe, Activity, TerminalSquare, FlaskConical } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -7,6 +8,19 @@ import { motion } from 'framer-motion';
 export default function AILab() {
   const [meteors, setMeteors] = useState<{x: number, y: number, delay: number, duration: number}[]>([]);
   
+useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+    function raf(time: number) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+    return () => lenis.destroy();
+  }, []);
+
   useEffect(() => {
     setMeteors([...Array(25)].map(() => ({
       x: Math.random() * 2000,
