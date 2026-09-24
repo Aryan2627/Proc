@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import React from 'react';
 import { useState, useEffect, useRef } from 'react';
-import { Bot, Star, ArrowRight, FileText, Gavel, Users, Receipt, CheckCircle2, Menu, Sparkles, X, Check, Swords, Activity, Network, ShieldCheck, Zap, BarChart3 , Mail} from 'lucide-react';
+import { Bot, Star, ArrowRight, FileText, Gavel, Users, Receipt, CheckCircle2, Menu, Sparkles, X, Check, Swords, Activity, Network, ShieldCheck, Zap, BarChart3 , Mail, Monitor} from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useSpring, useTransform, useMotionValue, useInView } from 'framer-motion';
 
 function useCountUp(target: number, duration = 2000, inView = true) {
@@ -555,304 +555,116 @@ export default function LandingPage() {
       
 
       {/* ─── CORTEX AI SECTION ─────────────────────────────────────────────── */}
-      <section id="cortex" className="py-40 relative z-10 overflow-hidden">
-
-        {/* Multi-layer ambient background */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-950/20 to-transparent pointer-events-none" />
-        <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 60, repeat: Infinity, ease: 'linear' }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full border border-violet-500/5 pointer-events-none"
-        />
-        <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full border border-fuchsia-500/5 pointer-events-none"
-        />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-violet-600/5 rounded-full blur-[100px] pointer-events-none" />
-
-        {/* Dynamic Neural Network Background */}
-        <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
-          <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0.8" />
-                <stop offset="50%" stopColor="#d946ef" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="#06b6d4" stopOpacity="0.8" />
-              </linearGradient>
-            </defs>
-            <motion.path 
-              d="M-100,100 C 200,300 400,0 800,200 S 1200,100 1600,400" 
-              fill="none" stroke="url(#lineGrad)" strokeWidth="2"
-              initial={{ pathLength: 0, opacity: 0 }}
-              whileInView={{ pathLength: 1, opacity: 1 }}
-              transition={{ duration: 3, ease: "easeInOut" }}
-              viewport={{ once: true }}
-            />
-            <motion.path 
-              d="M-100,400 C 300,100 500,500 900,100 S 1300,600 1600,200" 
-              fill="none" stroke="url(#lineGrad)" strokeWidth="1"
-              initial={{ pathLength: 0, opacity: 0 }}
-              whileInView={{ pathLength: 1, opacity: 0.5 }}
-              transition={{ duration: 4, ease: "easeInOut", delay: 0.5 }}
-              viewport={{ once: true }}
-            />
-            {/* Animated Data Packets traveling along paths */}
-            <motion.circle r="3" fill="#06b6d4" filter="drop-shadow(0 0 5px #06b6d4)">
-              <animateMotion dur="6s" repeatCount="indefinite" path="M-100,100 C 200,300 400,0 800,200 S 1200,100 1600,400" />
-            </motion.circle>
-            <motion.circle r="3" fill="#d946ef" filter="drop-shadow(0 0 5px #d946ef)">
-              <animateMotion dur="8s" repeatCount="indefinite" path="M-100,400 C 300,100 500,500 900,100 S 1300,600 1600,200" />
-            </motion.circle>
-          </svg>
-        </div>
-
-
+      <section id="cortex" className="py-32 relative bg-slate-50 border-y border-slate-200 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative z-10">
-
-          {/* ── Section Badge + Heading ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center max-w-4xl mx-auto mb-20"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-xs font-bold uppercase tracking-widest mb-8 shadow-[0_0_30px_rgba(139,92,246,0.15)]">
-              <Sparkles size={13} className="text-fuchsia-400" />
-              ProcGen Cortex — The AI Brain
+          
+          <div className="text-center mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-100 text-blue-800 text-xs font-bold uppercase tracking-widest mb-6 border border-blue-200">
+              <Sparkles size={14} /> Agentic AI for Procurement
             </div>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-slate-900 mb-6 leading-[1.05]">
-              Meet{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400">
-                Cortex AI.
-              </span>
+            <h2 className="text-4xl md:text-6xl font-black mb-6 text-slate-900 tracking-tight">
+              Shaping the post-S2P era with <br /><span className="text-blue-600">Dorc AI Agents</span>
             </h2>
-            <p className="text-slate-600 text-xl md:text-2xl font-light leading-relaxed max-w-3xl mx-auto">
-              Not just a chatbot. An <strong className="text-slate-900 font-semibold">autonomous procurement intelligence layer</strong> that drafts contracts, predicts stockouts, analyzes bids, and negotiates—all from a single command.
+            <p className="text-slate-600 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+              Dorc AI's autonomous agents run your procurement and finance end-to-end, so you can focus on strategy. Built on a governed, enterprise-grade AI infrastructure.
             </p>
-          </motion.div>
-
-          {/* ── Main Two-Column Layout ── */}
-          <div className="grid lg:grid-cols-2 gap-16 items-start mb-28">
-
-            {/* LEFT: Animated Cortex Chat UI */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, type: 'spring', bounce: 0.2 }}
-              className="relative"
-            >
-              {/* Glow */}
-              <div className="absolute -inset-4 bg-gradient-to-r from-violet-600/20 to-fuchsia-600/20 blur-[60px] rounded-3xl pointer-events-none" />
-
-              <motion.div 
-                animate={{ y: [0, -15, 0], rotateX: [0, 2, 0], rotateY: [0, -2, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                style={{ transformPerspective: 1200 }}
-                className="relative bg-white/90 backdrop-blur-2xl border border-slate-200 rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.8)]"
-              >
-
-                {/* Window bar */}
-                <div className="bg-white border-b border-slate-200 px-5 py-3.5 flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="relative">
-                      <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-600 to-fuchsia-600 flex items-center justify-center shadow-[0_0_15px_rgba(139,92,246,0.5)]">
-                        <Bot size={14} className="text-slate-900" />
-                      </div>
-                      <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-[#080b12] animate-pulse" />
-                    </div>
-                    <div>
-                      <p className="text-slate-900 text-xs font-bold">Cortex AI</p>
-                      <p className="text-violet-400 text-[8px] sm:text-[9px] font-mono tracking-wider sm:tracking-widest uppercase hidden sm:block">Intelligence Active</p><p className="text-violet-400 text-[8px] font-mono uppercase sm:hidden">Active</p>
-                    </div>
-                  </div>
-                  <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-white" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-white" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-white" />
-                  </div>
-                </div>
-
-                {/* Chat messages */}
-                <div className="p-3 sm:p-5 space-y-4 min-h-[300px] sm:min-h-[340px]">
-
-                  {/* User message */}
-                  <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} viewport={{ once: true }} className="flex gap-3 flex-row-reverse">
-                    <div className="w-7 h-7 rounded-full bg-slate-200 border border-slate-200 flex items-center justify-center text-xs font-bold text-slate-700 flex-shrink-0">U</div>
-                    <div className="bg-slate-100 border border-slate-200 rounded-2xl rounded-tr-sm px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-sm text-slate-800 max-w-[90%] sm:max-w-[85%] font-mono break-all sm:break-normal">/vendor-scorecard Tata Steel</div>
-                  </motion.div>
-
-                  {/* AI thinking */}
-                  <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }} viewport={{ once: true }} className="pl-10">
-                    <div className="bg-violet-900/20 border border-violet-500/20 rounded-xl px-3 sm:px-4 py-2 sm:py-2.5 text-[9px] sm:text-[11px] font-mono text-violet-300 flex items-start sm:items-center gap-2">
-                      <Sparkles size={11} className="text-fuchsia-400 flex-shrink-0" />
-                      <span>Fetching lifetime delivery data, quality audits, ESG score, risk tier...</span>
-                    </div>
-                  </motion.div>
-
-                  {/* AI response - Scorecard */}
-                  <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 1.8, type: 'spring' }} viewport={{ once: true }} className="flex gap-3">
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-violet-600 to-fuchsia-600 flex-shrink-0 flex items-center justify-center shadow-[0_0_10px_rgba(139,92,246,0.4)]">
-                      <Bot size={12} className="text-slate-900" />
-                    </div>
-                    <div className="flex-1 bg-white border border-violet-500/20 rounded-2xl rounded-tl-sm p-3 sm:p-4 shadow-xl">
-                      <p className="text-slate-900 text-xs font-bold mb-3 flex items-center gap-2">
-                        <CheckCircle2 size={13} className="text-emerald-400" /> Scorecard: Tata Steel
-                      </p>
-                      <div className="flex gap-3 items-center mb-3">
-                        <div className="w-14 h-14 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center text-2xl font-black text-slate-900 shadow-lg">A+</div>
-                        <div className="flex-1 grid grid-cols-2 gap-2">
-                          {[['On-Time', '99.1%', 'emerald'], ['Defect', '0.2%', 'emerald'], ['Response', '4h', 'yellow'], ['Risk', 'Low', 'emerald']].map(([k, v, col]) => (
-                            <div key={k} className="bg-slate-100 rounded-lg px-2 py-1.5">
-                              <p className="text-[9px] text-slate-500 uppercase tracking-wider">{k}</p>
-                              <p className={'text-xs font-bold ' + (col === 'emerald' ? 'text-emerald-400' : 'text-yellow-400')}>{v}</p>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      <p className="text-slate-500 text-[10px]">Recommendation: <span className="text-emerald-400 font-semibold">Award contract. Preferred vendor.</span></p>
-                    </div>
-                  </motion.div>
-
-                  {/* Second command */}
-                  <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 3.0 }} viewport={{ once: true }} className="flex gap-3 flex-row-reverse">
-                    <div className="w-7 h-7 rounded-full bg-slate-200 border border-slate-200 flex items-center justify-center text-xs font-bold text-slate-700 flex-shrink-0">U</div>
-                    <div className="bg-slate-100 border border-slate-200 rounded-2xl rounded-tr-sm px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-sm text-slate-800 max-w-[90%] sm:max-w-[85%] font-mono break-all sm:break-normal">/draft-contract Tata Steel</div>
-                  </motion.div>
-
-                  <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 3.8, type: 'spring' }} viewport={{ once: true }} className="flex gap-3">
-                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-violet-600 to-fuchsia-600 flex-shrink-0 flex items-center justify-center shadow-[0_0_10px_rgba(139,92,246,0.4)]">
-                      <Bot size={12} className="text-slate-900" />
-                    </div>
-                    <div className="bg-white border border-emerald-500/20 rounded-2xl rounded-tl-sm px-3 sm:px-4 py-2 sm:py-3 text-[10px] sm:text-xs text-slate-700 max-w-[95%] sm:max-w-[90%]">
-                      <p className="text-emerald-400 font-bold mb-1 flex items-center gap-1.5"><CheckCircle2 size={11}/> MSA Generated</p>
-                      <p className="text-slate-500">MASTER SERVICE AGREEMENT drafted for Tata Steel with Incoterms 2020 and liability cap at 2x contract value. <span className="text-violet-400 cursor-pointer hover:underline">Download PDF ↗</span></p>
-                    </div>
-                  </motion.div>
-
-                </div>
-
-                {/* Input bar */}
-                <div className="border-t border-slate-200 px-5 py-3 flex items-center gap-3">
-                  <div className="flex-1 bg-slate-100 border border-slate-200 rounded-full px-4 py-2 text-xs text-slate-400 font-mono flex items-center gap-2">
-                    <span className="text-violet-400">/</span> Type a command or ask anything...
-                  </div>
-                  <div className="w-8 h-8 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-full flex items-center justify-center shadow-[0_0_10px_rgba(139,92,246,0.4)] cursor-pointer">
-                    <ArrowRight size={14} className="text-slate-900" />
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
-
-            {/* RIGHT: Features list */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, type: 'spring', bounce: 0.2 }}
-              className="flex flex-col gap-5 pt-4"
-            >
-              {[
-                { cmd: '/vendor-scorecard', label: 'Vendor Scorecards', desc: 'Lifetime A–F performance grades across delivery, quality, responsiveness, and ESG compliance—in seconds.', color: '#818cf8', bg: 'rgba(99,102,241,0.08)', border: 'rgba(99,102,241,0.2)', icon: CheckCircle2 },
-                { cmd: '/draft-contract', label: 'Legal Document AI', desc: 'Generate airtight MSAs, NDAs, and SOWs pre-loaded with your corporate playbook clauses. Export to PDF or DocuSign.', color: '#c084fc', bg: 'rgba(192,132,252,0.08)', border: 'rgba(192,132,252,0.2)', icon: FileText },
-                { cmd: '/analyze-risk', label: 'Multi-Agent Risk Swarm', desc: 'Deploy a swarm of AI agents that simultaneously audit geopolitical, financial, and compliance risks across your entire supply chain.', color: '#f87171', bg: 'rgba(248,113,113,0.08)', border: 'rgba(248,113,113,0.2)', icon: ShieldCheck },
-                { cmd: '/predict-stockout', label: 'Inventory Intelligence', desc: 'AI scans burn rates and lead times to flag critical shortages 30 days before they happen—auto-drafting emergency POs.', color: '#fb923c', bg: 'rgba(251,146,60,0.08)', border: 'rgba(251,146,60,0.2)', icon: Zap },
-                { cmd: '/3way-match', label: 'Autonomous Reconciliation', desc: 'Cortex cross-references every PO, GRN, and invoice automatically. Mismatches flagged and escalated without human input.', color: '#34d399', bg: 'rgba(52,211,153,0.08)', border: 'rgba(52,211,153,0.2)', icon: Activity },
-                { cmd: '/market-intel', label: 'Commodity Market Intel', desc: 'Live pricing signals and AI-predicted price drops help you time purchases to save millions on raw materials every quarter.', color: '#38bdf8', bg: 'rgba(56,189,248,0.08)', border: 'rgba(56,189,248,0.2)', icon: BarChart3 },
-              ].map((f, i) => (
-                <motion.div
-                  key={f.cmd}
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  animate={{ y: [0, -4, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: i * 0.4 }}
-                  whileHover={{ x: 4, scale: 1.02 }}
-                  className="group flex items-start gap-4 p-4 rounded-2xl border transition-all duration-300 cursor-default relative overflow-hidden"
-                  style={{ background: f.bg, borderColor: f.border }}
-                >
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-110" style={{ background: f.bg, border: '1px solid ' + f.border }}>
-                    <f.icon size={18} style={{ color: f.color }} />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-2 mb-1">
-                      <p className="text-slate-900 font-bold text-sm">{f.label}</p>
-                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full border" style={{ color: f.color, borderColor: f.border, background: f.bg }}>{f.cmd}</span>
-                    </div>
-                    <p className="text-slate-500 text-xs leading-relaxed">{f.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
           </div>
 
-          {/* ── Command Category Pills ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-12"
-          >
-            <p className="text-slate-500 text-sm font-semibold uppercase tracking-widest mb-6">19 Slash Commands Across 6 Categories</p>
-            <div className="flex flex-wrap justify-center gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
+            {/* Visual AI Representation */}
+            <div className="relative">
+              <div className="absolute inset-0 bg-blue-500/10 rounded-[3rem] blur-3xl transform -rotate-6"></div>
+              <div className="relative bg-white border border-slate-200 rounded-[2rem] p-12 shadow-xl flex flex-col items-center justify-center text-center">
+                <img src="/dorc-logo.png" alt="Dorc AI Logo" className="w-48 h-48 object-contain mb-8 filter drop-shadow-2xl" />
+                <h3 className="text-3xl font-black text-slate-900 mb-2">Dorc AI</h3>
+                <p className="text-slate-500 text-sm font-semibold uppercase tracking-widest mb-8">Multi-Agent Swarm</p>
+                
+                <div className="grid grid-cols-3 gap-4 w-full">
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col items-center">
+                    <div className="font-black text-blue-600 text-2xl mb-1">14+</div>
+                    <div className="text-[10px] text-slate-500 font-bold uppercase text-center">Autonomous Agents</div>
+                  </div>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col items-center">
+                    <div className="font-black text-emerald-600 text-2xl mb-1">0 Data</div>
+                    <div className="text-[10px] text-slate-500 font-bold uppercase text-center">Silos Left</div>
+                  </div>
+                  <div className="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col items-center">
+                    <div className="font-black text-violet-600 text-2xl mb-1">&lt;1s</div>
+                    <div className="text-[10px] text-slate-500 font-bold uppercase text-center">Execution Time</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Feature List */}
+            <div>
+              <h3 className="text-3xl font-bold text-slate-900 mb-8">One Procurement Tool. Complete Control.</h3>
+              
+              <div className="space-y-8">
+                <div className="flex items-start gap-5">
+                  <div className="w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center flex-shrink-0 border border-blue-100 shadow-sm">
+                    <Monitor size={26} className="text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-slate-900 mb-2">Live Vision OCR (Local Processing)</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Dorc AI natively analyzes your screen in real-time, instantly extracting data from supplier PDFs, competitor websites, and legacy ERPs without requiring backend integrations.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-5">
+                  <div className="w-14 h-14 rounded-2xl bg-fuchsia-50 flex items-center justify-center flex-shrink-0 border border-fuchsia-100 shadow-sm">
+                    <Bot size={26} className="text-fuchsia-600" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-slate-900 mb-2">Governed Autonomous Action</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Infrastructure your CISO requires. Dorc acts autonomously within strict organizational guardrails, enforcing spend compliance and auto-flagging anomalies before payments occur.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-5">
+                  <div className="w-14 h-14 rounded-2xl bg-emerald-50 flex items-center justify-center flex-shrink-0 border border-emerald-100 shadow-sm">
+                    <Activity size={26} className="text-emerald-600" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-bold text-slate-900 mb-2">AI Spend Control Tower</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Get full visibility over direct and indirect spend. The analytics agents track real-time budget variances, map global footprints, and proactively aggregate demand for bulk negotiations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Grid of Agents */}
+          <div className="mt-24 pt-16 border-t border-slate-200">
+            <h3 className="text-2xl font-bold text-center text-slate-900 mb-12">The world's most advanced procurement swarm</h3>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
               {[
-                { label: 'Sourcing', color: '#2dd4bf', bg: 'rgba(45,212,191,0.1)', border: 'rgba(45,212,191,0.25)' },
-                { label: 'Legal', color: '#818cf8', bg: 'rgba(99,102,241,0.1)', border: 'rgba(99,102,241,0.25)' },
-                { label: 'Logistics', color: '#eab308', bg: 'rgba(234,179,8,0.1)', border: 'rgba(234,179,8,0.25)' },
-                { label: 'Finance', color: '#34d399', bg: 'rgba(52,211,153,0.1)', border: 'rgba(52,211,153,0.25)' },
-                { label: 'Vendors', color: '#38bdf8', bg: 'rgba(56,189,248,0.1)', border: 'rgba(56,189,248,0.25)' },
-                { label: 'System', color: '#f87171', bg: 'rgba(248,113,113,0.1)', border: 'rgba(248,113,113,0.25)' },
-              ].map((cat) => (
-                <motion.div
-                  key={cat.label}
-                  whileHover={{ scale: 1.08, y: -2 }}
-                  className="px-5 py-2 rounded-full text-sm font-bold border transition-all duration-200 cursor-default"
-                  style={{ color: cat.color, background: cat.bg, borderColor: cat.border }}
-                >
-                  {cat.label}
-                </motion.div>
+                { name: 'Guided Intake Agent', desc: 'Auto-routes employee PRs to correct workflows.' },
+                { name: 'Supplier Discovery Agent', desc: 'Scrapes the web for net-new global suppliers.' },
+                { name: 'Negotiation Agent', desc: 'Proactively sends counter-offers to rank bids.' },
+                { name: 'Auto-Award Agent', desc: 'Evaluates supplier matrices and recommends winners.' },
+                { name: 'Should-Cost Agent', desc: 'Bottom-up cost modeling based on raw material indices.' },
+                { name: 'Invoice Matching Agent', desc: '3-way matches POs, GRNs, and invoices in milliseconds.' },
+                { name: 'Spend Analytics Agent', desc: 'Categorizes tail-spend and tracks variance.' },
+                { name: 'Fraud Detection Agent', desc: 'Flags suspicious supplier behavior and duplicate invoices.' }
+              ].map((agent, i) => (
+                <div key={i} className="bg-white border border-slate-200 p-6 rounded-2xl hover:shadow-lg transition-shadow">
+                  <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center mb-4 text-blue-600">
+                    <Bot size={22} />
+                  </div>
+                  <h4 className="font-bold text-slate-900 mb-2 text-sm">{agent.name}</h4>
+                  <p className="text-slate-500 text-xs leading-relaxed">{agent.desc}</p>
+                </div>
               ))}
             </div>
-          </motion.div>
-
-          {/* ── Bottom CTA Banner ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, type: 'spring', bounce: 0.3 }}
-            className="relative rounded-[2rem] overflow-hidden p-px"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-100 via-fuchsia-100 to-cyan-100 opacity-50 blur-[40px]" />
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-100 to-cyan-100 rounded-[2rem]" />
-            <div className="relative bg-white/90 backdrop-blur-2xl rounded-[2rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-200">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-xs font-bold uppercase tracking-widest mb-4">
-                  <span className="relative flex h-2 w-2">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500" />
-                  </span>
-                  Live on ProcGen Platform
-                </div>
-                <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-3 leading-tight">
-                  Your procurement team just got <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">an AI superpower.</span>
-                </h3>
-                <p className="text-slate-600 text-base max-w-lg leading-relaxed">
-                  Cortex is embedded directly inside the ProcGen CPanel. No integrations, no extra licenses. Just type <span className="text-violet-400 font-mono font-bold">/</span> and let it work.
-                </p>
-              </div>
-              <div className="flex-shrink-0">
-                <button onClick={() => setIsModalOpen(true)} className="group flex items-center gap-3 bg-slate-900 text-white font-bold px-8 py-4 rounded-2xl hover:scale-105 transition-all shadow-md text-lg">
-                  Request a Demo
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                </button>
-              </div>
-            </div>
-          </motion.div>
+          </div>
 
         </div>
       </section>
