@@ -118,55 +118,17 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#030303] font-sans text-white selection:bg-violet-500/30 overflow-hidden relative">
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-violet-500/30 overflow-hidden relative">
       
       
       {/* Scroll Progress Bar */}
-      <motion.div className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-violet-500 via-fuchsia-500 to-blue-500 origin-left z-[200] shadow-[0_0_10px_rgba(139,92,246,0.8)]" style={{ scaleX: scrollYProgress }} />
-
-      {/* --- SUBTLE BACKGROUND SCROLL THREAD --- */}
-      <div className="fixed top-0 left-1/2 -translate-x-1/2 bottom-0 w-[1px] bg-white/[0.02] z-0 pointer-events-none hidden md:block">
-        <motion.div 
-          className="w-[1px] absolute left-0 bg-gradient-to-b from-transparent via-violet-500/40 to-transparent blur-[1px]"
-          style={{ 
-             height: "30vh",
-             top: useTransform(scrollYProgress, [0, 1], ["-30%", "100%"]) 
-          }}
-        />
-      </div>
-      {/* --- ADVANCED ANIMATED BACKGROUND WITH 3D PARALLAX --- */}
-      <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Parallax Grid Layer (Moves Slightly) */}
-        <motion.div style={{ x: parallaxGridX, y: parallaxGridY }} className="absolute inset-[-5%] w-[110%] h-[110%]">
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-50"></div>
-        </motion.div>
-        
-        {/* Parallax Orbs Layer (Moves More for Depth) */}
-        <motion.div style={{ x: parallaxOrbsX, y: parallaxOrbsY }} className="absolute inset-[-10%] w-[120%] h-[120%]">
-          {/* Floating Neon Orbs */}
-          <motion.div 
-            animate={{ x: [0, 150, -50, 0], y: [0, -100, 100, 0], scale: [1, 1.2, 0.8, 1] }}
-            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-            className="absolute top-[-10%] left-[-5%] w-[45%] h-[45%] bg-violet-600/20 rounded-full blur-[120px]"
-          />
-          <motion.div 
-            animate={{ x: [0, -150, 50, 0], y: [0, 150, -50, 0], scale: [1, 1.3, 0.9, 1] }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-            className="absolute bottom-[0%] right-[-5%] w-[45%] h-[45%] bg-blue-600/20 rounded-full blur-[120px]"
-          />
-          <motion.div 
-            animate={{ x: [0, 50, -150, 0], y: [0, 50, -150, 0] }}
-            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-            className="absolute top-[40%] left-[40%] w-[30%] h-[30%] bg-fuchsia-600/10 rounded-full blur-[100px]"
-          />
-        </motion.div>
-      </div>
+      <motion.div className="fixed top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-violet-500 via-fuchsia-500 to-blue-500 origin-left z-[200] shadow-none" style={{ scaleX: scrollYProgress }} />
 
       {/* --- ADVANCED FLOATING NAVIGATION BAR --- */}
       <div className="fixed top-6 left-0 w-full z-50 flex justify-center px-4">
         <motion.nav 
           initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-full max-w-5xl bg-[#0a0a0a]/60 backdrop-blur-2xl border border-white/10 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)] px-6 h-16 flex items-center justify-between relative overflow-hidden"
+          className="w-full max-w-5xl bg-white/90 backdrop-blur-2xl border border-slate-200 rounded-full shadow-sm px-6 h-16 flex items-center justify-between relative overflow-hidden"
         >
           {/* Subtle animated shine effect on the navbar */}
           <motion.div 
@@ -175,32 +137,32 @@ export default function LandingPage() {
           />
 
           <div className="flex items-center gap-3 relative z-10">
-            <img src="/logo_transparent.png" alt="ProcGen Logo" className="w-10 h-10 object-contain drop-shadow-[0_0_15px_rgba(0,255,255,0.4)]" style={{ filter: "drop-shadow(0 0 10px rgba(0, 255, 255, 0.3))" }} />
-            <span className="font-bold text-xl tracking-tight text-white">ProcGen</span>
+            <img src="/logo_transparent.png" alt="ProcGen Logo" className="w-10 h-10 object-contain drop-shadow-none" style={{  }} />
+            <span className="font-bold text-xl tracking-tight text-slate-900">ProcGen</span>
           </div>
           
           <div className="hidden md:flex items-center gap-8 text-sm font-medium relative z-10">
             {['Features', 'Pricing'].map((item) => (
-                <a key={item} href={`#${item.toLowerCase()}`} className="relative group text-zinc-400 hover:text-white transition-colors py-2">
+                <a key={item} href={`#${item.toLowerCase()}`} className="relative group text-slate-600 hover:text-slate-900 transition-colors py-2">
                   {item}
-                  <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-violet-400 transition-all group-hover:w-full group-hover:left-0 rounded-full shadow-[0_0_10px_rgba(139,92,246,0.8)]"></span>
+                  <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-violet-400 transition-all group-hover:w-full group-hover:left-0 rounded-full shadow-none"></span>
                 </a>
               ))}
-              <Link href="/careers" className="relative group text-zinc-400 hover:text-white transition-colors py-2">
+              <Link href="/careers" className="relative group text-slate-600 hover:text-slate-900 transition-colors py-2">
                 Careers
-                <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-violet-400 transition-all group-hover:w-full group-hover:left-0 rounded-full shadow-[0_0_10px_rgba(139,92,246,0.8)]"></span>
+                <span className="absolute -bottom-1 left-1/2 w-0 h-0.5 bg-violet-400 transition-all group-hover:w-full group-hover:left-0 rounded-full shadow-none"></span>
               </Link>
           </div>
 
           <div className="hidden md:flex items-center gap-4 relative z-10">
-            <button onClick={() => setIsModalOpen(true)} className="group relative text-sm font-bold text-black px-6 py-2.5 rounded-full overflow-hidden">
+            <button onClick={() => setIsModalOpen(true)} className="group relative text-sm font-bold text-slate-900 px-6 py-2.5 rounded-full overflow-hidden">
               <span className="absolute inset-0 bg-white transition-transform group-hover:scale-105"></span>
               <span className="absolute inset-0 opacity-0 group-hover:opacity-100 bg-gradient-to-r from-violet-200 to-blue-200 transition-opacity"></span>
               <span className="relative z-10 flex items-center gap-2">Connect with Sales</span>
             </button>
           </div>
           
-          <button className="md:hidden text-zinc-400 relative z-10">
+          <button className="md:hidden text-slate-600 relative z-10">
             <Menu size={24} />
           </button>
         </motion.nav>
@@ -210,24 +172,24 @@ export default function LandingPage() {
       <header className="relative pt-48 pb-40 z-10">
         <div className="max-w-7xl mx-auto px-6 relative text-center">
           <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col items-center">
-            <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-zinc-300 text-xs font-semibold uppercase tracking-widest mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)]">
+            <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-semibold uppercase tracking-widest mb-8 backdrop-blur-md shadow-[0_0_20px_rgba(255,255,255,0.05)]">
               <Sparkles size={14} className="text-violet-400" />
               ProcGen 2.0 is Live
             </motion.div>
             
-            <motion.h1 variants={fadeIn} className="text-6xl md:text-8xl font-black tracking-tighter text-white mb-8 leading-[1.05]">
+            <motion.h1 variants={fadeIn} className="text-6xl md:text-8xl font-black tracking-tighter text-slate-900 mb-8 leading-[1.05]">
               Procurement, <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-blue-500">
                 Supercharged.
               </span>
             </motion.h1>
             
-            <motion.p variants={fadeIn} className="max-w-2xl mx-auto text-lg md:text-xl text-zinc-400 mb-10 leading-relaxed font-light">
+            <motion.p variants={fadeIn} className="max-w-2xl mx-auto text-lg md:text-xl text-slate-600 mb-10 leading-relaxed font-light">
               Automate purchase requests, dominate reverse auctions, and connect with vendors in a stunning, lightning-fast platform.
             </motion.p>
             
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
-              <button onClick={() => setIsModalOpen(true)} className="group relative w-full sm:w-auto flex items-center justify-center gap-2 bg-white text-black font-bold px-8 py-4 rounded-full hover:scale-105 transition-all text-lg overflow-hidden shadow-[0_0_30px_rgba(255,255,255,0.2)]">
+              <button onClick={() => setIsModalOpen(true)} className="group relative w-full sm:w-auto flex items-center justify-center gap-2 bg-slate-900 text-white font-bold px-8 py-4 rounded-full hover:scale-105 transition-all text-lg overflow-hidden shadow-[0_0_30px_rgba(255,255,255,0.2)]">
                 <span className="relative z-10 flex items-center gap-2">Connect with Sales <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" /></span>
                 <div className="absolute inset-0 bg-gradient-to-r from-violet-200 to-blue-200 opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </button>
@@ -245,14 +207,14 @@ export default function LandingPage() {
             {/* Massive Ambient Glow Behind Mockup */}
             <div className="absolute -inset-1 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-blue-600 rounded-3xl blur-[80px] opacity-20 animate-pulse"></div>
             
-            <div className="relative rounded-2xl border border-white/10 bg-[#050505]/95 backdrop-blur-3xl shadow-[0_30px_100px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.1)] overflow-hidden">
+            <div className="relative rounded-2xl border border-slate-200 bg-white/90 backdrop-blur-3xl shadow-[0_30px_100px_rgba(0,0,0,0.8),inset_0_1px_0_rgba(255,255,255,0.1)] overflow-hidden">
               
               {/* macOS Window Controls */}
-              <div className="w-full h-12 bg-[#0a0a0a] border-b border-white/5 flex items-center px-4 gap-2 relative">
+              <div className="w-full h-12 bg-white border-b border-slate-200 flex items-center px-4 gap-2 relative">
                 <div className="flex gap-2 z-10">
-                  <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                  <div className="w-3 h-3 rounded-full bg-white"></div>
+                  <div className="w-3 h-3 rounded-full bg-white"></div>
+                  <div className="w-3 h-3 rounded-full bg-white"></div>
                 </div>
 
               </div>
@@ -260,7 +222,7 @@ export default function LandingPage() {
               <div className="flex w-full aspect-[16/10] sm:aspect-[21/9]">
                 
                 {/* Sidebar Navigation */}
-                <div className="w-16 sm:w-48 bg-[#0a0a0a] border-r border-white/5 p-4 flex flex-col gap-3 z-10 shadow-[10px_0_20px_rgba(0,0,0,0.2)]">
+                <div className="w-16 sm:w-48 bg-white border-r border-slate-200 p-4 flex flex-col gap-3 z-10 shadow-[10px_0_20px_rgba(0,0,0,0.2)]">
                    <div className="h-9 w-full bg-fuchsia-500/10 border border-fuchsia-500/20 rounded-lg flex items-center justify-center sm:justify-start sm:px-3 gap-3 text-fuchsia-400 shadow-[inset_0_0_10px_rgba(217,70,239,0.1)]">
                      <Swords size={16} /><span className="hidden sm:block text-xs font-bold tracking-wide">Auctions</span>
                    </div>
@@ -269,13 +231,13 @@ export default function LandingPage() {
                      { icon: Users, label: "Suppliers" },
                      { icon: FileText, label: "Contracts" }
                    ].map((item, i) => (
-                     <div key={i} className="h-9 w-full rounded-lg flex items-center justify-center sm:justify-start sm:px-3 gap-3 text-zinc-500 hover:text-zinc-200 hover:bg-white/5 transition-colors cursor-pointer">
+                     <div key={i} className="h-9 w-full rounded-lg flex items-center justify-center sm:justify-start sm:px-3 gap-3 text-slate-500 hover:text-slate-800 hover:bg-slate-100 transition-colors cursor-pointer">
                        <item.icon size={16} /><span className="hidden sm:block text-xs">{item.label}</span>
                      </div>
                    ))}
                    
-                   <div className="mt-auto hidden sm:block bg-white/5 border border-white/5 rounded-xl p-3">
-                     <p className="text-[10px] text-zinc-500 font-bold uppercase mb-2">Total Savings</p>
+                   <div className="mt-auto hidden sm:block bg-slate-100 border border-slate-200 rounded-xl p-3">
+                     <p className="text-[10px] text-slate-500 font-bold uppercase mb-2">Total Savings</p>
                      <p className="text-emerald-400 font-mono font-bold text-lg">{formatSavings(savings)}</p>
                    </div>
                 </div>
@@ -287,7 +249,7 @@ export default function LandingPage() {
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff05_1px,transparent_1px),linear-gradient(to_bottom,#ffffff05_1px,transparent_1px)] bg-[size:2rem_2rem] pointer-events-none"></div>
 
                   {/* Header */}
-                  <div className="flex justify-between items-end relative z-10 border-b border-white/5 pb-4">
+                  <div className="flex justify-between items-end relative z-10 border-b border-slate-200 pb-4">
                     <div>
                       <div className="flex items-center gap-2 mb-2">
                         <span className="relative flex h-2.5 w-2.5">
@@ -296,20 +258,20 @@ export default function LandingPage() {
                         </span>
                         <span className="text-red-400 text-[10px] sm:text-xs font-bold tracking-widest uppercase">Live Sourcing Event</span>
                       </div>
-                      <h3 className="text-lg sm:text-3xl font-black text-white">Q4 Raw Steel Procurement</h3>
+                      <h3 className="text-lg sm:text-3xl font-black text-slate-900">Q4 Raw Steel Procurement</h3>
                     </div>
-                    <div className="text-right bg-white/5 px-4 py-2 rounded-xl border border-white/10 backdrop-blur-md">
-                      <p className="text-zinc-500 text-[10px] font-bold uppercase mb-1">Time Remaining</p>
-                      <p className="text-white font-mono text-xl sm:text-2xl font-bold">{formatTime(mockTimer)}</p>
+                    <div className="text-right bg-slate-100 px-4 py-2 rounded-xl border border-slate-200 backdrop-blur-md">
+                      <p className="text-slate-500 text-[10px] font-bold uppercase mb-1">Time Remaining</p>
+                      <p className="text-slate-900 font-mono text-xl sm:text-2xl font-bold">{formatTime(mockTimer)}</p>
                     </div>
                   </div>
 
                   <div className="flex-1 grid grid-cols-1 md:grid-cols-3 gap-6 relative z-10">
                     
                     {/* Left: Interactive Price Drop Chart */}
-                    <div className="md:col-span-2 bg-[#020202]/80 backdrop-blur-md border border-white/5 rounded-2xl p-6 flex flex-col relative shadow-2xl">
+                    <div className="md:col-span-2 bg-slate-50/80 backdrop-blur-md border border-slate-200 rounded-2xl p-6 flex flex-col relative shadow-2xl">
                       <div className="flex justify-between items-center mb-6">
-                        <p className="text-zinc-400 text-sm font-bold uppercase tracking-wider">Lowest Bid Trend (USD)</p>
+                        <p className="text-slate-600 text-sm font-bold uppercase tracking-wider">Lowest Bid Trend (USD)</p>
                         <div className="text-emerald-400 text-sm font-mono font-bold bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">
                           -32.4% vs Target
                         </div>
@@ -357,13 +319,13 @@ export default function LandingPage() {
                     </div>
 
                     {/* Right: Real-time Bid Feed */}
-                    <div className="hidden md:flex bg-[#020202]/80 backdrop-blur-md border border-white/5 rounded-2xl p-5 flex-col relative overflow-hidden shadow-2xl">
+                    <div className="hidden md:flex bg-slate-50/80 backdrop-blur-md border border-slate-200 rounded-2xl p-5 flex-col relative overflow-hidden shadow-2xl">
                       {/* Top Fade */}
                       <div className="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-[#020202] to-transparent z-20 pointer-events-none"></div>
                       {/* Bottom Fade */}
                       <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-[#020202] to-transparent z-20 pointer-events-none"></div>
                       
-                      <h4 className="text-zinc-500 text-[10px] font-bold uppercase tracking-widest mb-4 z-30">Real-Time Bids</h4>
+                      <h4 className="text-slate-500 text-[10px] font-bold uppercase tracking-widest mb-4 z-30">Real-Time Bids</h4>
                       
                       <div className="flex-1 flex flex-col justify-end gap-3 relative z-10 pb-4">
                         {[
@@ -377,17 +339,17 @@ export default function LandingPage() {
                             initial={{ opacity: 0, x: 50, scale: 0.9 }}
                             animate={{ opacity: 1, x: 0, scale: 1 }}
                             transition={{ delay: i * 1.5, type: "spring", bounce: 0.5 }}
-                            className={`p-3.5 rounded-xl flex items-center justify-between shadow-lg ${bid.isNew ? 'bg-emerald-500/10 border border-emerald-500/40 relative overflow-hidden' : 'bg-white/5 border border-white/5'}`}
+                            className={`p-3.5 rounded-xl flex items-center justify-between shadow-lg ${bid.isNew ? 'bg-emerald-500/10 border border-emerald-500/40 relative overflow-hidden' : 'bg-slate-100 border border-slate-200'}`}
                           >
                             {bid.isNew && <div className="absolute inset-0 bg-emerald-500/20 animate-pulse"></div>}
                             <div className="flex items-center gap-3 relative z-10">
                               <div className={`w-2.5 h-2.5 rounded-full ${bid.color} shadow-[0_0_10px_currentColor]`}></div>
                               <div>
-                                <p className={`text-xs font-bold ${bid.isNew ? 'text-emerald-400' : 'text-zinc-200'}`}>{bid.vendor}</p>
-                                <p className="text-[9px] text-zinc-500 font-medium uppercase tracking-wider mt-0.5">{bid.time}</p>
+                                <p className={`text-xs font-bold ${bid.isNew ? 'text-emerald-400' : 'text-slate-800'}`}>{bid.vendor}</p>
+                                <p className="text-[9px] text-slate-500 font-medium uppercase tracking-wider mt-0.5">{bid.time}</p>
                               </div>
                             </div>
-                            <span className={`font-mono text-sm font-bold relative z-10 ${bid.isNew ? 'text-emerald-400 drop-shadow-[0_0_5px_rgba(52,211,153,0.8)]' : 'text-white'}`}>{bid.bid}</span>
+                            <span className={`font-mono text-sm font-bold relative z-10 ${bid.isNew ? 'text-emerald-400 drop-shadow-[0_0_5px_rgba(52,211,153,0.8)]' : 'text-slate-900'}`}>{bid.bid}</span>
                           </motion.div>
                         ))}
                       </div>
@@ -404,20 +366,20 @@ export default function LandingPage() {
 
   
       {/* --- ANIMATED STATS BAR --- */}
-      <section className="relative z-10 py-12 border-y border-white/5 overflow-hidden">
+      <section className="relative z-10 py-12 border-y border-slate-200 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-violet-900/10 via-transparent to-fuchsia-900/10 pointer-events-none" />
         <div ref={statsRef} className="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={statsInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6 }}>
-            <div className="text-4xl md:text-5xl font-black text-white font-mono">{vendorCount.toLocaleString()}+</div>
-            <div className="text-zinc-500 text-sm font-medium mt-2 uppercase tracking-widest">Verified Vendors</div>
+            <div className="text-4xl md:text-5xl font-black text-slate-900 font-mono">{vendorCount.toLocaleString()}+</div>
+            <div className="text-slate-500 text-sm font-medium mt-2 uppercase tracking-widest">Verified Vendors</div>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={statsInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.15 }}>
             <div className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-400 font-mono">{savingsCount}%</div>
-            <div className="text-zinc-500 text-sm font-medium mt-2 uppercase tracking-widest">Avg Cost Reduction</div>
+            <div className="text-slate-500 text-sm font-medium mt-2 uppercase tracking-widest">Avg Cost Reduction</div>
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={statsInView ? { opacity: 1, y: 0 } : {}} transition={{ duration: 0.6, delay: 0.3 }}>
             <div className="text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400 font-mono">{eventsCount.toLocaleString()}+</div>
-            <div className="text-zinc-500 text-sm font-medium mt-2 uppercase tracking-widest">Auctions Completed</div>
+            <div className="text-slate-500 text-sm font-medium mt-2 uppercase tracking-widest">Auctions Completed</div>
           </motion.div>
         </div>
       </section>
@@ -425,11 +387,11 @@ export default function LandingPage() {
       <section id="features" className="py-32 relative z-10">
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-7xl mx-auto px-6">
           <motion.div variants={fadeIn} className="text-center max-w-4xl mx-auto mb-20">
-            <h2 className="text-5xl md:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
+            <h2 className="text-5xl md:text-6xl font-black tracking-tight text-slate-900 mb-6 leading-tight">
               A procurement engine <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-orange-500">built for hyperscale.</span>
             </h2>
-            <p className="text-zinc-400 text-lg md:text-xl font-light">
+            <p className="text-slate-600 text-lg md:text-xl font-light">
               Stop losing millions to inefficient sourcing. ProcGen replaces scattered emails, rogue spending, and blind negotiations with a ruthless, AI-driven profitability engine.
             </p>
           </motion.div>
@@ -437,19 +399,19 @@ export default function LandingPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[340px]">
             
             {/* 1. Auctions (Spans 2 columns) */}
-            <motion.div variants={fadeIn} whileHover={{ scale: 1.015, rotateX: -1, rotateY: 1 }} style={{ transformPerspective: 1000 }} className="md:col-span-2 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-fuchsia-500/50 transition-all duration-500">
+            <motion.div variants={fadeIn} whileHover={{ scale: 1.015, rotateX: -1, rotateY: 1 }} style={{ transformPerspective: 1000 }} className="md:col-span-2 group relative bg-white backdrop-blur-sm border border-slate-200 rounded-[2rem] p-8 overflow-hidden hover:border-fuchsia-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-br from-fuchsia-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 flex flex-col h-full justify-between">
                 <div>
-                  <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center mb-6 text-fuchsia-400 group-hover:scale-110 group-hover:bg-fuchsia-500/20 transition-all duration-500">
+                  <div className="w-12 h-12 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center mb-6 text-fuchsia-400 group-hover:scale-110 group-hover:bg-fuchsia-500/20 transition-all duration-500">
                     <Swords size={24} />
                   </div>
-                  <h3 className="text-3xl font-bold text-white mb-3">Ruthless Reverse Auctions</h3>
-                  <p className="text-zinc-400 max-w-md leading-relaxed text-lg">Force suppliers into real-time bidding wars. Our average enterprise client sees a <strong className="text-white">34% drop in raw material costs</strong> within the first 90 days.</p>
+                  <h3 className="text-3xl font-bold text-slate-900 mb-3">Ruthless Reverse Auctions</h3>
+                  <p className="text-slate-600 max-w-md leading-relaxed text-lg">Force suppliers into real-time bidding wars. Our average enterprise client sees a <strong className="text-slate-900">34% drop in raw material costs</strong> within the first 90 days.</p>
                 </div>
                 <div className="mt-6 flex items-end gap-3 h-24 pt-6">
                   {[100, 85, 70, 55, 40].map((h, i) => (
-                    <div key={i} className="flex-1 bg-white/5 rounded-t-md relative group-hover:bg-fuchsia-500/40 transition-colors shadow-[0_-5px_15px_rgba(217,70,239,0)] group-hover:shadow-[0_-5px_20px_rgba(217,70,239,0.3)]" style={{ height: h + '%' }}></div>
+                    <div key={i} className="flex-1 bg-slate-100 rounded-t-md relative group-hover:bg-fuchsia-500/40 transition-colors shadow-[0_-5px_15px_rgba(217,70,239,0)] group-hover:shadow-[0_-5px_20px_rgba(217,70,239,0.3)]" style={{ height: h + '%' }}></div>
                   ))}
                   <div className="flex-1 h-full bg-emerald-500/20 border border-emerald-500/50 rounded-t-md flex items-center justify-center relative overflow-hidden group-hover:bg-emerald-500/30 transition-colors shadow-[0_-5px_30px_rgba(16,185,129,0.2)]">
                     <span className="text-emerald-400 font-bold rotate-[-90deg] whitespace-nowrap text-xs tracking-widest">AWARDED</span>
@@ -459,40 +421,40 @@ export default function LandingPage() {
             </motion.div>
 
             {/* 2. Risk Scoring (Spans 1 column) */}
-            <motion.div variants={fadeIn} whileHover={{ scale: 1.02, rotateX: 1.5, rotateY: -1.5 }} style={{ transformPerspective: 1000 }} className="md:col-span-1 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-red-500/50 transition-all duration-500">
+            <motion.div variants={fadeIn} whileHover={{ scale: 1.02, rotateX: 1.5, rotateY: -1.5 }} style={{ transformPerspective: 1000 }} className="md:col-span-1 group relative bg-white backdrop-blur-sm border border-slate-200 rounded-[2rem] p-8 overflow-hidden hover:border-red-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-bl from-red-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 flex flex-col h-full">
-                <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center mb-6 text-red-400 group-hover:scale-110 group-hover:bg-red-500/20 transition-all duration-500">
+                <div className="w-12 h-12 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center mb-6 text-red-400 group-hover:scale-110 group-hover:bg-red-500/20 transition-all duration-500">
                   <ShieldCheck size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Vendor Risk AI</h3>
-                <p className="text-zinc-400 leading-relaxed">Auto-flag non-compliant suppliers before awarding contracts. Zero liability.</p>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">Vendor Risk AI</h3>
+                <p className="text-slate-600 leading-relaxed">Auto-flag non-compliant suppliers before awarding contracts. Zero liability.</p>
                 
                 <div className="mt-auto p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full border-4 border-red-500/30 border-t-red-500 flex items-center justify-center font-bold text-red-400 text-sm">92</div>
                   <div>
-                    <p className="text-white font-bold text-sm">High Risk Detected</p>
-                    <p className="text-zinc-500 text-xs">Missing ISO Certification</p>
+                    <p className="text-slate-900 font-bold text-sm">High Risk Detected</p>
+                    <p className="text-slate-500 text-xs">Missing ISO Certification</p>
                   </div>
                 </div>
               </div>
             </motion.div>
 
             {/* 3. Intakes (Spans 1 column) */}
-            <motion.div variants={fadeIn} whileHover={{ scale: 1.02, rotateX: -1.5, rotateY: 1 }} style={{ transformPerspective: 1000 }} className="md:col-span-1 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-blue-500/50 transition-all duration-500">
+            <motion.div variants={fadeIn} whileHover={{ scale: 1.02, rotateX: -1.5, rotateY: 1 }} style={{ transformPerspective: 1000 }} className="md:col-span-1 group relative bg-white backdrop-blur-sm border border-slate-200 rounded-[2rem] p-8 overflow-hidden hover:border-blue-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 flex flex-col h-full">
-                <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center mb-6 text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-500">
+                <div className="w-12 h-12 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center mb-6 text-blue-400 group-hover:scale-110 group-hover:bg-blue-500/20 transition-all duration-500">
                   <Zap size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Frictionless Intake</h3>
-                <p className="text-zinc-400 leading-relaxed">Employees submit requests in seconds. Smart routing handles the rest.</p>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">Frictionless Intake</h3>
+                <p className="text-slate-600 leading-relaxed">Employees submit requests in seconds. Smart routing handles the rest.</p>
                 
                 <div className="mt-auto space-y-2">
                   {[1,2,3].map((step, i) => (
-                    <div key={i} className={`flex items-center gap-3 p-3 rounded-xl ${i === 2 ? 'bg-blue-500/20 border border-blue-500/30' : 'bg-white/5'}`}>
-                      <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${i === 2 ? 'bg-blue-500 text-white' : 'bg-white/10 text-zinc-500'}`}>{step}</div>
-                      <div className={`h-2 rounded-full flex-1 ${i === 2 ? 'bg-blue-400/50' : 'bg-white/10'}`}></div>
+                    <div key={i} className={`flex items-center gap-3 p-3 rounded-xl ${i === 2 ? 'bg-blue-500/20 border border-blue-500/30' : 'bg-slate-100'}`}>
+                      <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs ${i === 2 ? 'bg-blue-500 text-slate-900' : 'bg-slate-200 text-slate-500'}`}>{step}</div>
+                      <div className={`h-2 rounded-full flex-1 ${i === 2 ? 'bg-blue-400/50' : 'bg-slate-200'}`}></div>
                     </div>
                   ))}
                 </div>
@@ -500,29 +462,29 @@ export default function LandingPage() {
             </motion.div>
 
             {/* 4. ERP Sync (Spans 2 columns) */}
-            <motion.div variants={fadeIn} whileHover={{ scale: 1.015, rotateX: 1, rotateY: -1 }} style={{ transformPerspective: 1000 }} className="md:col-span-2 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-violet-500/50 transition-all duration-500">
+            <motion.div variants={fadeIn} whileHover={{ scale: 1.015, rotateX: 1, rotateY: -1 }} style={{ transformPerspective: 1000 }} className="md:col-span-2 group relative bg-white backdrop-blur-sm border border-slate-200 rounded-[2rem] p-8 overflow-hidden hover:border-violet-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-tl from-violet-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 flex flex-col md:flex-row h-full items-center justify-between gap-8">
                 <div className="flex-1">
-                  <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center mb-6 text-violet-400 group-hover:scale-110 group-hover:bg-violet-500/20 transition-all duration-500">
+                  <div className="w-12 h-12 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center mb-6 text-violet-400 group-hover:scale-110 group-hover:bg-violet-500/20 transition-all duration-500">
                     <Network size={24} />
                   </div>
-                  <h3 className="text-3xl font-bold text-white mb-3">Deep ERP Integration</h3>
-                  <p className="text-zinc-400 leading-relaxed text-lg max-w-sm">
-                    Two-way sync with <strong className="text-white">SAP, Oracle, and NetSuite</strong>. Awards automatically convert into POs and write back to your ledger. Zero manual data entry.
+                  <h3 className="text-3xl font-bold text-slate-900 mb-3">Deep ERP Integration</h3>
+                  <p className="text-slate-600 leading-relaxed text-lg max-w-sm">
+                    Two-way sync with <strong className="text-slate-900">SAP, Oracle, and NetSuite</strong>. Awards automatically convert into POs and write back to your ledger. Zero manual data entry.
                   </p>
                 </div>
                 
                 <div className="flex-1 w-full relative h-full min-h-[160px]">
                   {/* Animation graphic */}
-                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-20 h-20 bg-[#111] border border-white/10 rounded-2xl flex items-center justify-center shadow-xl z-10">
-                    <span className="font-bold text-white text-xs">ProcGen</span>
+                  <div className="absolute left-0 top-1/2 -translate-y-1/2 w-20 h-20 bg-white border border-slate-200 rounded-2xl flex items-center justify-center shadow-xl z-10">
+                    <span className="font-bold text-slate-900 text-xs">ProcGen</span>
                   </div>
                   <div className="absolute right-0 top-1/2 -translate-y-1/2 w-20 h-20 bg-blue-900/40 border border-blue-500/30 rounded-2xl flex items-center justify-center shadow-xl z-10">
                     <span className="font-bold text-blue-400 text-xs">SAP ERP</span>
                   </div>
                   {/* Flow lines */}
-                  <div className="absolute left-20 right-20 top-1/2 -translate-y-1/2 h-0.5 bg-white/5 flex items-center overflow-hidden">
+                  <div className="absolute left-20 right-20 top-1/2 -translate-y-1/2 h-0.5 bg-slate-100 flex items-center overflow-hidden">
                     <motion.div animate={{ x: ['-100%', '300%'] }} transition={{ duration: 2, repeat: Infinity, ease: "linear" }} className="w-1/3 h-full bg-violet-500 shadow-[0_0_10px_#8b5cf6]"></motion.div>
                   </div>
                 </div>
@@ -530,16 +492,16 @@ export default function LandingPage() {
             </motion.div>
 
             {/* 5. Analytics (Spans 1 column) */}
-            <motion.div variants={fadeIn} whileHover={{ scale: 1.02, rotateX: 1.5, rotateY: 1 }} style={{ transformPerspective: 1000 }} className="md:col-span-1 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-emerald-500/50 transition-all duration-500">
+            <motion.div variants={fadeIn} whileHover={{ scale: 1.02, rotateX: 1.5, rotateY: 1 }} style={{ transformPerspective: 1000 }} className="md:col-span-1 group relative bg-white backdrop-blur-sm border border-slate-200 rounded-[2rem] p-8 overflow-hidden hover:border-emerald-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-t from-emerald-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 flex flex-col h-full">
-                <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center mb-6 text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-500">
+                <div className="w-12 h-12 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center mb-6 text-emerald-400 group-hover:scale-110 group-hover:bg-emerald-500/20 transition-all duration-500">
                   <BarChart3 size={24} />
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-3">Spend Analytics</h3>
-                <p className="text-zinc-400 leading-relaxed">Instantly visualize maverick spend and identify massive saving opportunities.</p>
+                <h3 className="text-2xl font-bold text-slate-900 mb-3">Spend Analytics</h3>
+                <p className="text-slate-600 leading-relaxed">Instantly visualize maverick spend and identify massive saving opportunities.</p>
                 
-                <div className="mt-auto relative h-24 overflow-hidden rounded-xl border border-white/5">
+                <div className="mt-auto relative h-24 overflow-hidden rounded-xl border border-slate-200">
                   <div className="absolute bottom-0 w-full h-16 bg-gradient-to-t from-emerald-500/30 to-transparent"></div>
                   <svg className="absolute bottom-0 w-full h-full drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]" preserveAspectRatio="none" viewBox="0 0 100 100">
                     <motion.path 
@@ -555,31 +517,31 @@ export default function LandingPage() {
             </motion.div>
 
             {/* 6. Vendor Portal (Spans 2 columns) */}
-            <motion.div variants={fadeIn} whileHover={{ scale: 1.015, rotateX: -1, rotateY: 1.5 }} style={{ transformPerspective: 1000 }} className="md:col-span-2 group relative bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-8 overflow-hidden hover:border-amber-500/50 transition-all duration-500">
+            <motion.div variants={fadeIn} whileHover={{ scale: 1.015, rotateX: -1, rotateY: 1.5 }} style={{ transformPerspective: 1000 }} className="md:col-span-2 group relative bg-white backdrop-blur-sm border border-slate-200 rounded-[2rem] p-8 overflow-hidden hover:border-amber-500/50 transition-all duration-500">
               <div className="absolute inset-0 bg-gradient-to-r from-amber-600/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
               <div className="relative z-10 flex flex-col md:flex-row h-full items-center justify-between gap-8">
                 <div className="flex-1">
-                  <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center mb-6 text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-500">
+                  <div className="w-12 h-12 bg-slate-100 border border-slate-200 rounded-xl flex items-center justify-center mb-6 text-amber-400 group-hover:scale-110 group-hover:bg-amber-500/20 transition-all duration-500">
                     <Users size={24} />
                   </div>
-                  <h3 className="text-3xl font-bold text-white mb-3">The Ultimate Supplier Hub</h3>
-                  <p className="text-zinc-400 leading-relaxed text-lg max-w-sm">
-                    Vendors get their own secure portal to submit bids, chat with your team in real-time, and track invoices. <strong className="text-white">Zero onboarding friction.</strong>
+                  <h3 className="text-3xl font-bold text-slate-900 mb-3">The Ultimate Supplier Hub</h3>
+                  <p className="text-slate-600 leading-relaxed text-lg max-w-sm">
+                    Vendors get their own secure portal to submit bids, chat with your team in real-time, and track invoices. <strong className="text-slate-900">Zero onboarding friction.</strong>
                   </p>
                 </div>
                 
-                <div className="flex-1 w-full bg-[#111] border border-white/5 rounded-2xl p-4 shadow-2xl relative">
+                <div className="flex-1 w-full bg-white border border-slate-200 rounded-2xl p-4 shadow-2xl relative">
                   {/* Mock Chat UI */}
                   <div className="flex gap-3 mb-4 items-end">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-orange-500 flex-shrink-0"></div>
-                    <div className="bg-white/10 rounded-2xl rounded-bl-sm p-3 text-xs text-white max-w-[80%]">Bid submitted for steel shipment. Please review!</div>
+                    <div className="bg-slate-200 rounded-2xl rounded-bl-sm p-3 text-xs text-slate-900 max-w-[80%]">Bid submitted for steel shipment. Please review!</div>
                   </div>
                   <div className="flex gap-3 mb-4 items-end flex-row-reverse">
                     <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-400 to-fuchsia-500 flex-shrink-0"></div>
-                    <div className="bg-violet-500/20 border border-violet-500/30 rounded-2xl rounded-br-sm p-3 text-xs text-white max-w-[80%]">Looks great. We are awarding this to you now.</div>
+                    <div className="bg-violet-500/20 border border-violet-500/30 rounded-2xl rounded-br-sm p-3 text-xs text-slate-900 max-w-[80%]">Looks great. We are awarding this to you now.</div>
                   </div>
-                  <div className="w-full h-8 bg-white/5 rounded-full flex items-center px-3 border border-white/10">
-                    <div className="w-20 h-2 bg-white/10 rounded-full"></div>
+                  <div className="w-full h-8 bg-slate-100 rounded-full flex items-center px-3 border border-slate-200">
+                    <div className="w-20 h-2 bg-slate-200 rounded-full"></div>
                   </div>
                 </div>
               </div>
@@ -660,14 +622,14 @@ export default function LandingPage() {
               <Sparkles size={13} className="text-fuchsia-400" />
               ProcGen Cortex — The AI Brain
             </div>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-white mb-6 leading-[1.05]">
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-slate-900 mb-6 leading-[1.05]">
               Meet{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-fuchsia-400 to-cyan-400">
                 Cortex AI.
               </span>
             </h2>
-            <p className="text-zinc-400 text-xl md:text-2xl font-light leading-relaxed max-w-3xl mx-auto">
-              Not just a chatbot. An <strong className="text-white font-semibold">autonomous procurement intelligence layer</strong> that drafts contracts, predicts stockouts, analyzes bids, and negotiates—all from a single command.
+            <p className="text-slate-600 text-xl md:text-2xl font-light leading-relaxed max-w-3xl mx-auto">
+              Not just a chatbot. An <strong className="text-slate-900 font-semibold">autonomous procurement intelligence layer</strong> that drafts contracts, predicts stockouts, analyzes bids, and negotiates—all from a single command.
             </p>
           </motion.div>
 
@@ -689,27 +651,27 @@ export default function LandingPage() {
                 animate={{ y: [0, -15, 0], rotateX: [0, 2, 0], rotateY: [0, -2, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 style={{ transformPerspective: 1200 }}
-                className="relative bg-[#030608]/90 backdrop-blur-2xl border border-white/10 rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.8)]"
+                className="relative bg-white/90 backdrop-blur-2xl border border-slate-200 rounded-3xl overflow-hidden shadow-[0_30px_80px_rgba(0,0,0,0.8)]"
               >
 
                 {/* Window bar */}
-                <div className="bg-[#080b12] border-b border-white/5 px-5 py-3.5 flex items-center justify-between">
+                <div className="bg-white border-b border-slate-200 px-5 py-3.5 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="relative">
                       <div className="w-8 h-8 rounded-full bg-gradient-to-br from-violet-600 to-fuchsia-600 flex items-center justify-center shadow-[0_0_15px_rgba(139,92,246,0.5)]">
-                        <Bot size={14} className="text-white" />
+                        <Bot size={14} className="text-slate-900" />
                       </div>
                       <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-400 rounded-full border-2 border-[#080b12] animate-pulse" />
                     </div>
                     <div>
-                      <p className="text-white text-xs font-bold">Cortex AI</p>
+                      <p className="text-slate-900 text-xs font-bold">Cortex AI</p>
                       <p className="text-violet-400 text-[8px] sm:text-[9px] font-mono tracking-wider sm:tracking-widest uppercase hidden sm:block">Intelligence Active</p><p className="text-violet-400 text-[8px] font-mono uppercase sm:hidden">Active</p>
                     </div>
                   </div>
                   <div className="flex gap-1.5">
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#ff5f56]" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]" />
-                    <div className="w-2.5 h-2.5 rounded-full bg-[#27c93f]" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-white" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-white" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-white" />
                   </div>
                 </div>
 
@@ -718,8 +680,8 @@ export default function LandingPage() {
 
                   {/* User message */}
                   <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} viewport={{ once: true }} className="flex gap-3 flex-row-reverse">
-                    <div className="w-7 h-7 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-xs font-bold text-zinc-300 flex-shrink-0">U</div>
-                    <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tr-sm px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-sm text-zinc-200 max-w-[90%] sm:max-w-[85%] font-mono break-all sm:break-normal">/vendor-scorecard Tata Steel</div>
+                    <div className="w-7 h-7 rounded-full bg-slate-200 border border-slate-200 flex items-center justify-center text-xs font-bold text-slate-700 flex-shrink-0">U</div>
+                    <div className="bg-slate-100 border border-slate-200 rounded-2xl rounded-tr-sm px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-sm text-slate-800 max-w-[90%] sm:max-w-[85%] font-mono break-all sm:break-normal">/vendor-scorecard Tata Steel</div>
                   </motion.div>
 
                   {/* AI thinking */}
@@ -733,52 +695,52 @@ export default function LandingPage() {
                   {/* AI response - Scorecard */}
                   <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 1.8, type: 'spring' }} viewport={{ once: true }} className="flex gap-3">
                     <div className="w-7 h-7 rounded-full bg-gradient-to-br from-violet-600 to-fuchsia-600 flex-shrink-0 flex items-center justify-center shadow-[0_0_10px_rgba(139,92,246,0.4)]">
-                      <Bot size={12} className="text-white" />
+                      <Bot size={12} className="text-slate-900" />
                     </div>
-                    <div className="flex-1 bg-[#0a0d18] border border-violet-500/20 rounded-2xl rounded-tl-sm p-3 sm:p-4 shadow-xl">
-                      <p className="text-white text-xs font-bold mb-3 flex items-center gap-2">
+                    <div className="flex-1 bg-white border border-violet-500/20 rounded-2xl rounded-tl-sm p-3 sm:p-4 shadow-xl">
+                      <p className="text-slate-900 text-xs font-bold mb-3 flex items-center gap-2">
                         <CheckCircle2 size={13} className="text-emerald-400" /> Scorecard: Tata Steel
                       </p>
                       <div className="flex gap-3 items-center mb-3">
-                        <div className="w-14 h-14 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center text-2xl font-black text-white shadow-lg">A+</div>
+                        <div className="w-14 h-14 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-xl flex items-center justify-center text-2xl font-black text-slate-900 shadow-lg">A+</div>
                         <div className="flex-1 grid grid-cols-2 gap-2">
                           {[['On-Time', '99.1%', 'emerald'], ['Defect', '0.2%', 'emerald'], ['Response', '4h', 'yellow'], ['Risk', 'Low', 'emerald']].map(([k, v, col]) => (
-                            <div key={k} className="bg-white/5 rounded-lg px-2 py-1.5">
-                              <p className="text-[9px] text-zinc-500 uppercase tracking-wider">{k}</p>
+                            <div key={k} className="bg-slate-100 rounded-lg px-2 py-1.5">
+                              <p className="text-[9px] text-slate-500 uppercase tracking-wider">{k}</p>
                               <p className={'text-xs font-bold ' + (col === 'emerald' ? 'text-emerald-400' : 'text-yellow-400')}>{v}</p>
                             </div>
                           ))}
                         </div>
                       </div>
-                      <p className="text-zinc-500 text-[10px]">Recommendation: <span className="text-emerald-400 font-semibold">Award contract. Preferred vendor.</span></p>
+                      <p className="text-slate-500 text-[10px]">Recommendation: <span className="text-emerald-400 font-semibold">Award contract. Preferred vendor.</span></p>
                     </div>
                   </motion.div>
 
                   {/* Second command */}
                   <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 3.0 }} viewport={{ once: true }} className="flex gap-3 flex-row-reverse">
-                    <div className="w-7 h-7 rounded-full bg-white/10 border border-white/10 flex items-center justify-center text-xs font-bold text-zinc-300 flex-shrink-0">U</div>
-                    <div className="bg-white/5 border border-white/10 rounded-2xl rounded-tr-sm px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-sm text-zinc-200 max-w-[90%] sm:max-w-[85%] font-mono break-all sm:break-normal">/draft-contract Tata Steel</div>
+                    <div className="w-7 h-7 rounded-full bg-slate-200 border border-slate-200 flex items-center justify-center text-xs font-bold text-slate-700 flex-shrink-0">U</div>
+                    <div className="bg-slate-100 border border-slate-200 rounded-2xl rounded-tr-sm px-3 sm:px-4 py-2 sm:py-3 text-[11px] sm:text-sm text-slate-800 max-w-[90%] sm:max-w-[85%] font-mono break-all sm:break-normal">/draft-contract Tata Steel</div>
                   </motion.div>
 
                   <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ delay: 3.8, type: 'spring' }} viewport={{ once: true }} className="flex gap-3">
                     <div className="w-7 h-7 rounded-full bg-gradient-to-br from-violet-600 to-fuchsia-600 flex-shrink-0 flex items-center justify-center shadow-[0_0_10px_rgba(139,92,246,0.4)]">
-                      <Bot size={12} className="text-white" />
+                      <Bot size={12} className="text-slate-900" />
                     </div>
-                    <div className="bg-[#0a0d18] border border-emerald-500/20 rounded-2xl rounded-tl-sm px-3 sm:px-4 py-2 sm:py-3 text-[10px] sm:text-xs text-zinc-300 max-w-[95%] sm:max-w-[90%]">
+                    <div className="bg-white border border-emerald-500/20 rounded-2xl rounded-tl-sm px-3 sm:px-4 py-2 sm:py-3 text-[10px] sm:text-xs text-slate-700 max-w-[95%] sm:max-w-[90%]">
                       <p className="text-emerald-400 font-bold mb-1 flex items-center gap-1.5"><CheckCircle2 size={11}/> MSA Generated</p>
-                      <p className="text-zinc-500">MASTER SERVICE AGREEMENT drafted for Tata Steel with Incoterms 2020 and liability cap at 2x contract value. <span className="text-violet-400 cursor-pointer hover:underline">Download PDF ↗</span></p>
+                      <p className="text-slate-500">MASTER SERVICE AGREEMENT drafted for Tata Steel with Incoterms 2020 and liability cap at 2x contract value. <span className="text-violet-400 cursor-pointer hover:underline">Download PDF ↗</span></p>
                     </div>
                   </motion.div>
 
                 </div>
 
                 {/* Input bar */}
-                <div className="border-t border-white/5 px-5 py-3 flex items-center gap-3">
-                  <div className="flex-1 bg-white/5 border border-white/10 rounded-full px-4 py-2 text-xs text-zinc-600 font-mono flex items-center gap-2">
+                <div className="border-t border-slate-200 px-5 py-3 flex items-center gap-3">
+                  <div className="flex-1 bg-slate-100 border border-slate-200 rounded-full px-4 py-2 text-xs text-slate-400 font-mono flex items-center gap-2">
                     <span className="text-violet-400">/</span> Type a command or ask anything...
                   </div>
                   <div className="w-8 h-8 bg-gradient-to-br from-violet-600 to-fuchsia-600 rounded-full flex items-center justify-center shadow-[0_0_10px_rgba(139,92,246,0.4)] cursor-pointer">
-                    <ArrowRight size={14} className="text-white" />
+                    <ArrowRight size={14} className="text-slate-900" />
                   </div>
                 </div>
               </motion.div>
@@ -816,10 +778,10 @@ export default function LandingPage() {
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <p className="text-white font-bold text-sm">{f.label}</p>
+                      <p className="text-slate-900 font-bold text-sm">{f.label}</p>
                       <span className="text-[9px] font-mono px-1.5 py-0.5 rounded-full border" style={{ color: f.color, borderColor: f.border, background: f.bg }}>{f.cmd}</span>
                     </div>
-                    <p className="text-zinc-500 text-xs leading-relaxed">{f.desc}</p>
+                    <p className="text-slate-500 text-xs leading-relaxed">{f.desc}</p>
                   </div>
                 </motion.div>
               ))}
@@ -834,7 +796,7 @@ export default function LandingPage() {
             transition={{ duration: 0.8 }}
             className="text-center mb-12"
           >
-            <p className="text-zinc-500 text-sm font-semibold uppercase tracking-widest mb-6">19 Slash Commands Across 6 Categories</p>
+            <p className="text-slate-500 text-sm font-semibold uppercase tracking-widest mb-6">19 Slash Commands Across 6 Categories</p>
             <div className="flex flex-wrap justify-center gap-3">
               {[
                 { label: 'Sourcing', color: '#2dd4bf', bg: 'rgba(45,212,191,0.1)', border: 'rgba(45,212,191,0.25)' },
@@ -864,9 +826,9 @@ export default function LandingPage() {
             transition={{ duration: 0.8, type: 'spring', bounce: 0.3 }}
             className="relative rounded-[2rem] overflow-hidden p-px"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-600 via-fuchsia-600 to-cyan-600 opacity-30 blur-[40px]" />
-            <div className="absolute inset-0 bg-gradient-to-r from-violet-500/40 to-cyan-500/40 rounded-[2rem]" />
-            <div className="relative bg-[#060810]/90 backdrop-blur-2xl rounded-[2rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 border border-white/5">
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-100 via-fuchsia-100 to-cyan-100 opacity-50 blur-[40px]" />
+            <div className="absolute inset-0 bg-gradient-to-r from-violet-100 to-cyan-100 rounded-[2rem]" />
+            <div className="relative bg-white/90 backdrop-blur-2xl rounded-[2rem] p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-8 border border-slate-200">
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-xs font-bold uppercase tracking-widest mb-4">
                   <span className="relative flex h-2 w-2">
@@ -875,16 +837,16 @@ export default function LandingPage() {
                   </span>
                   Live on ProcGen Platform
                 </div>
-                <h3 className="text-3xl md:text-4xl font-black text-white mb-3 leading-tight">
+                <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-3 leading-tight">
                   Your procurement team just got <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">an AI superpower.</span>
                 </h3>
-                <p className="text-zinc-400 text-base max-w-lg leading-relaxed">
+                <p className="text-slate-600 text-base max-w-lg leading-relaxed">
                   Cortex is embedded directly inside the ProcGen CPanel. No integrations, no extra licenses. Just type <span className="text-violet-400 font-mono font-bold">/</span> and let it work.
                 </p>
               </div>
               <div className="flex-shrink-0">
-                <button onClick={() => setIsModalOpen(true)} className="group flex items-center gap-3 bg-white text-black font-bold px-8 py-4 rounded-2xl hover:scale-105 transition-all shadow-[0_0_40px_rgba(255,255,255,0.15)] text-lg">
+                <button onClick={() => setIsModalOpen(true)} className="group flex items-center gap-3 bg-slate-900 text-white font-bold px-8 py-4 rounded-2xl hover:scale-105 transition-all shadow-md text-lg">
                   Request a Demo
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -902,14 +864,14 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-900/5 to-transparent pointer-events-none"></div>
         
         <div className="max-w-7xl mx-auto px-6 mb-16 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-zinc-300 text-xs font-bold uppercase tracking-widest mb-6">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold uppercase tracking-widest mb-6">
             <Star size={14} className="text-amber-400" fill="currentColor" />
             The New Standard
           </div>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-6">
             Early Adopter Feedback.
           </h2>
-          <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
             See what supply chain leaders are saying as they test-drive the next generation of procurement in our exclusive Beta program.
           </p>
         </div>
@@ -938,17 +900,17 @@ export default function LandingPage() {
               { quote: "Our vendors actually prefer this over our legacy ERP portal. The onboarding is completely frictionless and the chat is instant.", role: "Procurement Ops", company: "Early Adopter", avatar: "P" },
               { quote: "Moving our intake requests out of messy email threads and into a centralized dashboard has immediately cleared up our workflow.", role: "VP of Operations", company: "Beta Participant", avatar: "V" }
             ].map((t, i) => (
-               <div key={i} className="w-[350px] md:w-[450px] bg-[#0a0a0a]/80 backdrop-blur-md border border-white/5 rounded-3xl p-8 whitespace-normal flex flex-col hover:border-violet-500/30 hover:bg-[#111] transition-all duration-300 shadow-xl cursor-grab active:cursor-grabbing">
+               <div key={i} className="w-[350px] md:w-[450px] bg-white backdrop-blur-md border border-slate-200 rounded-3xl p-8 whitespace-normal flex flex-col hover:border-violet-500/30 hover:bg-white transition-all duration-300 shadow-xl cursor-grab active:cursor-grabbing">
                  <div className="flex gap-1 mb-6 text-fuchsia-400">
                    {[1,2,3,4,5].map(s => <Star key={s} size={16} fill="currentColor" />)}
                  </div>
-                 <p className="text-zinc-300 text-base md:text-lg leading-relaxed flex-1 mb-8 font-light">"{t.quote}"</p>
+                 <p className="text-slate-700 text-base md:text-lg leading-relaxed flex-1 mb-8 font-light">"{t.quote}"</p>
                  <div className="flex items-center gap-4 mt-auto">
-                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-600/50 to-fuchsia-600/50 border border-white/10 flex items-center justify-center font-black text-white shadow-inner">
+                   <div className="w-12 h-12 rounded-full bg-gradient-to-br from-violet-600/50 to-fuchsia-600/50 border border-slate-200 flex items-center justify-center font-black text-slate-900 shadow-inner">
                      {t.avatar}
                    </div>
                    <div>
-                     <p className="text-white font-bold text-sm">{t.role}</p>
+                     <p className="text-slate-900 font-bold text-sm">{t.role}</p>
                      <p className="text-violet-400 text-xs font-semibold uppercase tracking-wider mt-0.5">{t.company}</p>
                    </div>
                  </div>
@@ -981,7 +943,7 @@ export default function LandingPage() {
             />
             
             {/* Event Card Content */}
-            <div className="relative bg-[#050505]/90 backdrop-blur-2xl rounded-[2.4rem] p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 overflow-hidden border border-white/5">
+            <div className="relative bg-white/90 backdrop-blur-2xl rounded-[2.4rem] p-8 md:p-16 flex flex-col md:flex-row items-center justify-between gap-12 overflow-hidden border border-slate-200">
               
               {/* Background ambient light inside card */}
               <div className="absolute top-0 right-0 w-96 h-96 bg-fuchsia-600/20 rounded-full blur-[100px] pointer-events-none"></div>
@@ -995,41 +957,41 @@ export default function LandingPage() {
                   Live Virtual Masterclass
                 </div>
                 
-                <h2 className="text-4xl md:text-5xl font-black text-white mb-4 leading-tight">
+                <h2 className="text-4xl md:text-5xl font-black text-slate-900 mb-4 leading-tight">
                   The AI Sourcing <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">Revolution Summit '26</span>
                 </h2>
                 
-                <p className="text-zinc-300 text-lg md:text-xl mb-8 leading-relaxed max-w-xl">
+                <p className="text-slate-700 text-lg md:text-xl mb-8 leading-relaxed max-w-xl">
                   Join 5,000+ enterprise leaders to discover how dynamic reverse auctions are slashing raw material costs by up to 40%. 
-                  <strong className="text-white font-bold block mt-2">Attendees receive $1,500 in onboarding credits and 3 months of the Professional Tier for free.</strong>
+                  <strong className="text-slate-900 font-bold block mt-2">Attendees receive $1,500 in onboarding credits and 3 months of the Professional Tier for free.</strong>
                 </p>
 
                 <div className="flex flex-wrap gap-4 items-center">
-                  <Link href="/vip" className="px-8 py-4 bg-white text-black font-bold rounded-xl hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.3)] inline-flex items-center justify-center">
+                  <Link href="/vip" className="px-8 py-4 bg-slate-900 text-white font-bold rounded-xl hover:scale-105 transition-transform shadow-[0_0_30px_rgba(255,255,255,0.3)] inline-flex items-center justify-center">
                     Claim Free VIP Pass
                   </Link>
-                  <p className="text-sm font-semibold text-zinc-500">Only 142 spots remaining.</p>
+                  <p className="text-sm font-semibold text-slate-500">Only 142 spots remaining.</p>
                 </div>
               </div>
 
               {/* Graphic / Ticket Stub side */}
               <div className="w-full md:w-auto relative z-10">
-                <div className="relative w-full max-w-sm mx-auto aspect-[3/4] bg-gradient-to-b from-white/10 to-white/0 rounded-2xl border border-white/10 p-6 flex flex-col justify-between backdrop-blur-md transform md:rotate-6 hover:rotate-0 transition-transform duration-500">
-                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-[#050505] rounded-full border-r border-white/10"></div>
-                  <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-[#050505] rounded-full border-l border-white/10"></div>
+                <div className="relative w-full max-w-sm mx-auto aspect-[3/4] bg-gradient-to-b from-white/10 to-white/0 rounded-2xl border border-slate-200 p-6 flex flex-col justify-between backdrop-blur-md transform md:rotate-6 hover:rotate-0 transition-transform duration-500">
+                  <div className="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full border-r border-slate-200"></div>
+                  <div className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 bg-white rounded-full border-l border-slate-200"></div>
                   
                   <div>
-                    <p className="text-zinc-400 text-xs font-bold uppercase tracking-widest mb-1">Admit One</p>
-                    <h3 className="text-2xl font-black text-white">VIP ALL-ACCESS</h3>
+                    <p className="text-slate-600 text-xs font-bold uppercase tracking-widest mb-1">Admit One</p>
+                    <h3 className="text-2xl font-black text-slate-900">VIP ALL-ACCESS</h3>
                   </div>
                   
-                  <div className="border-t-2 border-dashed border-white/20 my-6"></div>
+                  <div className="border-t-2 border-dashed border-slate-300 my-6"></div>
                   
                   <div className="space-y-4">
                     <div>
-                      <p className="text-zinc-500 text-xs font-bold uppercase tracking-widest">Date</p>
-                      <p className="text-white font-semibold">October 14th, 2026</p>
+                      <p className="text-slate-500 text-xs font-bold uppercase tracking-widest">Date</p>
+                      <p className="text-slate-900 font-semibold">October 14th, 2026</p>
                     </div>
                   </div>
                   
@@ -1052,71 +1014,71 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-violet-900/10 to-transparent pointer-events-none"></div>
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }} variants={staggerContainer} className="max-w-7xl mx-auto px-6 relative z-10">
           <motion.div variants={fadeIn} className="text-center max-w-3xl mx-auto mb-20">
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-white mb-6">Pricing that makes sense.</h2>
-            <p className="text-zinc-400 text-lg">No hidden fees. Scale your procurement effortlessly.</p>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-6">Pricing that makes sense.</h2>
+            <p className="text-slate-600 text-lg">No hidden fees. Scale your procurement effortlessly.</p>
           </motion.div>
           <div className="grid md:grid-cols-4 gap-4 max-w-7xl mx-auto items-stretch">
               {/* Starter */}
-              <motion.div variants={fadeIn} className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-6 flex flex-col hover:border-white/20 transition-colors">
-                <h3 className="text-xl font-bold text-white mb-2">Starter</h3>
-                <p className="text-zinc-500 text-sm mb-6 h-12">Designed for small Indian businesses and low-touch adoption.</p>
-                <div className="mb-6 flex flex-col"><span className="text-4xl font-black text-white tracking-tighter">₹999</span><span className="text-zinc-500">/mo</span></div>
+              <motion.div variants={fadeIn} className="bg-white backdrop-blur-sm border border-slate-200 rounded-[2rem] p-6 flex flex-col hover:border-slate-300 transition-colors">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Starter</h3>
+                <p className="text-slate-500 text-sm mb-6 h-12">Designed for small Indian businesses and low-touch adoption.</p>
+                <div className="mb-6 flex flex-col"><span className="text-4xl font-black text-slate-900 tracking-tighter">₹999</span><span className="text-slate-500">/mo</span></div>
                 <ul className="space-y-3 mb-8 flex-1">
                   {['1 procurement workflow', 'Up to 3 internal users', 'Up to 10 active vendors', '25 purchase requests/mo', 'Basic approval flow'].map((f, i) => (
-                    <li key={i} className="flex items-start gap-2 text-zinc-300 text-xs leading-tight"><CheckCircle2 size={16} className="text-zinc-500 shrink-0 mt-0.5" /> {f}</li>
+                    <li key={i} className="flex items-start gap-2 text-slate-700 text-xs leading-tight"><CheckCircle2 size={16} className="text-slate-500 shrink-0 mt-0.5" /> {f}</li>
                   ))}
-                  <li className="flex items-start gap-2 text-zinc-500 text-xs leading-tight mt-4 pt-4 border-t border-white/5"><span className="text-zinc-600 font-bold shrink-0">✕</span> No AI, ERP sync, or full portal</li>
+                  <li className="flex items-start gap-2 text-slate-500 text-xs leading-tight mt-4 pt-4 border-t border-slate-200"><span className="text-slate-400 font-bold shrink-0">✕</span> No AI, ERP sync, or full portal</li>
                   <li className="flex items-start gap-2 text-emerald-500/80 text-xs leading-tight font-medium mt-2">✓ ₹0 setup fee</li>
                 </ul>
-                <button onClick={() => setIsModalOpen(true)} className="w-full py-3 rounded-xl font-bold text-center text-white bg-white/5 hover:bg-white/10 transition-colors border border-white/10 text-sm mt-auto">Connect with Sales</button>
+                <button onClick={() => setIsModalOpen(true)} className="w-full py-3 rounded-xl font-bold text-center text-slate-900 bg-slate-100 hover:bg-slate-200 transition-colors border border-slate-200 text-sm mt-auto">Connect with Sales</button>
               </motion.div>
 
               {/* Essentials */}
-              <motion.div variants={fadeIn} className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-6 flex flex-col hover:border-white/20 transition-colors">
-                <h3 className="text-xl font-bold text-white mb-2">Essentials</h3>
-                <p className="text-zinc-500 text-sm mb-6 h-12">Mid-market companies transitioning from email/Excel.</p>
-                <div className="mb-6 flex flex-col"><span className="text-4xl font-black text-white tracking-tighter">₹4,999</span><span className="text-zinc-500">/mo</span></div>
+              <motion.div variants={fadeIn} className="bg-white backdrop-blur-sm border border-slate-200 rounded-[2rem] p-6 flex flex-col hover:border-slate-300 transition-colors">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Essentials</h3>
+                <p className="text-slate-500 text-sm mb-6 h-12">Mid-market companies transitioning from email/Excel.</p>
+                <div className="mb-6 flex flex-col"><span className="text-4xl font-black text-slate-900 tracking-tighter">₹4,999</span><span className="text-slate-500">/mo</span></div>
                 <ul className="space-y-3 mb-8 flex-1">
                   {['Source-to-Pay Core', 'Vendor Portal (100 vendors)', 'Basic Analytics & Reporting', 'Dynamic Custom Fields', 'Unlimited Users'].map((f, i) => (
-                    <li key={i} className="flex items-start gap-2 text-zinc-300 text-xs leading-tight"><CheckCircle2 size={16} className="text-zinc-500 shrink-0 mt-0.5" /> {f}</li>
+                    <li key={i} className="flex items-start gap-2 text-slate-700 text-xs leading-tight"><CheckCircle2 size={16} className="text-slate-500 shrink-0 mt-0.5" /> {f}</li>
                   ))}
-                  <li className="flex items-start gap-2 text-zinc-500 text-xs leading-tight mt-4 pt-4 border-t border-white/5"><span className="text-zinc-600 font-bold shrink-0">✕</span> No AI or ERP sync</li>
+                  <li className="flex items-start gap-2 text-slate-500 text-xs leading-tight mt-4 pt-4 border-t border-slate-200"><span className="text-slate-400 font-bold shrink-0">✕</span> No AI or ERP sync</li>
                 </ul>
-                <button onClick={() => setIsModalOpen(true)} className="w-full py-3 rounded-xl font-bold text-center text-white bg-white/5 hover:bg-white/10 transition-colors border border-white/10 text-sm mt-auto">Connect with Sales</button>
+                <button onClick={() => setIsModalOpen(true)} className="w-full py-3 rounded-xl font-bold text-center text-slate-900 bg-slate-100 hover:bg-slate-200 transition-colors border border-slate-200 text-sm mt-auto">Connect with Sales</button>
               </motion.div>
 
               {/* Growth */}
-              <motion.div variants={fadeIn} className="bg-[#111] border border-violet-500/50 rounded-[2rem] p-6 shadow-[0_0_40px_rgba(139,92,246,0.15)] flex flex-col relative transform md:-translate-y-4 z-10">
+              <motion.div variants={fadeIn} className="bg-white border border-violet-500/50 rounded-[2rem] p-6 shadow-lg flex flex-col relative transform md:-translate-y-4 z-10">
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest shadow-lg">Most Popular</div>
-                <h3 className="text-xl font-bold text-white mb-2 mt-2">Growth</h3>
-                <p className="text-zinc-400 text-sm mb-6 h-12">For enterprises looking for automation and AI efficiency.</p>
-                <div className="mb-6 flex flex-col"><span className="text-4xl font-black text-white tracking-tighter">₹14,999</span><span className="text-zinc-400">/mo</span></div>
+                <h3 className="text-xl font-bold text-slate-900 mb-2 mt-2">Growth</h3>
+                <p className="text-slate-600 text-sm mb-6 h-12">For enterprises looking for automation and AI efficiency.</p>
+                <div className="mb-6 flex flex-col"><span className="text-4xl font-black text-slate-900 tracking-tighter">₹14,999</span><span className="text-slate-600">/mo</span></div>
                 <ul className="space-y-3 mb-8 flex-1">
                   {['Everything in Essentials', 'Cortex AI Swarm (Web/Mobile)', 'Advanced Analytics Dashboard', 'Unlimited Vendors in Portal', 'License Manager'].map((f, i) => (
-                    <li key={i} className="flex items-start gap-2 text-zinc-200 text-xs leading-tight"><CheckCircle2 size={16} className="text-violet-400 shrink-0 mt-0.5" /> {f}</li>
+                    <li key={i} className="flex items-start gap-2 text-slate-800 text-xs leading-tight"><CheckCircle2 size={16} className="text-violet-400 shrink-0 mt-0.5" /> {f}</li>
                   ))}
                 </ul>
-                <button onClick={() => setIsModalOpen(true)} className="w-full py-3 rounded-xl font-bold text-center text-black bg-white hover:scale-105 transition-transform shadow-[0_0_20px_rgba(255,255,255,0.3)] text-sm mt-auto">Connect with Sales</button>
+                <button onClick={() => setIsModalOpen(true)} className="w-full py-3 rounded-xl font-bold text-center text-white bg-slate-900 hover:scale-105 transition-transform shadow-md text-sm mt-auto">Connect with Sales</button>
               </motion.div>
 
               {/* Enterprise */}
-              <motion.div variants={fadeIn} className="bg-[#0a0a0a]/80 backdrop-blur-sm border border-white/5 rounded-[2rem] p-6 flex flex-col hover:border-white/20 transition-colors">
-                <h3 className="text-xl font-bold text-white mb-2">Enterprise</h3>
-                <p className="text-zinc-500 text-sm mb-6 h-12">Custom tailored for massive scale & compliance.</p>
-                <div className="mb-6 flex flex-col"><span className="text-4xl font-black text-white tracking-tighter">₹39,999+</span><span className="text-zinc-500">/mo</span></div>
+              <motion.div variants={fadeIn} className="bg-white backdrop-blur-sm border border-slate-200 rounded-[2rem] p-6 flex flex-col hover:border-slate-300 transition-colors">
+                <h3 className="text-xl font-bold text-slate-900 mb-2">Enterprise</h3>
+                <p className="text-slate-500 text-sm mb-6 h-12">Custom tailored for massive scale & compliance.</p>
+                <div className="mb-6 flex flex-col"><span className="text-4xl font-black text-slate-900 tracking-tighter">₹39,999+</span><span className="text-slate-500">/mo</span></div>
                 <ul className="space-y-3 mb-8 flex-1">
                   {['Everything in Growth', 'Contract Analyzer (AI)', 'Supplier Risk Scoring (AI)', '2-Way ERP Sync (SAP/Oracle)', 'Cortex Desktop App'].map((f, i) => (
-                    <li key={i} className="flex items-start gap-2 text-zinc-300 text-xs leading-tight"><CheckCircle2 size={16} className="text-zinc-500 shrink-0 mt-0.5" /> {f}</li>
+                    <li key={i} className="flex items-start gap-2 text-slate-700 text-xs leading-tight"><CheckCircle2 size={16} className="text-slate-500 shrink-0 mt-0.5" /> {f}</li>
                   ))}
                 </ul>
-                <button onClick={() => setIsModalOpen(true)} className="w-full py-3 rounded-xl font-bold text-center text-white bg-white/5 hover:bg-white/10 transition-colors border border-white/10 text-sm mt-auto">Connect with Sales</button>
+                <button onClick={() => setIsModalOpen(true)} className="w-full py-3 rounded-xl font-bold text-center text-slate-900 bg-slate-100 hover:bg-slate-200 transition-colors border border-slate-200 text-sm mt-auto">Connect with Sales</button>
               </motion.div>
             </div>
         </motion.div>
       </section>
       
       
-      <footer className="relative z-10 bg-[#020202] pt-24 pb-12 border-t border-white/10 overflow-hidden mt-20">
+      <footer className="relative z-10 bg-slate-50 pt-24 pb-12 border-t border-slate-200 overflow-hidden mt-20">
         <div className="absolute bottom-[-20%] left-1/2 -translate-x-1/2 w-[80%] h-[50%] bg-violet-600/10 rounded-full blur-[120px] pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -1125,17 +1087,17 @@ export default function LandingPage() {
             {/* Brand Col */}
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-6">
-                <img src="/logo_transparent.png" alt="ProcGen Logo" className="w-12 h-12 object-contain drop-shadow-[0_0_15px_rgba(0,255,255,0.4)]" style={{ filter: "drop-shadow(0 0 10px rgba(0, 255, 255, 0.3))" }} />
-                <span className="font-bold text-2xl tracking-tight text-white">ProcGen</span>
+                <img src="/logo_transparent.png" alt="ProcGen Logo" className="w-12 h-12 object-contain drop-shadow-none" style={{  }} />
+                <span className="font-bold text-2xl tracking-tight text-slate-900">ProcGen</span>
               </div>
-              <p className="text-zinc-400 max-w-sm mb-8 leading-relaxed">
+              <p className="text-slate-600 max-w-sm mb-8 leading-relaxed">
                 The AI-powered procurement engine built for hyperscale. Automate workflows, run reverse auctions, and slash costs effortlessly.
               </p>
               <div className="flex items-center gap-4">
-                <a href="https://www.linkedin.com/company/procgen/?viewAsMember=true" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-blue-400 hover:bg-blue-500/10 hover:border-blue-500/30 transition-all shadow-lg hover:scale-110">
+                <a href="https://www.linkedin.com/company/procgen/?viewAsMember=true" target="_blank" rel="noreferrer" className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-blue-400 hover:bg-blue-500/10 hover:border-blue-500/30 transition-all shadow-lg hover:scale-110">
                   <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
                 </a>
-                <a href="mailto:connect.procgen@gmail.com" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:text-fuchsia-400 hover:bg-fuchsia-500/10 hover:border-fuchsia-500/30 transition-all shadow-lg hover:scale-110">
+                <a href="mailto:connect.procgen@gmail.com" className="w-10 h-10 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-600 hover:text-fuchsia-400 hover:bg-fuchsia-500/10 hover:border-fuchsia-500/30 transition-all shadow-lg hover:scale-110">
                   <Mail size={18} />
                 </a>
               </div>
@@ -1143,8 +1105,8 @@ export default function LandingPage() {
 
             {/* Links Col 1 */}
             <div>
-              <h4 className="text-white font-bold mb-6 tracking-wide">Platform</h4>
-              <ul className="space-y-4 text-zinc-400 text-sm">
+              <h4 className="text-slate-900 font-bold mb-6 tracking-wide">Platform</h4>
+              <ul className="space-y-4 text-slate-600 text-sm">
                 <li><a href="#features" className="hover:text-violet-400 transition-colors">Features</a></li>
                 <li><a href="#cortex" className="hover:text-violet-400 transition-colors">Cortex AI</a></li>
                 <li><Link href="/vendor-register" className="hover:text-violet-400 transition-colors">Vendor Registration</Link></li>
@@ -1156,8 +1118,8 @@ export default function LandingPage() {
 
             {/* Links Col 2 */}
             <div>
-              <h4 className="text-white font-bold mb-6 tracking-wide">Company</h4>
-              <ul className="space-y-4 text-zinc-400 text-sm">
+              <h4 className="text-slate-900 font-bold mb-6 tracking-wide">Company</h4>
+              <ul className="space-y-4 text-slate-600 text-sm">
                 <li><a href="mailto:connect.procgen@gmail.com" className="hover:text-violet-400 transition-colors">Contact Sales</a></li>
                 <li><a href="#" className="hover:text-violet-400 transition-colors">Privacy Policy</a></li>
                 <li><a href="#" className="hover:text-violet-400 transition-colors">Terms of Service</a></li>
@@ -1165,12 +1127,12 @@ export default function LandingPage() {
             </div>
           </div>
 
-          <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-zinc-600 text-sm">
+          <div className="border-t border-slate-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-slate-400 text-sm">
               &copy; {new Date().getFullYear()} ProcGen Technologies. Built for the future.
             </p>
-            <div className="flex items-center gap-2 text-zinc-600 text-sm bg-white/5 px-4 py-2 rounded-full border border-white/5">
-              <Mail size={14} className="text-zinc-400" /> connect.procgen@gmail.com
+            <div className="flex items-center gap-2 text-slate-400 text-sm bg-slate-100 px-4 py-2 rounded-full border border-slate-200">
+              <Mail size={14} className="text-slate-600" /> connect.procgen@gmail.com
             </div>
           </div>
         </div>
@@ -1188,59 +1150,59 @@ export default function LandingPage() {
             
             <motion.div 
               initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-2xl shadow-2xl p-8 overflow-hidden"
+              className="relative w-full max-w-md bg-white border border-slate-200 rounded-2xl shadow-2xl p-8 overflow-hidden"
             >
               <button 
                 onClick={() => setIsModalOpen(false)}
-                className="absolute top-4 right-4 text-zinc-400 hover:text-white transition-colors"
+                className="absolute top-4 right-4 text-slate-600 hover:text-slate-900 transition-colors"
               >
                 <X size={20} />
               </button>
 
-              <h3 className="text-2xl font-bold text-white mb-2">Connect with Sales</h3>
-              <p className="text-zinc-400 text-sm mb-6">Drop your details below and our enterprise team will reach out to schedule a demo.</p>
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">Connect with Sales</h3>
+              <p className="text-slate-600 text-sm mb-6">Drop your details below and our enterprise team will reach out to schedule a demo.</p>
 
               {formState === 'success' ? (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center justify-center py-8 text-center">
                   <div className="w-16 h-16 bg-violet-500/20 text-violet-400 rounded-full flex items-center justify-center mb-4">
                     <Check size={32} />
                   </div>
-                  <h4 className="text-xl font-bold text-white mb-2">Request Received!</h4>
-                  <p className="text-zinc-400 text-sm">We'll be in touch shortly.</p>
+                  <h4 className="text-xl font-bold text-slate-900 mb-2">Request Received!</h4>
+                  <p className="text-slate-600 text-sm">We'll be in touch shortly.</p>
                 </motion.div>
               ) : (
                 <form onSubmit={handleFormSubmit} className="flex flex-col gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-zinc-400 mb-1.5 uppercase tracking-wider">Full Name</label>
+                    <label className="block text-xs font-semibold text-slate-600 mb-1.5 uppercase tracking-wider">Full Name</label>
                     <input 
                       type="text" required
                       value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})}
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:border-violet-500 focus:bg-white/10 transition-colors text-white placeholder-zinc-600"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 focus:outline-none focus:border-violet-500 focus:bg-slate-200 transition-colors text-slate-900 placeholder-zinc-600"
                       placeholder="John Doe"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-zinc-400 mb-1.5 uppercase tracking-wider">Work Email</label>
+                    <label className="block text-xs font-semibold text-slate-600 mb-1.5 uppercase tracking-wider">Work Email</label>
                     <input 
                       type="email" required
                       value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})}
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:border-violet-500 focus:bg-white/10 transition-colors text-white placeholder-zinc-600"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 focus:outline-none focus:border-violet-500 focus:bg-slate-200 transition-colors text-slate-900 placeholder-zinc-600"
                       placeholder="john@company.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-zinc-400 mb-1.5 uppercase tracking-wider">Company Name</label>
+                    <label className="block text-xs font-semibold text-slate-600 mb-1.5 uppercase tracking-wider">Company Name</label>
                     <input 
                       type="text" required
                       value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})}
-                      className="w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 focus:outline-none focus:border-violet-500 focus:bg-white/10 transition-colors text-white placeholder-zinc-600"
+                      className="w-full px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 focus:outline-none focus:border-violet-500 focus:bg-slate-200 transition-colors text-slate-900 placeholder-zinc-600"
                       placeholder="Acme Corp"
                     />
                   </div>
                   <button 
                     type="submit" 
                     disabled={formState === 'submitting'}
-                    className="mt-4 w-full py-4 rounded-xl font-bold text-center text-black bg-white hover:bg-zinc-200 transition-colors flex items-center justify-center disabled:opacity-50"
+                    className="mt-4 w-full py-4 rounded-xl font-bold text-center text-white bg-slate-900 hover:bg-slate-800 transition-colors flex items-center justify-center disabled:opacity-50"
                   >
                     {formState === 'submitting' ? 'Submitting...' : 'Submit Request'}
                   </button>
