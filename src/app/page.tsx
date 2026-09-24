@@ -86,9 +86,9 @@ export default function LandingPage() {
                 Solutions <ChevronDown size={14} className="text-slate-400 group-hover:text-blue-600 group-hover:-rotate-180 transition-all duration-300" />
               </div>
               <a href="#" className="hover:text-blue-600 transition-colors py-5">Customers</a>
-              <div className="flex items-center gap-1.5 hover:text-blue-600 cursor-pointer transition-colors group py-5">
+              <Link href="/know/enterprise-context-layer" className="flex items-center gap-1.5 hover:text-blue-600 cursor-pointer transition-colors group py-5">
                 Resources <ChevronDown size={14} className="text-slate-400 group-hover:text-blue-600 group-hover:-rotate-180 transition-all duration-300" />
-              </div>
+              </Link>
               <a href="#pricing" className="hover:text-blue-600 transition-colors py-5">Pricing</a>
             </div>
           </div>
