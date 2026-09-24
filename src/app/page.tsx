@@ -263,13 +263,11 @@ export default function LandingPage() {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl mx-auto mb-20"
           >
-            <h2 className="text-4xl md:text-6xl lg:text-[72px] font-black tracking-tighter leading-[1.05] mb-8">
-              Context doesn't come from a <span className="text-slate-500">prompt.</span>
-              <br />
-              It comes from a <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600">pipeline.</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.2] mb-6 text-white max-w-3xl mx-auto">
+              Context doesn't come from a <span className="text-slate-400">prompt.</span> It comes from a <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-500">pipeline.</span>
             </h2>
-            <p className="text-xl md:text-2xl text-slate-400 leading-relaxed font-medium">
-              Giving an LLM raw access to your ERP is a recipe for hallucinations. Real autonomous procurement requires a deterministic pipeline that structures your tribal knowledge before the AI ever sees it.
+            <p className="text-lg md:text-xl text-slate-400 font-medium max-w-2xl mx-auto">
+              LLMs hallucinate on raw data. We structure your enterprise knowledge before the AI ever sees it.
             </p>
           </motion.div>
 
@@ -360,7 +358,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 mb-6">
-              Context doesn't come from a prompt. <br/>It comes from a pipeline.
+              Features built for autonomous procurement.
             </h2>
             <p className="text-lg text-slate-600 leading-relaxed">
               Dorc AI isn't just a chatbot wrapper. It runs locally on your machine, reads your ERP, analyzes live vendor matrices, and orchestrates negotiations autonomously.
