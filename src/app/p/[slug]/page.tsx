@@ -2,8 +2,8 @@ import React from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Sparkles, CheckCircle2 } from 'lucide-react';
 
-export default function GenericPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default async function GenericPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
 
   // Convert slug to title format
   const title = slug
@@ -63,8 +63,8 @@ export default function GenericPage({ params }: { params: { slug: string } }) {
       <nav className="fixed w-full z-50 bg-[#0B101E]/90 backdrop-blur-md border-b border-white/5">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <img src="/dorc-logo.png" alt="Dorc" className="w-8 h-8 filter brightness-0 invert" />
-            <span className="font-bold text-xl tracking-tight text-white">Dorc AI</span>
+            <img src="/logo_transparent.png" alt="ProcGen" className="w-8 h-8 filter brightness-0 invert" />
+            <span className="font-bold text-xl tracking-tight text-white">ProcGen</span>
           </Link>
           <Link href="/" className="text-sm font-semibold text-slate-300 hover:text-white transition-colors flex items-center gap-2">
             <ArrowLeft size={16} /> Back to Home
