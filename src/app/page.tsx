@@ -435,7 +435,7 @@ export default function LandingPage() {
                    </div>
                    <div className="text-2xl font-black text-white mb-3 tracking-tight">Dorc AI Agent</div>
                    <div className="text-sm text-blue-200 leading-relaxed font-medium">
-                     Receives perfectly structured, deterministic prompts. Negotiates with 100% accuracy.
+                     Receives structured context. Negotiates with 100% precision.
                    </div>
                 </div>
              </div>
