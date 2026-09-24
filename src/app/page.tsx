@@ -143,8 +143,8 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-8 lg:gap-12">
             <div className="flex items-center gap-3">
-              <img src="/dorc-logo.png" alt="Dorc AI" className="w-8 h-8 object-contain" />
-              <span className="font-bold text-xl tracking-tight text-slate-900">ProcGen</span>
+              <img src="/logo_transparent.png" alt="ProcGen Logo" className="w-8 h-8 object-contain scale-110" />
+                <span className="font-bold text-2xl tracking-tight text-[#0B101E] ml-1">ProcGen</span>
             </div>
             
             <div className="hidden lg:flex items-center gap-8 text-[15px] font-semibold text-slate-700">
@@ -864,8 +864,8 @@ export default function LandingPage() {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
               <div className="col-span-2">
                 <div className="flex items-center gap-3 mb-6">
-                  <img src="/dorc-logo.png" alt="Dorc AI" className="w-8 h-8 object-contain filter brightness-0 invert" />
-                  <span className="font-bold text-xl tracking-tight text-white">ProcGen</span>
+                  <img src="/logo_transparent.png" alt="ProcGen Logo" className="w-8 h-8 object-contain filter brightness-0 invert scale-110" />
+                  <span className="font-bold text-2xl tracking-tight text-white ml-1">ProcGen</span>
                 </div>
                 <p className="text-slate-400 leading-relaxed max-w-sm mb-8">
                   ProcGen is the enterprise AI agent platform for modern supply chains. Unify your context, automate your workflows, and negotiate at scale.
