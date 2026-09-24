@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from 'react';
-import { Bot, ArrowRight, CheckCircle2, Menu, Sparkles, X, Swords, Activity, Network, Receipt, Monitor, ChevronRight } from 'lucide-react';
+import { Bot, ArrowRight, CheckCircle2, Menu, Sparkles, X, Swords, Activity, Network, Receipt, Monitor, ChevronRight, ChevronDown, Plus, Shield, Zap, Target } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useSpring, useInView } from 'framer-motion';
 
 export default function LandingPage() {
@@ -33,6 +33,16 @@ export default function LandingPage() {
     hidden: { opacity: 0 },
     visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
   };
+  
+  const [openFaq, setOpenFaq] = useState<number | null>(0);
+
+  const faqs = [
+    { q: "How long does it take to implement Dorc AI?", a: "Unlike traditional procurement software that takes 6 months to integrate, Dorc AI uses Live Vision OCR and can be deployed within 48 hours without touching your backend ERP." },
+    { q: "Does Dorc AI replace my existing ERP?", a: "No. Dorc acts as an autonomous intelligence layer on top of your existing tools (SAP, Oracle, NetSuite). It does the manual clicking, matching, and emailing so your team doesn't have to." },
+    { q: "How does the Negotiation Agent work?", a: "The agent analyzes supplier quotes against historical data and real-time raw material indices, then autonomously emails suppliers with data-backed counter-offers to drive down costs." },
+    { q: "Is our financial data secure?", a: "Absolutely. Dorc AI can run locally or in a dedicated private cloud environment. We never train our base models on your proprietary pricing data, ensuring zero data leakage." }
+  ];
+
 
   return (
     <div className="min-h-screen bg-[#F9F9FC] font-sans text-slate-900 selection:bg-blue-500/30 overflow-hidden relative font-inter">
@@ -130,7 +140,7 @@ export default function LandingPage() {
             {/* Bento Card 1: Large */}
             <div className="md:col-span-2 bg-white rounded-3xl border border-slate-200 p-10 flex flex-col justify-between hover:shadow-xl transition-shadow relative overflow-hidden group">
               <div className="relative z-10">
-                <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+                <div className="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-100 transition-all duration-300">
                   <Monitor size={24} />
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3">Live Vision OCR (Local)</h3>
@@ -146,7 +156,7 @@ export default function LandingPage() {
             {/* Bento Card 2 */}
             <div className="bg-white rounded-3xl border border-slate-200 p-10 flex flex-col justify-between hover:shadow-xl transition-shadow group">
               <div>
-                <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6">
+                <div className="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-emerald-100 transition-all duration-300">
                   <Activity size={24} />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">AI Spend Control</h3>
@@ -159,7 +169,7 @@ export default function LandingPage() {
             {/* Bento Card 3 */}
             <div className="bg-white rounded-3xl border border-slate-200 p-10 flex flex-col justify-between hover:shadow-xl transition-shadow group">
               <div>
-                <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6">
+                <div className="w-12 h-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-purple-100 transition-all duration-300">
                   <Swords size={24} />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Negotiation Agent</h3>
@@ -175,7 +185,7 @@ export default function LandingPage() {
               <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-600/30 blur-[100px] rounded-full pointer-events-none transform translate-x-1/2 -translate-y-1/2"></div>
               
               <div className="relative z-10">
-                <div className="w-12 h-12 bg-white/10 text-white rounded-xl flex items-center justify-center mb-6 backdrop-blur-md">
+                <div className="w-12 h-12 bg-white/10 text-white rounded-xl flex items-center justify-center mb-6 backdrop-blur-md group-hover:scale-110 group-hover:bg-white/20 transition-all duration-300">
                   <Network size={24} />
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-3">The Multi-Agent Swarm</h3>
