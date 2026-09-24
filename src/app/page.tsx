@@ -11,6 +11,37 @@ export default function LandingPage() {
 
   const [meteors, setMeteors] = useState<{x: number, y: number, delay: number, duration: number}[]>([]);
 
+  // Synthesized notification bell using Web Audio API
+  const playNotificationBell = () => {
+    try {
+      const AudioContext = window.AudioContext || (window as any).webkitAudioContext;
+      const ctx = new AudioContext();
+      
+      const playTone = (freq: number, vol: number, dur: number) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        
+        gain.gain.setValueAtTime(0, ctx.currentTime);
+        gain.gain.linearRampToValueAtTime(vol, ctx.currentTime + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+        
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        
+        osc.start();
+        osc.stop(ctx.currentTime + dur);
+      };
+      
+      // Play a beautiful, professional two-tone chime (A5 and A6)
+      playTone(880, 0.4, 1.2); 
+      playTone(1760, 0.15, 0.8);
+    } catch (e) {
+      console.error("Audio playback failed:", e);
+    }
+  };
+
   // Auto-open chat logic: Trigger 3s after first scroll
   const hasAutoOpened = useRef(false);
   useEffect(() => {
@@ -18,6 +49,7 @@ export default function LandingPage() {
       if (!hasAutoOpened.current && window.scrollY > 100) {
         hasAutoOpened.current = true;
         setTimeout(() => {
+          playNotificationBell();
           setIsChatOpen(true);
         }, 3000);
       }
