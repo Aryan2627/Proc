@@ -159,7 +159,7 @@ export default function LandingPage() {
               <div className="flex items-center gap-1.5 hover:text-blue-600 cursor-pointer transition-colors group py-5">
                 Solutions <ChevronDown size={14} className="text-slate-400 group-hover:text-blue-600 group-hover:-rotate-180 transition-all duration-300" />
               </div>
-              <a href="#" className="hover:text-blue-600 transition-colors py-5">Customers</a>
+              <a href="/p/customers" className="hover:text-blue-600 transition-colors py-5">Customers</a>
               <Link href="/know/enterprise-context-layer" className="flex items-center gap-1.5 hover:text-blue-600 cursor-pointer transition-colors group py-5">
                 Resources <ChevronDown size={14} className="text-slate-400 group-hover:text-blue-600 group-hover:-rotate-180 transition-all duration-300" />
               </Link>
@@ -731,11 +731,11 @@ export default function LandingPage() {
             </div>
 
             <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-slate-800/50 text-slate-500">
-              <p>&copy; 2026 ProcGen Technologies. Built for the future of procurement.</p>
+              <p>&copy; 2026 Dorc AI Inc. Built for the future of procurement.</p>
               <div className="flex gap-6 mt-4 md:mt-0">
-                <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-                <a href="#" className="hover:text-white transition-colors">Cookie Policy</a>
+                <a href="/p/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</a>
+                <a href="/p/terms-of-service" className="hover:text-white transition-colors">Terms of Service</a>
+                <a href="/p/cookie-policy" className="hover:text-white transition-colors">Cookie Policy</a>
               </div>
             </div>
         </div>
