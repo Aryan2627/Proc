@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowLeft, Send, ShieldAlert, TerminalSquare, AlertTriangle, Crosshair, Zap, Activity, LineChart, Cpu } from 'lucide-react';
+import { ArrowLeft, Send, ShieldAlert, TerminalSquare, AlertTriangle, Crosshair, Zap, Activity, LineChart, Cpu, Swords, Shield, Wand2, Handshake, Skull } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 type Message = {
@@ -16,92 +16,127 @@ export default function WarRoomSimulator() {
     {
       id: 'sys-1',
       role: 'system',
-      content: 'SIMULATION INITIALIZED. DIGITAL TWIN LOADED: "Arthur Pendelton" (VP Sales, Acme Global Steel). BEHAVIORAL PROFILE: Aggressive, focuses on raw material costs, bluffs about other buyers.',
+      content: 'GAME START. OPPONENT: Arthur Pendelton (Acme Global Steel). BEHAVIORAL PROFILE: Aggressive. High defense against logical arguments. Vulnerable to competitive bluffs.',
       timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
     },
     {
       id: 'sup-1',
       role: 'supplier',
-      content: 'Hi there. I reviewed your RFQ for 10,000 tons of cold-rolled steel. Given the current logistics crunch and raw material shortages, our baseline quote is $950/ton. Let me know if you want to proceed.',
+      content: 'I saw the RFQ. Given the logistics crunch, our baseline quote is $950/ton. I don\'t have a lot of wiggle room here, so let\'s make this quick.',
       timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
     }
   ]);
-  const [inputValue, setInputValue] = useState('');
+  
   const [isTyping, setIsTyping] = useState(false);
-  const [leverageScore, setLeverageScore] = useState(45);
   const [currentQuote, setCurrentQuote] = useState(950);
-  const [quoteHistory, setQuoteHistory] = useState<number[]>([950]);
-  const [supplierSentiment, setSupplierSentiment] = useState('Confident');
+  const [patience, setPatience] = useState(100);
+  const [gameState, setGameState] = useState<'playing' | 'victory' | 'defeat'>('playing');
+  const [screenShake, setScreenShake] = useState(false);
+  const [damageText, setDamageText] = useState<{id: number, text: string, type: 'price' | 'patience'}[]>([]);
   
   const chatEndRef = useRef<HTMLDivElement>(null);
 
-  const handleSend = () => {
-    if (!inputValue.trim()) return;
+  const addDamageText = (text: string, type: 'price' | 'patience') => {
+    const id = Date.now();
+    setDamageText(prev => [...prev, { id, text, type }]);
+    setTimeout(() => {
+      setDamageText(prev => prev.filter(d => d.id !== id));
+    }, 2000);
+  };
+
+  const triggerShake = () => {
+    setScreenShake(true);
+    setTimeout(() => setScreenShake(false), 400);
+  };
+
+  const handleAction = (tactic: 'hardball' | 'logic' | 'bluff' | 'concede') => {
+    if (gameState !== 'playing' || isTyping) return;
+
+    let buyerText = "";
+    if (tactic === 'hardball') buyerText = "This price is unacceptable. We need a massive reduction immediately or we are pulling the entire PO.";
+    if (tactic === 'logic') buyerText = "Iron ore indices are down 4% this month and fuel costs stabilized. You can't justify $950/ton.";
+    if (tactic === 'bluff') buyerText = "I have SinoSteel on the other line offering $860/ton with Net-60 terms. You need to match it right now.";
+    if (tactic === 'concede') buyerText = `Fine. We will accept the contract at $${currentQuote}/ton. Send the paperwork.`;
 
     const timeStr = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-    const newUserMsg: Message = { id: Date.now().toString(), role: 'buyer', content: inputValue, timestamp: timeStr };
-    setMessages(prev => [...prev, newUserMsg]);
-    setInputValue('');
+    setMessages(prev => [...prev, { id: Date.now().toString(), role: 'buyer', content: buyerText, timestamp: timeStr }]);
+    
+    if (tactic === 'concede') {
+       setTimeout(() => {
+         setMessages(prev => [...prev, { id: Date.now().toString(), role: 'supplier', content: "Smart decision. I'll get the DocuSign routed to your legal team.", timestamp: new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) }]);
+         if (currentQuote <= 880) setGameState('victory');
+         else setGameState('defeat');
+       }, 1500);
+       return;
+    }
+
     setIsTyping(true);
 
+    // RPG Logic Calculation
     setTimeout(() => {
-      const lowerInput = newUserMsg.content.toLowerCase();
       let aiResponse = "";
       let systemAnalysis = "";
-      let newQuote = currentQuote;
-      let newSentiment = supplierSentiment;
-      let newLeverage = leverageScore;
+      let priceDrop = 0;
+      let patienceDrop = 0;
 
-      if (lowerInput.includes('850') || lowerInput.includes('800') || lowerInput.includes('lower') || lowerInput.includes('too high') || lowerInput.includes('discount')) {
-          if (currentQuote === 950) {
-              aiResponse = "I can't just jump to your target price immediately. Logistics costs are brutal right now. Best I can do today is $920/ton.";
-              systemAnalysis = "TACTIC DETECTED: 'The Phantom Freight Cost'. He dropped $30 but is testing your resolve. Maintain pressure.";
-              newQuote = 920;
-              newSentiment = 'Defensive';
-              newLeverage = 60;
-          } else if (currentQuote === 920) {
-              aiResponse = "Look, if you commit to a 12-month lock-in today, I will drop it to $870/ton. Otherwise, I have three other manufacturers waiting for this inventory.";
-              systemAnalysis = "TACTIC DETECTED: 'The Exploding Offer'. He has excess inventory and is bluffing about other buyers. Reject the lock-in.";
-              newQuote = 870;
-              newSentiment = 'Pressured';
-              newLeverage = 80;
-          } else {
-              aiResponse = "You drive an incredibly hard bargain. Fine. $850/ton. But I am waiving the Net-90 terms; it has to be Net-30. Deal?";
-              systemAnalysis = "SUCCESS. Target price achieved. Proceed to finalize terms.";
-              newQuote = 850;
-              newSentiment = 'Yielding';
-              newLeverage = 95;
-          }
-      } else if (lowerInput.includes('deal') || lowerInput.includes('yes') || lowerInput.includes('agree') || lowerInput.includes('ok')) {
-           aiResponse = "Excellent. I'll send over the updated contract right now. Good doing business with you.";
-           systemAnalysis = "NEGOTIATION CONCLUDED. Contract generated and routed to legal automatically.";
-           newSentiment = 'Yielding';
-           newLeverage = 100;
-      } else {
-           aiResponse = "I hear what you're saying, but the market data doesn't support that. We are at $" + currentQuote + "/ton. Are you going to issue the PO or not?";
-           systemAnalysis = "WARNING: Supplier is attempting to stall and control the frame. Redirect the conversation back to price reduction.";
-           newLeverage = Math.max(30, leverageScore - 5);
+      if (tactic === 'hardball') {
+         priceDrop = Math.floor(Math.random() * 15) + 15; // 15 to 30
+         patienceDrop = Math.floor(Math.random() * 15) + 20; // 20 to 35
+         aiResponse = "Don't threaten me. I have other buyers. I'll drop it a bit to keep the relationship, but push me again and I walk.";
+         systemAnalysis = "CRITICAL HIT ON PRICE. But Supplier Patience dropped significantly!";
+         triggerShake();
+      } else if (tactic === 'logic') {
+         priceDrop = Math.floor(Math.random() * 10) + 5; // 5 to 15
+         patienceDrop = Math.floor(Math.random() * 5) + 2; // 2 to 7
+         aiResponse = "The indices don't reflect my actual warehouse overhead. I can give you a small concession, but that's it.";
+         systemAnalysis = "MODERATE SUCCESS. Supplier's defense absorbed most of the logical argument.";
+      } else if (tactic === 'bluff') {
+         const success = Math.random() > 0.5;
+         if (success) {
+            priceDrop = Math.floor(Math.random() * 20) + 25; // 25 to 45
+            patienceDrop = Math.floor(Math.random() * 10) + 10;
+            aiResponse = "Damn it. Fine, I'll match SinoSteel's baseline, but I'm not giving you Net-60.";
+            systemAnalysis = "BLUFF SUCCESSFUL. Massive price drop achieved!";
+         } else {
+            priceDrop = 0;
+            patienceDrop = Math.floor(Math.random() * 20) + 30; // 30 to 50
+            aiResponse = "SinoSteel's quality is garbage and you know it. Go buy from them if you want. My price stands.";
+            systemAnalysis = "BLUFF FAILED. Supplier called your bluff. Heavy patience damage taken!";
+            triggerShake();
+         }
+      }
+
+      const newQuote = Math.max(800, currentQuote - priceDrop);
+      const newPatience = Math.max(0, patience - patienceDrop);
+
+      if (priceDrop > 0) addDamageText(`-$${priceDrop}/ton`, 'price');
+      if (patienceDrop > 0) addDamageText(`-${patienceDrop} PATIENCE`, 'patience');
+
+      setCurrentQuote(newQuote);
+      setPatience(newPatience);
+
+      if (newPatience <= 0) {
+         aiResponse = "I've had enough of this. We are pulling our quote. Good luck finding this volume anywhere else.";
+         systemAnalysis = "FATAL ERROR. SUPPLIER PATIENCE REACHED ZERO. NEGOTIATION TERMINATED.";
+         setGameState('defeat');
+      }
+
+      if (newQuote <= 850 && newPatience > 0) {
+          aiResponse = `Okay, okay! We will do $${newQuote}/ton. Just send the PO over before I lose my job.`;
+          systemAnalysis = "TARGET PRICE ACHIEVED. SUPPLIER SURRENDERED.";
+          setGameState('victory');
       }
 
       const resTime = new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
-      
       setMessages(prev => {
         const updated = [...prev];
-        if (systemAnalysis) {
-          updated.push({ id: Date.now().toString() + 'sys', role: 'system', content: systemAnalysis, timestamp: resTime });
-        }
+        if (systemAnalysis) updated.push({ id: Date.now().toString() + 'sys', role: 'system', content: systemAnalysis, timestamp: resTime });
         updated.push({ id: Date.now().toString() + 'sup', role: 'supplier', content: aiResponse, timestamp: resTime });
         return updated;
       });
       
-      setCurrentQuote(newQuote);
-      if (newQuote !== currentQuote) {
-         setQuoteHistory(prev => [...prev, newQuote]);
-      }
-      setSupplierSentiment(newSentiment);
-      setLeverageScore(newLeverage);
       setIsTyping(false);
-    }, 2500);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -109,12 +144,65 @@ export default function WarRoomSimulator() {
   }, [messages, isTyping]);
 
   return (
-    <div className="min-h-screen bg-[#02050A] font-sans text-slate-300 selection:bg-rose-500/30 flex flex-col h-screen overflow-hidden relative">
+    <motion.div 
+      animate={screenShake ? { x: [-10, 10, -10, 10, 0], transition: { duration: 0.4 } } : {}}
+      className="min-h-screen bg-[#02050A] font-sans text-slate-300 selection:bg-rose-500/30 flex flex-col h-screen overflow-hidden relative"
+    >
       
-      {/* Background Grid */}
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay pointer-events-none z-0"></div>
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none z-0"></div>
+      {/* Game Overlays */}
+      <AnimatePresence>
+        {gameState === 'victory' && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="absolute inset-0 z-50 bg-emerald-950/90 backdrop-blur-md flex flex-col items-center justify-center">
+             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.1] mix-blend-overlay"></div>
+             <motion.div initial={{ scale: 0.8, y: 50 }} animate={{ scale: 1, y: 0 }} className="text-center relative z-10">
+                <div className="w-24 h-24 bg-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_100px_rgba(16,185,129,0.8)]">
+                  <Handshake size={48} className="text-emerald-950" />
+                </div>
+                <h1 className="text-6xl font-black text-white mb-4 tracking-tighter">CONTRACT SECURED</h1>
+                <p className="text-2xl text-emerald-400 font-mono mb-8">Final Price: ${currentQuote}/ton</p>
+                <div className="bg-emerald-900/50 border border-emerald-500/50 rounded-2xl p-6 mb-8 max-w-md mx-auto">
+                   <div className="text-sm text-emerald-400/80 font-bold uppercase tracking-widest mb-1">Total Savings Unlocked</div>
+                   <div className="text-5xl font-black text-white">+${((950 - currentQuote) * 10000).toLocaleString()}</div>
+                </div>
+                <button onClick={() => window.location.reload()} className="px-8 py-4 bg-white text-emerald-950 font-black uppercase tracking-widest rounded-xl hover:bg-slate-200 transition-all">Play Again</button>
+             </motion.div>
+          </motion.div>
+        )}
 
+        {gameState === 'defeat' && (
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="absolute inset-0 z-50 bg-rose-950/90 backdrop-blur-md flex flex-col items-center justify-center">
+             <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.1] mix-blend-overlay"></div>
+             <motion.div initial={{ scale: 0.8, y: 50 }} animate={{ scale: 1, y: 0 }} className="text-center relative z-10">
+                <div className="w-24 h-24 bg-rose-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-[0_0_100px_rgba(225,29,72,0.8)]">
+                  <Skull size={48} className="text-rose-950" />
+                </div>
+                <h1 className="text-6xl font-black text-white mb-4 tracking-tighter">NEGOTIATION FAILED</h1>
+                <p className="text-2xl text-rose-400 font-mono mb-8">The supplier lost patience and walked away.</p>
+                <button onClick={() => window.location.reload()} className="px-8 py-4 bg-white text-rose-950 font-black uppercase tracking-widest rounded-xl hover:bg-slate-200 transition-all">Restart Mission</button>
+             </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Floating Damage Text */}
+      <AnimatePresence>
+        {damageText.map(dt => (
+          <motion.div 
+             key={dt.id}
+             initial={{ opacity: 0, y: 0, scale: 0.5 }}
+             animate={{ opacity: 1, y: -100, scale: 1.5 }}
+             exit={{ opacity: 0 }}
+             transition={{ duration: 1.5, ease: "easeOut" }}
+             className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] font-black text-4xl pointer-events-none drop-shadow-[0_0_15px_rgba(0,0,0,0.8)] ${dt.type === 'price' ? 'text-blue-400' : 'text-rose-500'}`}
+          >
+            {dt.text}
+          </motion.div>
+        ))}
+      </AnimatePresence>
+
+      {/* Background */}
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay pointer-events-none z-0"></div>
+      
       {/* Header */}
       <header className="h-16 border-b border-white/10 flex items-center justify-between px-6 bg-[#0B101E]/90 backdrop-blur-md shrink-0 relative z-20 shadow-lg">
         <div className="flex items-center gap-6">
@@ -123,95 +211,70 @@ export default function WarRoomSimulator() {
           </Link>
           <div className="flex flex-col">
              <div className="flex items-center gap-2 text-rose-500 font-black tracking-widest uppercase text-sm">
-               <TerminalSquare size={16} /> War-Room Simulator
+               <Crosshair size={16} /> Tactical Negotiation Simulator
              </div>
-             <div className="text-[10px] text-slate-500 font-mono">POWERED BY DORC AI NEURAL ENGINE</div>
           </div>
         </div>
-        <div className="flex items-center gap-6">
-           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-xs font-bold text-emerald-400 uppercase tracking-widest">
-             <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></div> Live Simulation
-           </div>
+        <div className="flex items-center gap-4">
+           <div className="text-xs font-bold text-slate-500 uppercase tracking-widest">Level 1: Industrial Steel</div>
         </div>
       </header>
 
       <div className="flex-1 flex overflow-hidden relative z-10">
         
-        {/* Left Sidebar: Context & Objectives */}
-        <div className="w-80 border-r border-white/10 bg-[#060913]/90 backdrop-blur-xl p-6 flex flex-col z-10 hidden md:flex overflow-y-auto shadow-2xl">
-          <h2 className="text-white font-bold text-sm uppercase tracking-widest mb-6 flex items-center gap-2"><TargetIcon /> Mission Briefing</h2>
+        {/* Main Battle Area */}
+        <div className="flex-1 flex flex-col z-10 relative bg-[#02050A]/50">
           
-          <div className="space-y-6">
-            <div className="bg-white/5 border border-white/10 rounded-xl p-4 shadow-inner relative overflow-hidden group">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-blue-500/10 blur-2xl rounded-full"></div>
-              <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-1">Target Supplier</div>
-              <div className="text-white font-bold text-lg relative z-10">Acme Global Steel</div>
-              <div className="text-xs text-slate-400 mt-1 relative z-10 flex items-center gap-1"><Cpu size={12}/> Digital Twin: Arthur P.</div>
-            </div>
-
-            <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4 shadow-inner">
-              <div className="text-[10px] text-emerald-500/70 font-bold uppercase tracking-widest mb-2">Primary Objective</div>
-              <div className="flex items-center gap-2 text-emerald-400 font-black text-2xl">
-                <AlertTriangle size={20} /> <span className="tracking-tight">Below $850/ton</span>
-              </div>
-              <div className="text-xs text-slate-400 mt-2 font-mono">Baseline Quote: $950/ton</div>
-            </div>
-
-            <div className="bg-rose-500/5 border border-rose-500/20 rounded-xl p-4 shadow-inner">
-              <div className="text-[10px] text-rose-500/70 font-bold uppercase tracking-widest mb-2 flex items-center gap-1"><ShieldAlert size={14}/> Personality Profile</div>
-              <p className="text-xs text-rose-200/80 leading-relaxed font-medium">
-                Aggressive closer. Frequently uses phantom shipping costs to protect margin. Will attempt to force 12-month lock-ins. Do not yield to time-pressure tactics.
-              </p>
-            </div>
-          </div>
-          
-          <div className="mt-auto pt-6 border-t border-white/10">
-             <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-3 flex justify-between">
-                <span>Negotiation Leverage</span>
-                <span className="text-blue-400 font-mono">{leverageScore}%</span>
+          {/* Boss HUD (Supplier) */}
+          <div className="h-24 border-b border-white/5 bg-[#060913]/90 flex items-center justify-between px-8 shrink-0">
+             <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-rose-950 border border-rose-500/50 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(225,29,72,0.2)]">
+                   <ShieldAlert size={20} className="text-rose-500" />
+                </div>
+                <div>
+                   <div className="text-white font-bold text-lg">Arthur P. (Acme Steel)</div>
+                   <div className="text-xs text-rose-400 font-bold uppercase tracking-widest">Boss Level Supplier</div>
+                </div>
              </div>
-             <div className="w-full bg-black/50 rounded-full h-2 overflow-hidden border border-white/10 shadow-inner">
-               <motion.div 
-                 initial={{ width: '45%' }}
-                 animate={{ width: `${leverageScore}%` }}
-                 transition={{ type: 'spring', stiffness: 50 }}
-                 className={`h-full ${leverageScore > 75 ? 'bg-emerald-500' : leverageScore > 50 ? 'bg-amber-500' : 'bg-rose-500'}`}
-               />
+             <div className="w-96">
+                <div className="flex justify-between text-[10px] font-black uppercase tracking-widest mb-2">
+                   <span className="text-rose-500">Patience (HP)</span>
+                   <span className="text-white">{patience}/100</span>
+                </div>
+                <div className="w-full h-3 bg-black/50 rounded-full border border-white/10 overflow-hidden shadow-inner">
+                   <motion.div 
+                     animate={{ width: `${patience}%` }} 
+                     className={`h-full ${patience > 50 ? 'bg-emerald-500' : patience > 25 ? 'bg-amber-500' : 'bg-rose-500'}`} 
+                   />
+                </div>
              </div>
           </div>
-        </div>
 
-        {/* Center: Chat Interface */}
-        <div className="flex-1 flex flex-col z-10 relative bg-[#02050A]/50 backdrop-blur-sm">
-          
-          <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+          {/* Chat / Combat Log */}
+          <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar relative">
             <AnimatePresence>
               {messages.map((msg) => (
                 <motion.div 
                   key={msg.id}
                   initial={{ opacity: 0, y: 15, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 200, damping: 20 }}
                   className={`flex flex-col ${msg.role === 'buyer' ? 'items-end' : 'items-start'}`}
                 >
                   {msg.role === 'system' ? (
                     <div className="w-full flex justify-center my-4">
-                      <div className="max-w-lg bg-rose-950/40 border border-rose-500/30 text-rose-300 text-xs p-4 rounded-xl flex gap-3 shadow-[0_0_30px_rgba(225,29,72,0.1)] backdrop-blur-md">
-                        <Zap size={18} className="shrink-0 text-rose-500 animate-pulse" />
-                        <span className="font-mono leading-relaxed">{msg.content}</span>
+                      <div className="max-w-lg bg-blue-950/40 border border-blue-500/30 text-blue-300 text-xs p-4 rounded-xl flex gap-3 shadow-[0_0_30px_rgba(59,130,246,0.1)] backdrop-blur-md">
+                        <Zap size={18} className="shrink-0 text-blue-500 animate-pulse" />
+                        <span className="font-mono leading-relaxed font-bold">{msg.content}</span>
                       </div>
                     </div>
                   ) : (
-                    <div className={`max-w-2xl p-5 rounded-2xl shadow-xl relative group ${
+                    <div className={`max-w-2xl p-5 rounded-2xl shadow-xl relative ${
                       msg.role === 'buyer' 
-                        ? 'bg-blue-600/90 text-white rounded-br-sm border border-blue-500/50 backdrop-blur-md' 
-                        : 'bg-[#111827]/90 border border-white/10 text-slate-200 rounded-bl-sm backdrop-blur-md'
+                        ? 'bg-emerald-600/90 text-white rounded-br-sm border border-emerald-500/50' 
+                        : 'bg-[#111827]/90 border border-white/10 text-slate-200 rounded-bl-sm'
                     }`}>
-                      <div className="flex items-center gap-3 mb-2">
-                         <div className="text-[10px] font-black uppercase tracking-widest opacity-60">
-                           {msg.role === 'buyer' ? 'You (Procurement)' : 'Arthur P. (Acme Steel)'}
-                         </div>
-                         <div className="text-[9px] font-mono opacity-40">{msg.timestamp}</div>
+                      <div className="text-[10px] font-black uppercase tracking-widest opacity-60 mb-2">
+                         {msg.role === 'buyer' ? 'Player Tactic Executed' : 'Supplier Response'}
                       </div>
                       <div className="text-[15px] leading-relaxed font-medium">
                         {msg.content}
@@ -221,8 +284,9 @@ export default function WarRoomSimulator() {
                 </motion.div>
               ))}
               {isTyping && (
-                <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="flex justify-start">
-                   <div className="bg-[#111827]/90 border border-white/10 rounded-2xl rounded-bl-sm p-5 backdrop-blur-md flex items-center gap-2 shadow-xl">
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start">
+                   <div className="bg-[#111827]/90 border border-white/10 rounded-2xl rounded-bl-sm p-5 flex items-center gap-2 shadow-xl">
+                      <div className="text-xs font-bold text-slate-500 uppercase tracking-widest mr-2">Supplier is formulating counter-offer</div>
                       <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
                       <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
                       <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
@@ -233,88 +297,86 @@ export default function WarRoomSimulator() {
             <div ref={chatEndRef} />
           </div>
 
+          {/* Action RPG Menu */}
           <div className="p-6 bg-[#0B101E]/90 backdrop-blur-xl border-t border-white/10 shrink-0">
-            <div className="max-w-4xl mx-auto relative flex items-center shadow-2xl">
-              <input 
-                type="text" 
-                value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                placeholder="Type your counter-offer... (Hint: tell him the price is too high or target $850)"
-                className="w-full bg-[#050914] border border-white/10 text-white rounded-xl pl-6 pr-16 py-5 focus:outline-none focus:border-rose-500/50 focus:ring-1 focus:ring-rose-500/50 transition-all font-medium placeholder:text-slate-600 shadow-inner"
-              />
-              <button 
-                onClick={handleSend}
-                disabled={!inputValue.trim() || isTyping}
-                className="absolute right-3 w-12 h-12 bg-white text-black hover:bg-slate-200 disabled:bg-white/5 disabled:text-white/20 rounded-lg flex items-center justify-center transition-all disabled:shadow-none shadow-[0_0_20px_rgba(255,255,255,0.3)]"
-              >
-                <Send size={18} />
-              </button>
+            <div className="max-w-6xl mx-auto">
+               <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-4">Select Tactical Action</div>
+               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  
+                  <button onClick={() => handleAction('hardball')} disabled={isTyping} className="bg-rose-950/30 border border-rose-500/30 hover:bg-rose-900/50 hover:border-rose-500 rounded-xl p-4 flex flex-col items-center justify-center gap-3 transition-all group disabled:opacity-50 disabled:cursor-not-allowed">
+                     <div className="w-10 h-10 bg-rose-500/20 rounded-full flex items-center justify-center text-rose-500 group-hover:scale-110 transition-transform">
+                        <Swords size={20} />
+                     </div>
+                     <div className="text-center">
+                        <div className="text-white font-black uppercase text-sm mb-1">Hardball</div>
+                        <div className="text-[10px] text-slate-400">High DMG / High Patience Loss</div>
+                     </div>
+                  </button>
+
+                  <button onClick={() => handleAction('logic')} disabled={isTyping} className="bg-blue-950/30 border border-blue-500/30 hover:bg-blue-900/50 hover:border-blue-500 rounded-xl p-4 flex flex-col items-center justify-center gap-3 transition-all group disabled:opacity-50 disabled:cursor-not-allowed">
+                     <div className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center text-blue-500 group-hover:scale-110 transition-transform">
+                        <Shield size={20} />
+                     </div>
+                     <div className="text-center">
+                        <div className="text-white font-black uppercase text-sm mb-1">Logic</div>
+                        <div className="text-[10px] text-slate-400">Low DMG / Low Patience Loss</div>
+                     </div>
+                  </button>
+
+                  <button onClick={() => handleAction('bluff')} disabled={isTyping} className="bg-purple-950/30 border border-purple-500/30 hover:bg-purple-900/50 hover:border-purple-500 rounded-xl p-4 flex flex-col items-center justify-center gap-3 transition-all group disabled:opacity-50 disabled:cursor-not-allowed">
+                     <div className="w-10 h-10 bg-purple-500/20 rounded-full flex items-center justify-center text-purple-500 group-hover:scale-110 transition-transform">
+                        <Wand2 size={20} />
+                     </div>
+                     <div className="text-center">
+                        <div className="text-white font-black uppercase text-sm mb-1">Bluff</div>
+                        <div className="text-[10px] text-slate-400">50% Crit Chance / 50% Miss</div>
+                     </div>
+                  </button>
+
+                  <button onClick={() => handleAction('concede')} disabled={isTyping} className="bg-emerald-950/30 border border-emerald-500/30 hover:bg-emerald-900/50 hover:border-emerald-500 rounded-xl p-4 flex flex-col items-center justify-center gap-3 transition-all group disabled:opacity-50 disabled:cursor-not-allowed">
+                     <div className="w-10 h-10 bg-emerald-500/20 rounded-full flex items-center justify-center text-emerald-500 group-hover:scale-110 transition-transform">
+                        <Handshake size={20} />
+                     </div>
+                     <div className="text-center">
+                        <div className="text-white font-black uppercase text-sm mb-1">Concede</div>
+                        <div className="text-[10px] text-slate-400">Accept Price & End Battle</div>
+                     </div>
+                  </button>
+
+               </div>
             </div>
           </div>
         </div>
 
-        {/* Right Sidebar: Live Telemetry */}
+        {/* Right Sidebar: Active Quest HUD */}
         <div className="w-80 border-l border-white/10 bg-[#060913]/90 backdrop-blur-xl p-6 hidden lg:flex flex-col z-10 shadow-2xl">
-           <h2 className="text-white font-bold text-sm uppercase tracking-widest mb-6 flex items-center gap-2"><LineChart size={18} className="text-blue-500" /> Live Telemetry</h2>
+           <h2 className="text-white font-bold text-sm uppercase tracking-widest mb-6 flex items-center gap-2"><Crosshair size={18} className="text-blue-500" /> Objective</h2>
            
-           <div className="bg-gradient-to-b from-blue-900/20 to-transparent border border-blue-500/20 rounded-2xl p-6 mb-8 text-center relative overflow-hidden">
-              <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
-              <div className="text-[10px] text-blue-400/80 font-bold uppercase tracking-widest mb-2">Active Quote</div>
-              <motion.div 
-                 key={currentQuote}
-                 initial={{ scale: 1.2, color: '#fff' }}
-                 animate={{ scale: 1, color: '#60A5FA' }}
-                 className="text-5xl font-black mb-1"
-              >
-                ${currentQuote}<span className="text-xl opacity-50">/ton</span>
-              </motion.div>
-              <div className="text-xs text-emerald-400 mt-3 font-mono bg-emerald-500/10 inline-block px-2 py-1 rounded border border-emerald-500/20">Target: $850</div>
-           </div>
-           
-           <div className="mb-8">
-              <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-4">Quote Trajectory</div>
-              <div className="h-32 w-full border-b border-l border-white/10 flex items-end justify-around gap-2 pb-0 px-2 relative">
-                 {/* Graph Grid Lines */}
-                 <div className="absolute top-0 w-full border-t border-white/5 border-dashed"></div>
-                 <div className="absolute top-1/2 w-full border-t border-white/5 border-dashed"></div>
-                 
-                 {quoteHistory.map((q, i) => {
-                    const heightPercent = Math.max(10, ((q - 800) / 200) * 100);
-                    return (
-                      <motion.div 
-                         key={i} 
-                         initial={{ height: 0, opacity: 0 }} 
-                         animate={{ height: `${heightPercent}%`, opacity: 1 }} 
-                         transition={{ type: 'spring', damping: 15 }}
-                         className="w-full bg-gradient-to-t from-blue-600/80 to-blue-400 rounded-t-sm relative group max-w-[40px] shadow-[0_0_15px_rgba(59,130,246,0.3)]"
-                      >
-                         <div className="absolute -top-7 left-1/2 -translate-x-1/2 text-[10px] font-mono text-white opacity-0 group-hover:opacity-100 transition-opacity bg-black/80 px-1.5 py-0.5 rounded border border-white/20">
-                           ${q}
-                         </div>
-                      </motion.div>
-                    );
-                 })}
-              </div>
+           <div className="bg-white/5 border border-white/10 rounded-xl p-4 shadow-inner mb-6">
+              <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-2">Target Price</div>
+              <div className="text-emerald-400 font-black text-3xl">$850<span className="text-sm opacity-50">/ton</span></div>
            </div>
 
-           <div className="mt-auto bg-white/5 border border-white/10 rounded-xl p-5">
-              <div className="text-[10px] text-slate-500 font-bold uppercase tracking-widest mb-3">Supplier Sentiment</div>
-              <div className={`p-3 rounded-lg border text-sm font-bold flex items-center gap-3 transition-colors ${
-                  supplierSentiment === 'Confident' ? 'bg-amber-500/10 border-amber-500/30 text-amber-400' :
-                  supplierSentiment === 'Pressured' ? 'bg-rose-500/10 border-rose-500/30 text-rose-400' :
-                  'bg-emerald-500/10 border-emerald-500/30 text-emerald-400'
-              }`}>
-                 <Activity size={18} className={supplierSentiment === 'Pressured' ? 'animate-pulse' : ''} /> 
-                 {supplierSentiment}
+           <div className="bg-gradient-to-b from-blue-900/20 to-transparent border border-blue-500/20 rounded-2xl p-6 mb-8 text-center relative overflow-hidden">
+              <div className="text-[10px] text-blue-400/80 font-bold uppercase tracking-widest mb-2">Current Supplier Quote</div>
+              <motion.div 
+                 key={currentQuote}
+                 initial={{ scale: 1.5, color: '#fff' }}
+                 animate={{ scale: 1, color: '#60A5FA' }}
+                 className="text-6xl font-black mb-1 drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]"
+              >
+                ${currentQuote}
+              </motion.div>
+           </div>
+           
+           <div className="mt-auto p-4 bg-rose-950/20 border border-rose-500/20 rounded-xl">
+              <div className="text-[10px] text-rose-500 font-bold uppercase tracking-widest mb-2 flex items-center gap-1"><AlertTriangle size={12}/> Warning</div>
+              <div className="text-xs text-rose-300/70 font-medium leading-relaxed">
+                 If the supplier's Patience hits 0, they will terminate the negotiation and you will lose the contract entirely. Balance your attacks.
               </div>
            </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
-}
-
-function TargetIcon() {
-  return <Crosshair size={18} className="text-emerald-400" />;
 }
