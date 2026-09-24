@@ -126,6 +126,7 @@ export default function LandingPage() {
   };
   
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [activeAgent, setActiveAgent] = useState<string | null>(null);
 
   const faqs = [
     { q: "How long does it take to implement Dorc AI?", a: "Unlike traditional procurement software that takes 6 months to integrate, Dorc AI uses Live Vision OCR and can be deployed within 48 hours without touching your backend ERP." },
@@ -558,13 +559,13 @@ export default function LandingPage() {
                  
                  {/* Orbiting / Connected Nodes */}
                  <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="absolute w-[280px] h-[280px] border border-white/5 rounded-full flex items-center justify-center">
-                    <div className="absolute top-0 w-8 h-8 bg-slate-800 border border-slate-600 rounded-full -translate-y-1/2 shadow-lg"></div>
-                    <div className="absolute bottom-0 w-8 h-8 bg-slate-800 border border-slate-600 rounded-full translate-y-1/2 shadow-lg"></div>
+                    <div onClick={() => setActiveAgent("fraud")} className="absolute top-0 w-8 h-8 bg-slate-800 border-2 border-slate-500 rounded-full -translate-y-1/2 shadow-lg cursor-pointer hover:scale-150 hover:bg-slate-700 transition-all z-30"></div>
+                    <div onClick={() => setActiveAgent("cost")} className="absolute bottom-0 w-8 h-8 bg-slate-800 border-2 border-slate-500 rounded-full translate-y-1/2 shadow-lg cursor-pointer hover:scale-150 hover:bg-slate-700 transition-all z-30"></div>
                  </motion.div>
                  
                  <motion.div animate={{ rotate: -360 }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }} className="absolute w-[180px] h-[180px] border border-white/5 rounded-full flex items-center justify-center">
-                    <div className="absolute left-0 w-6 h-6 bg-cyan-900 border border-cyan-500 rounded-full -translate-x-1/2 shadow-[0_0_15px_rgba(6,182,212,0.5)]"></div>
-                    <div className="absolute right-0 w-6 h-6 bg-indigo-900 border border-indigo-500 rounded-full translate-x-1/2 shadow-[0_0_15px_rgba(99,102,241,0.5)]"></div>
+                    <div onClick={() => setActiveAgent("discovery")} className="absolute left-0 w-6 h-6 bg-cyan-600 border-2 border-cyan-400 rounded-full -translate-x-1/2 shadow-[0_0_15px_rgba(6,182,212,0.8)] cursor-pointer hover:scale-150 transition-all z-30"></div>
+                    <div onClick={() => setActiveAgent("award")} className="absolute right-0 w-6 h-6 bg-indigo-600 border-2 border-indigo-400 rounded-full translate-x-1/2 shadow-[0_0_15px_rgba(99,102,241,0.8)] cursor-pointer hover:scale-150 transition-all z-30"></div>
                  </motion.div>
               </div>
             </div>
