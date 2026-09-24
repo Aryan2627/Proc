@@ -98,7 +98,7 @@ export default function LandingPage() {
           </div>
 
           <div className="hidden md:flex items-center gap-6">
-            <button onClick={() => setIsModalOpen(true)} className="text-[15px] font-semibold text-slate-700 hover:text-blue-600 transition-colors">Log In</button>
+            
             <button onClick={() => setIsModalOpen(true)} className="text-[15px] font-bold bg-blue-600 text-white px-5 py-2.5 rounded-lg shadow-sm hover:bg-blue-700 hover:shadow-md transition-all flex items-center gap-2">
               Request Demo
             </button>

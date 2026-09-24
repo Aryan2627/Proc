@@ -46,7 +46,7 @@ export default function AILab() {
           </div>
 
           <div className="hidden md:flex items-center gap-6">
-            <button className="text-[15px] font-semibold text-slate-300 hover:text-white transition-colors">Log In</button>
+            
             <button className="text-[15px] font-bold bg-white text-slate-900 px-5 py-2.5 rounded-lg shadow-sm hover:bg-slate-200 transition-all flex items-center gap-2">
               Back to Core Platform
             </button>
