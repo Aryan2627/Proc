@@ -344,7 +344,7 @@ export default function LandingPage() {
                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-[50px] group-hover:bg-blue-500/20 transition-colors"></div>
                    
                    <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-700 rounded-3xl flex items-center justify-center mb-6 shadow-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500 border border-white/20">
-                      <Sparkles className="text-white drop-shadow-md" size={40} />
+                      <img src="/dorc-logo.png" alt="Dorc AI" className="w-14 h-14 object-contain filter brightness-0 invert drop-shadow-md" />
                    </div>
                    <div className="text-2xl font-black text-white mb-3 tracking-tight">Dorc AI Agent</div>
                    <div className="text-sm text-blue-200 leading-relaxed font-medium">
