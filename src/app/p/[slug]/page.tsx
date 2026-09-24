@@ -42,7 +42,7 @@ export default async function GenericPage({ params }: { params: Promise<{ slug: 
     return (
       <>
         <p className="text-xl text-slate-600 mb-8 leading-relaxed">
-          Welcome to the definitive guide on {title}. At Dorc AI, we are committed to providing the most advanced enterprise infrastructure available on the market today.
+          Welcome to the definitive guide on {title}. At ProcGen, we are committed to providing the most advanced enterprise infrastructure available on the market today.
         </p>
         <h2 className="text-2xl font-bold text-slate-900 mb-4 mt-12">Key Benefits</h2>
         <ul className="space-y-4 mb-8">
@@ -83,7 +83,7 @@ export default async function GenericPage({ params }: { params: Promise<{ slug: 
             {title}
           </h1>
           <p className="text-xl text-slate-400 font-medium max-w-2xl mx-auto">
-            Deep dive into how Dorc AI is redefining the standards for modern enterprise procurement and supply chain automation.
+            Deep dive into how ProcGen is redefining the standards for modern enterprise procurement and supply chain automation.
           </p>
         </div>
       </header>
@@ -106,7 +106,7 @@ export default async function GenericPage({ params }: { params: Promise<{ slug: 
 
       {/* Mini Footer */}
       <footer className="bg-slate-900 py-12 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Dorc AI Inc. All rights reserved.</p>
+        <p>&copy; 2026 ProcGen Inc. All rights reserved.</p>
       </footer>
     </div>
   );

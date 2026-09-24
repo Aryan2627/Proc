@@ -774,10 +774,10 @@ export default function LandingPage() {
               <div className="col-span-2">
                 <div className="flex items-center gap-3 mb-6">
                   <img src="/dorc-logo.png" alt="Dorc AI" className="w-8 h-8 object-contain filter brightness-0 invert" />
-                  <span className="font-bold text-xl tracking-tight text-white">Dorc AI</span>
+                  <span className="font-bold text-xl tracking-tight text-white">ProcGen</span>
                 </div>
                 <p className="text-slate-400 leading-relaxed max-w-sm mb-8">
-                  Dorc AI is the enterprise AI agent platform for modern supply chains. Unify your context, automate your workflows, and negotiate at scale.
+                  ProcGen is the enterprise AI agent platform for modern supply chains. Unify your context, automate your workflows, and negotiate at scale.
                 </p>
                 <div className="flex gap-4">
                   <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer text-white"><Globe size={18} /></div>
@@ -818,7 +818,7 @@ export default function LandingPage() {
             </div>
 
             <div className="flex flex-col md:flex-row items-center justify-between pt-8 border-t border-slate-800/50 text-slate-500">
-              <p>&copy; 2026 Dorc AI Inc. Built for the future of procurement.</p>
+              <p>&copy; 2026 ProcGen Inc. Built for the future of procurement.</p>
               <div className="flex gap-6 mt-4 md:mt-0">
                 <a href="/p/privacy-policy" className="hover:text-white transition-colors">Privacy Policy</a>
                 <a href="/p/terms-of-service" className="hover:text-white transition-colors">Terms of Service</a>
