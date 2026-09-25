@@ -158,7 +158,6 @@ export default function LandingPage() {
               <Link href="/know/enterprise-context-layer" className="flex items-center gap-1.5 hover:text-blue-600 cursor-pointer transition-colors group py-5">
                 Resources <ChevronDown size={14} className="text-slate-400 group-hover:text-blue-600 group-hover:-rotate-180 transition-all duration-300" />
               </Link>
-              <a href="#pricing" className="hover:text-blue-600 transition-colors py-5">Pricing</a>
               <Link href="/ai-lab" className="flex items-center gap-1.5 text-blue-600 hover:text-blue-500 font-bold transition-colors py-5 ml-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-flask-conical"><path d="M10 2v7.31"/><path d="M14 9.3V1.99"/><path d="M8.5 2h7"/><path d="M14 9.3a6.5 6.5 0 1 1-4 0"/><path d="M5.52 16h12.96"/></svg>
                 AI Lab
@@ -710,58 +709,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* --- PRICING SECTION --- */}
-      <section id="pricing" className="py-24 bg-white border-t border-slate-200"><motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }}>
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-slate-900 mb-4">Pricing that makes sense.</h2>
-            <p className="text-lg text-slate-600">No hidden fees. Scale your procurement effortlessly.</p>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-8 items-start">
-            {/* Essentials */}
-            <div className="bg-[#F9F9FC] border border-slate-200 rounded-3xl p-8 flex flex-col transition-all hover:shadow-lg">
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Starter</h3>
-              <p className="text-slate-500 text-sm mb-6 h-10">For small teams and low-touch adoption.</p>
-              <div className="mb-8"><span className="text-4xl font-bold text-slate-900">₹999</span><span className="text-slate-500">/mo</span></div>
-              <button onClick={() => setIsModalOpen(true)} className="w-full py-3 rounded-xl font-semibold text-slate-900 bg-white border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-all mb-8">Start Free Trial</button>
-              <ul className="space-y-4 text-sm text-slate-700">
-                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-blue-500" /> 1 procurement workflow</li>
-                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-blue-500" /> Up to 3 internal users</li>
-                <li className="flex items-center gap-3 text-slate-400"><X size={18} /> No AI or ERP sync</li>
-              </ul>
-            </div>
-
-            {/* Growth */}
-            <div className="bg-white border-2 border-blue-500 rounded-3xl p-8 flex flex-col relative shadow-xl md:-translate-y-4">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">Most Popular</div>
-              <h3 className="text-xl font-bold text-slate-900 mb-2 mt-2">Essentials</h3>
-              <p className="text-slate-500 text-sm mb-6 h-10">For mid-market companies scaling ops.</p>
-              <div className="mb-8"><span className="text-4xl font-bold text-slate-900">₹4,999</span><span className="text-slate-500">/mo</span></div>
-              <button onClick={() => setIsModalOpen(true)} className="w-full py-3 rounded-xl font-semibold text-white bg-blue-600 hover:bg-blue-700 hover:shadow-md transition-all mb-8">Get Started</button>
-              <ul className="space-y-4 text-sm text-slate-700">
-                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-blue-500" /> Source-to-Pay Core</li>
-                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-blue-500" /> Vendor Portal (100 vendors)</li>
-                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-blue-500" /> Advanced Analytics</li>
-              </ul>
-            </div>
-
-            {/* Enterprise */}
-            <div className="bg-[#F9F9FC] border border-slate-200 rounded-3xl p-8 flex flex-col transition-all hover:shadow-lg">
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Growth</h3>
-              <p className="text-slate-500 text-sm mb-6 h-10">Full AI efficiency & limitless scale.</p>
-              <div className="mb-8"><span className="text-4xl font-bold text-slate-900">₹14,999</span><span className="text-slate-500">/mo</span></div>
-              <button onClick={() => setIsModalOpen(true)} className="w-full py-3 rounded-xl font-semibold text-slate-900 bg-white border border-slate-200 hover:border-slate-300 hover:shadow-sm transition-all mb-8">Contact Sales</button>
-              <ul className="space-y-4 text-sm text-slate-700">
-                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-blue-500" /> Dorc AI Swarm</li>
-                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-blue-500" /> Unlimited Vendors</li>
-                <li className="flex items-center gap-3"><CheckCircle2 size={18} className="text-blue-500" /> 2-Way ERP Sync (SAP/Oracle)</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </motion.div>
-      </section>
+      
       
       {/* --- FAQ SECTION --- */}
       <section className="py-24 bg-white border-t border-slate-200" id="faq">
@@ -883,8 +831,7 @@ export default function LandingPage() {
                   <li><a href="/p/enterprise-data-graph" className="hover:text-blue-400 transition-colors">Enterprise Data Graph</a></li>
                   <li><a href="/p/live-vision-ocr" className="hover:text-blue-400 transition-colors">Live Vision OCR</a></li>
                   <li><a href="/p/security" className="hover:text-blue-400 transition-colors">Security & Trust</a></li>
-                  <li><a href="/#pricing" className="hover:text-blue-400 transition-colors">Pricing</a></li>
-                </ul>
+                  </ul>
               </div>
 
               <div>
