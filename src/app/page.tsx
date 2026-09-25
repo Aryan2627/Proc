@@ -132,7 +132,9 @@ export default function LandingPage() {
 
 
   return (
-    <div className="min-h-screen bg-[#F9F9FC] font-sans text-slate-900 selection:bg-blue-500/30 overflow-hidden relative font-inter">
+    <div className="min-h-screen bg-transparent font-sans text-slate-900 selection:bg-blue-500/30 overflow-hidden relative font-inter">
+        {/* GLOBAL LIGHT GRID BACKGROUND */}
+        <div className="fixed inset-0 z-[-1] pointer-events-none bg-[#F9F9FC] bg-[linear-gradient(to_right,#cbd5e140_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e140_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
       
       {/* Scroll Progress Bar */}
       <motion.div className="fixed top-0 left-0 right-0 h-1 bg-blue-600 origin-left z-[200]" style={{ scaleX }} />
@@ -239,7 +241,7 @@ export default function LandingPage() {
 
       
       {/* --- LOGO MARQUEE (ATLAN STYLE) --- */}
-      <section className="py-12 bg-white border-b border-slate-200 overflow-hidden">
+      <section className="py-12 bg-transparent border-b border-slate-200 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 text-center mb-8">
           <p className="text-sm font-semibold text-slate-500 uppercase tracking-widest">Trusted by AI-forward enterprise supply chains</p>
         </div>
@@ -377,7 +379,7 @@ export default function LandingPage() {
 
       
       {/* --- DORC FEATURES DETAILED SECTION --- */}
-      <section id="dorc-features" className="py-24 bg-white border-b border-slate-200">
+      <section id="dorc-features" className="py-24 bg-transparent border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-3xl mx-auto mb-20">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-bold text-sm tracking-wide mb-6 shadow-sm">
@@ -462,7 +464,7 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="features" className="py-24 bg-[#F9F9FC]"><motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }}>
+      <section id="features" className="py-24 bg-transparent"><motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto mb-20 relative">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
@@ -657,7 +659,7 @@ export default function LandingPage() {
       </motion.div>
       </section>
       {/* --- SECURITY & CERTIFICATION SECTION --- */}
-      <section className="py-24 bg-[#F9F9FC]">
+      <section className="py-24 bg-transparent">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center gap-16">
             <div className="w-full md:w-1/2">
@@ -714,7 +716,7 @@ export default function LandingPage() {
       
       
       {/* --- FAQ SECTION --- */}
-      <section className="py-24 bg-white border-t border-slate-200" id="faq">
+      <section className="py-24 bg-transparent border-t border-slate-200" id="faq">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-16">
             <div className="w-full lg:w-1/3">
