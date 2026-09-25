@@ -132,7 +132,7 @@ export default function LandingPage() {
 
 
   return (
-    <div className="min-h-screen bg-transparent font-sans text-slate-900 selection:bg-blue-500/30 overflow-hidden relative font-inter">
+    <div className="min-h-screen bg-transparent font-sans text-slate-900 selection:bg-blue-500/30 overflow-x-hidden relative font-inter">
         {/* GLOBAL LIGHT GRID BACKGROUND */}
         <div className="fixed inset-0 z-[-1] pointer-events-none bg-[#F9F9FC] bg-[linear-gradient(to_right,#cbd5e140_1px,transparent_1px),linear-gradient(to_bottom,#cbd5e140_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
       
