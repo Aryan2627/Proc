@@ -898,7 +898,7 @@ export default function LandingPage() {
                 <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Company</h4>
                 <ul className="space-y-4">
                   <li><a href="/p/about-us" className="hover:text-blue-400 transition-colors">About Us</a></li>
-                  <li><a href="/careers" className="hover:text-blue-400 transition-colors">Careers (We're Hiring!)</a></li>
+                  <li><a href="/careers" className="hover:text-blue-400 transition-colors flex items-center gap-1.5 group">Careers <span className="text-cyan-400 font-bold drop-shadow-[0_0_8px_rgba(34,211,238,0.9)] animate-pulse group-hover:drop-shadow-[0_0_15px_rgba(34,211,238,1)]">(We're Hiring!)</span></a></li>
                   <li><a href="/p/blog-news" className="hover:text-blue-400 transition-colors">Blog & News</a></li>
                   <li><a href="/p/contact-sales" className="hover:text-blue-400 transition-colors">Contact Sales</a></li>
                 </ul>
