@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Briefcase, MapPin, Sparkles, ChevronRight, CheckCircle2, ArrowLeft, Send, BarChart, Database, Network } from 'lucide-react';
+import { Briefcase, MapPin, Sparkles, ChevronRight, CheckCircle2, ArrowLeft, Send, BarChart, Database, Network, Globe, Activity } from 'lucide-react';
 
 export default function CareersPage() {
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
@@ -85,9 +85,9 @@ export default function CareersPage() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
             <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-black border border-white/10 shadow-[0_0_15px_rgba(37,99,235,0.2)] group-hover:shadow-[0_0_20px_rgba(37,99,235,0.5)] transition-all">
-              <img loading="lazy" decoding="async" src="/logo_transparent.png" alt="Dorc AI Logo" className="w-6 h-6 object-contain scale-110 filter brightness-0 invert" />
+              <img loading="lazy" decoding="async" src="/logo_transparent.png" alt="ProcGen Logo" className="w-6 h-6 object-contain scale-110 filter brightness-0 invert" />
             </div>
-            <span className="font-bold text-xl tracking-tight text-white ml-1">Dorc AI</span>
+            <span className="font-bold text-2xl tracking-tight text-white ml-1">ProcGen</span>
           </Link>
           <div className="hidden md:flex items-center gap-8">
             <Link href="/careers" className="text-sm font-semibold text-white transition-colors">Careers</Link>
@@ -243,7 +243,7 @@ export default function CareersPage() {
                         </div>
 
                         <div className="space-y-2">
-                          <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Why Dorc AI?</label>
+                          <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Why ProcGen?</label>
                           <textarea required rows={4} value={formData.coverLetter} onChange={e => setFormData({...formData, coverLetter: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all resize-none" placeholder="Tell us why you'd be a great fit..."></textarea>
                         </div>
 
@@ -278,6 +278,67 @@ export default function CareersPage() {
           </AnimatePresence>
         </div>
       </main>
+    
+      {/* --- MEGA FOOTER --- */}
+      <footer className="bg-[#0B101E] pt-24 pb-12 border-t border-slate-800 text-slate-400 text-sm">
+        <div className="max-w-7xl mx-auto px-6">
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
+              <div className="col-span-2">
+                <div className="flex items-center gap-3 mb-6">
+                  <img loading="lazy" decoding="async" src="/logo_transparent.png" alt="ProcGen Logo" className="w-8 h-8 object-contain filter brightness-0 invert scale-110" />
+                  <span className="font-bold text-2xl tracking-tight text-white ml-1">ProcGen</span>
+                </div>
+                <p className="text-slate-400 leading-relaxed max-w-sm mb-8">
+                  ProcGen is the enterprise AI agent platform for modern supply chains. Unify your context, automate your workflows, and negotiate at scale.
+                </p>
+                <div className="flex gap-4">
+                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer text-white"><Globe size={18} /></div>
+                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-blue-600 transition-colors cursor-pointer text-white"><Activity size={18} /></div>
+                </div>
+              </div>
+              
+              <div>
+                <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Platform</h4>
+                <ul className="space-y-4">
+                  <li><a href="/p/dorc-ai-agents" className="hover:text-blue-400 transition-colors">Dorc AI Agents</a></li>
+                  <li><a href="/p/enterprise-data-graph" className="hover:text-blue-400 transition-colors">Enterprise Data Graph</a></li>
+                  <li><a href="/p/live-vision-ocr" className="hover:text-blue-400 transition-colors">Live Vision OCR</a></li>
+                  <li><a href="/p/security" className="hover:text-blue-400 transition-colors">Security & Trust</a></li>
+                  </ul>
+              </div>
+
+              <div>
+                <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Solutions</h4>
+                <ul className="space-y-4">
+                  <li><a href="/p/direct-spend" className="hover:text-blue-400 transition-colors">For Direct Spend</a></li>
+                  <li><a href="/p/indirect-spend" className="hover:text-blue-400 transition-colors">For Indirect Spend</a></li>
+                  <li><a href="/p/sap-ariba" className="hover:text-blue-400 transition-colors">For SAP Ariba Users</a></li>
+                  <li><a href="/p/finance-teams" className="hover:text-blue-400 transition-colors">For Finance Teams</a></li>
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-white font-bold mb-6 uppercase tracking-widest text-xs">Company</h4>
+                <ul className="space-y-4">
+                  <li><a href="/p/about-us" className="hover:text-blue-400 transition-colors">About Us</a></li>
+                  <li><a href="/careers" className="hover:text-blue-400 transition-colors flex items-center gap-1.5 group">Careers <span className="text-cyan-400 font-bold drop-shadow-[0_0_8px_rgba(34,211,238,0.9)] animate-pulse group-hover:drop-shadow-[0_0_15px_rgba(34,211,238,1)]">(We're Hiring!)</span></a></li>
+                  <li><a href="/p/blog-news" className="hover:text-blue-400 transition-colors">Blog & News</a></li>
+                  <li><a href="/p/contact-sales" className="hover:text-blue-400 transition-colors">Contact Sales</a></li>
+                </ul>
+              </div>
+            </div>
+            
+            <div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
+              <div className="text-slate-500">
+                © 2026 ProcGen Inc. All rights reserved.
+              </div>
+              <div className="flex items-center gap-6 text-slate-500">
+                <a href="/p/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
+                <a href="/p/terms" className="hover:text-slate-300 transition-colors">Terms of Service</a>
+              </div>
+            </div>
+        </div>
+      </footer>
     </div>
   );
 }
