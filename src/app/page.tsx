@@ -989,7 +989,7 @@ export default function LandingPage() {
                   <X size={24} />
                 </button>
                 <iframe 
-                  src="https://drive.google.com/file/d/14P6lwqlfwFQnRTEGHK1yK60pIGzk3Gbj/preview" 
+                  src="https://drive.google.com/file/d/14P6lwqlfwFQnRTEGHK1yK60pIGzk3Gbj/preview?autoplay=1" 
                   width="100%" 
                   height="100%" 
                   allow="autoplay" 
