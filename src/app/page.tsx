@@ -103,6 +103,65 @@ export default function LandingPage() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
+  
+  const generateAIResponse = (userMsg: string, history: {role: string, content: string}[]) => {
+    const msg = userMsg.toLowerCase();
+    
+    // 1. Greetings
+    if (msg.match(/\b(hi|hello|hey|greetings|morning|afternoon)\b/)) {
+      return "Hello! How can I help you transform your procurement workflow today? I can answer questions about features, integrations, pricing, or security.";
+    }
+    
+    // 2. Pricing
+    if (msg.match(/\b(price|pricing|cost|much|fee|subscription|tier)\b/)) {
+      return "Our pricing is tailored to enterprise scale, typically based on annual managed spend and the number of active autonomous agents you deploy. We don't have standard out-of-the-box tiers because every supply chain is unique. Would you like to book a quick demo to get a custom quote?";
+    }
+    
+    // 3. Integrations (SAP, Oracle, etc)
+    if (msg.match(/\b(integrate|integration|sap|ariba|oracle|netsuite|coupa|erp|connect)\b/)) {
+      return "ProcGen is built to seamlessly integrate with your existing stack. We natively connect to SAP Ariba, Oracle, NetSuite, and Coupa via secure APIs. For legacy or on-prem systems where APIs are difficult, our Live Vision OCR can read and interact with the UI directly, requiring zero backend integration.";
+    }
+
+    // 4. Security / Privacy
+    if (msg.match(/\b(secure|security|privacy|data|gdpr|soc2|train|leak|compliance)\b/)) {
+      return "Security is our absolute priority. ProcGen is SOC2 Type II compliant, and your data is siloed in a dedicated tenant. Most importantly, we NEVER use your proprietary procurement data or supplier contracts to train our foundational models.";
+    }
+
+    // 5. Features - OCR
+    if (msg.match(/\b(ocr|vision|read|pdf|invoice|scan)\b/)) {
+      return "Our Live Vision OCR is a game changer. It can process messy, unstructured PDFs, emails, and legacy ERP screens in real-time with 99.9% accuracy, converting chaos into structured data for our agents to act on.";
+    }
+
+    // 6. Features - Negotiation
+    if (msg.match(/\b(negotiate|negotiation|vendor|supplier|contract|discount)\b/)) {
+      return "The Dorc Negotiation Agent acts as your digital buyer. It autonomously emails suppliers, pushes back on price hikes, enforces net-60 payment terms, and compares quotes against historical data to drive down costs—all on autopilot.";
+    }
+
+    // 7. Features - 3-Way Matching / Rogue Spend
+    if (msg.match(/\b(match|matching|rogue|spend|fraud|audit)\b/)) {
+      return "We enforce strict compliance using automated 3-way matching. The AI instantly verifies the Purchase Order, Goods Receipt, and Invoice. If there is a price mismatch or an unapproved vendor, it flags it as rogue spend and blocks the payment before it happens.";
+    }
+
+    // 8. Identity / Name
+    if (msg.match(/\b(who are you|your name|what are you|bot|human|ai)\b/)) {
+      return "I am the Dorc AI Sales Development Representative. I'm a specialized AI agent trained exclusively on ProcGen's platform capabilities. While I know a lot, I'm always happy to hand you off to a human Solutions Architect for a deep dive!";
+    }
+
+    // 9. Booking a Demo / Next Steps
+    if (msg.match(/\b(demo|meeting|call|book|talk to human|sales|contact)\b/)) {
+      return "I'd love to get that set up for you! You can click the 'Request Demo' button in the top navigation, or I can have one of our human product specialists email you directly. Which do you prefer?";
+    }
+
+    // 10. Fallback contextual response
+    const fallbackResponses = [
+      "That's a great question. Because ProcGen acts as a unified context layer, we can handle highly complex enterprise requirements like that. Would you like me to connect you with a human specialist to discuss the specifics?",
+      "Interesting use case! Our autonomous swarm architecture is actually designed to adapt to custom workflows just like that. Should I pull up the demo form for you?",
+      "I see. Our platform bridges exactly that kind of context gap using the Enterprise Data Graph. Would it be helpful to see a live 2-minute demo of how that works?",
+      "That sounds like a perfect scenario for our autonomous agents to handle. They specialize in eliminating manual friction in areas exactly like what you mentioned."
+    ];
+    return fallbackResponses[history.length % fallbackResponses.length];
+  };
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormState('submitting');
@@ -1010,10 +1069,11 @@ export default function LandingPage() {
                   const newMsgs = [...chatMessages, { role: 'user', content: currentMessage }];
                   setChatMessages(newMsgs);
                   setCurrentMessage('');
-                  // Mock AI reply
+                  // Sophisticated AI Reply
                   setTimeout(() => {
-                     setChatMessages([...newMsgs, { role: 'ai', content: "That sounds like a perfect use case for our autonomous agents. Would you like me to connect you with one of our human product specialists to discuss further?" }]);
-                  }, 1200);
+                     const aiResponse = generateAIResponse(currentMessage, newMsgs);
+                     setChatMessages([...newMsgs, { role: 'ai', content: aiResponse }]);
+                  }, 600 + Math.random() * 800); // Realistic variable typing delay
                 }}
                 className="flex items-center gap-2"
               >
