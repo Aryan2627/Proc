@@ -84,7 +84,7 @@ export default function LandingPage() {
   }, []);
 
   useEffect(() => {
-    setMeteors([...Array(15)].map(() => ({
+    setMeteors([...Array(5)].map(() => ({
       x: Math.random() * 2000, // Spanning wider
       y: Math.random() * -300 - 100, // Starting above
       delay: Math.random() * 5,
@@ -195,11 +195,11 @@ export default function LandingPage() {
             <motion.div
               key={i}
               className="absolute h-[1.5px] w-[100px] bg-gradient-to-r from-blue-300 via-cyan-300 to-transparent rounded-full shadow-[0_0_15px_rgba(96,165,250,0.8)]"
-              initial={{ opacity: 0, x: m.x, y: m.y, rotate: 215 }}
+              initial={{ opacity: 0, x: m.x, y: m.y, rotate: 90 }}
               animate={{
                 opacity: [0, 1, 0],
-                x: m.x - 1000,
-                y: m.y + 1000
+                x: m.x,
+                y: m.y + 1200
               }}
               transition={{
                 duration: m.duration,
