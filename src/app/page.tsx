@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from 'react';
 import Lenis from 'lenis';
-import { Bot, ArrowRight, CheckCircle2, Menu, Sparkles, X, Swords, Activity, Network, Receipt, Monitor, ChevronRight, ChevronDown, Plus, Shield, Zap, Target, MessageCircle, Send, Globe, Database, Lock, Trophy, Star, ArrowUpRight, PlayCircle, TerminalSquare, FileText, Search, Handshake, ShieldAlert } from 'lucide-react';
+import { Bot, Fingerprint, ArrowRight, CheckCircle2, Menu, Sparkles, X, Swords, Activity, Network, Receipt, Monitor, ChevronRight, ChevronDown, Plus, Shield, Zap, Target, MessageCircle, Send, Globe, Database, Lock, Trophy, Star, ArrowUpRight, PlayCircle, TerminalSquare, FileText, Search, Handshake, ShieldAlert } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useSpring, useInView } from 'framer-motion';
 
 export default function LandingPage() {
@@ -651,39 +651,92 @@ export default function LandingPage() {
         </div>
       </motion.div>
       </section>
-      {/* --- SECURITY & CERTIFICATION SECTION --- */}
-      <section className="py-24 bg-transparent">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row items-center gap-16">
-            <div className="w-full md:w-1/2">
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6 leading-tight">Humans resolve, annotate, and certify before context ships.</h2>
-              <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                We don't believe in rogue AI. Dorc operates on a "Human-in-the-Loop" (HITL) architecture. High-risk POs and massive negotiations are automatically routed to your human managers for 1-click certification before execution.
-              </p>
-              <ul className="space-y-4">
-                <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 className="text-blue-600" size={20} /> SOC 2 Type II Certified</li>
-                <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 className="text-blue-600" size={20} /> ISO 27001 Compliant</li>
-                <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 className="text-blue-600" size={20} /> GDPR & CCPA Ready</li>
-              </ul>
-            </div>
-            <div className="w-full md:w-1/2 bg-white rounded-3xl shadow-xl border border-slate-200 p-8">
-              <div className="border-b border-slate-100 pb-4 mb-4 flex justify-between items-center">
-                <div className="font-bold text-slate-900">Pending Approval: PO-9942</div>
-                <div className="px-3 py-1 bg-amber-100 text-amber-700 text-xs font-bold rounded-full">High Value</div>
+      {/* --- GOVERNANCE & CONTROL SECTION --- */}
+        <section className="py-32 relative overflow-hidden bg-[#000511] border-t border-white/5">
+          {/* Subtle grid background */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b20_1px,transparent_1px),linear-gradient(to_bottom,#1e293b20_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_20%,transparent_100%)]"></div>
+          
+          {/* Glow */}
+          <div className="absolute -right-40 top-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-600/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <div className="flex flex-col lg:flex-row items-center gap-20">
+              
+              {/* Left Content */}
+              <div className="w-full lg:w-5/12">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-400/20 text-indigo-300 text-xs font-semibold tracking-wide mb-6">
+                  <Shield size={14} /> Enterprise Governance
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-[1.1] tracking-tight">
+                  Absolute Control. <br/><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Zero Rogue Executions.</span>
+                </h2>
+                <p className="text-lg text-slate-400 mb-10 leading-relaxed">
+                  We don't believe in unchecked autonomous agents. Dorc AI runs on a strict Human-in-the-Loop (HITL) architecture. High-risk POs and multi-million dollar negotiations are intercepted and routed to human managers for cryptographic certification before execution.
+                </p>
+                
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
+                    <CheckCircle2 className="text-emerald-400" size={20} />
+                    <span className="text-slate-200 font-medium text-sm">SOC 2 Type II Certified</span>
+                  </div>
+                  <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
+                    <CheckCircle2 className="text-emerald-400" size={20} />
+                    <span className="text-slate-200 font-medium text-sm">ISO 27001 Compliant</span>
+                  </div>
+                  <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
+                    <CheckCircle2 className="text-emerald-400" size={20} />
+                    <span className="text-slate-200 font-medium text-sm">GDPR & CCPA Ready</span>
+                  </div>
+                  <div className="flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-3 rounded-xl">
+                    <CheckCircle2 className="text-emerald-400" size={20} />
+                    <span className="text-slate-200 font-medium text-sm">End-to-End Encryption</span>
+                  </div>
+                </div>
               </div>
-              <div className="space-y-4 mb-8">
-                <div className="flex justify-between text-sm"><span className="text-slate-500">Supplier</span><span className="font-bold text-slate-900">Tata Steel</span></div>
-                <div className="flex justify-between text-sm"><span className="text-slate-500">AI Negotiated Savings</span><span className="font-bold text-green-600">₹450,000 (12%)</span></div>
-                <div className="flex justify-between text-sm"><span className="text-slate-500">Risk Confidence</span><span className="font-bold text-blue-600">99.8%</span></div>
+
+              {/* Right Interactive Terminal / UI Mockup */}
+              <div className="w-full lg:w-7/12">
+                <div className="relative bg-[#0A0F1C] border border-white/10 rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
+                  {/* Mac OS Window Header */}
+                  <div className="flex items-center px-4 py-3 border-b border-white/10 bg-white/5">
+                    <div className="flex gap-2">
+                      <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
+                      <div className="w-3 h-3 rounded-full bg-amber-500/80"></div>
+                      <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+                    </div>
+                    <div className="mx-auto text-xs text-slate-400 font-mono flex items-center gap-2">
+                      <Lock size={12} className="text-emerald-400"/> admin@dorc.ai — Governance Engine
+                    </div>
+                  </div>
+                  
+                  {/* Terminal Content */}
+                  <div className="p-6 font-mono text-sm leading-loose">
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.1, duration: 0.2 }} className="text-slate-500">&gt; Analyzing PO-9942 (Tata Steel)</motion.div>
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.4, duration: 0.2 }} className="text-indigo-400">&gt; Deep negotiating... 14% variance identified</motion.div>
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 0.7, duration: 0.2 }} className="text-emerald-400">&gt; Total AI negotiated savings: ₹4,50,000</motion.div>
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.0, duration: 0.2 }} className="text-amber-400">&gt; WARNING: High-value transaction threshold exceeded</motion.div>
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.3, duration: 0.2 }} className="text-slate-500">&gt; Pausing execution pipeline...</motion.div>
+                    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ delay: 1.6, duration: 0.2 }} className="flex items-center gap-2 mt-4 text-white">
+                      <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div> Routing to human certifier for cryptographic sign-off
+                    </motion.div>
+                    
+                    {/* Mock Action Block */}
+                    <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 2.2, duration: 0.3 }} className="mt-6 p-4 border border-indigo-500/30 bg-indigo-500/10 rounded-xl flex items-center justify-between">
+                      <div>
+                        <div className="text-indigo-300 font-bold font-sans">Authorization Required</div>
+                        <div className="text-slate-400 text-xs font-sans mt-1">Review logs and approve PO-9942</div>
+                      </div>
+                      <button className="bg-indigo-600 text-white font-sans font-bold py-2 px-4 rounded-lg hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-500/25 flex items-center gap-2">
+                        <Fingerprint size={16} /> Certify
+                      </button>
+                    </motion.div>
+                  </div>
+                </div>
               </div>
-              <div className="flex gap-4">
-                <button className="flex-1 bg-blue-600 text-white font-bold py-3 rounded-xl hover:bg-blue-700 transition-colors">Certify & Execute</button>
-                <button className="flex-1 bg-slate-100 text-slate-700 font-bold py-3 rounded-xl hover:bg-slate-200 transition-colors">Review Logs</button>
-              </div>
+              
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
       {/* --- MEGA BOTTOM CTA --- */}
       <section className="py-32 bg-blue-600 text-white text-center relative overflow-hidden">
