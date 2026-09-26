@@ -190,7 +190,7 @@ export default function WarRoomSimulator() {
              initial={{ opacity: 0, y: 0, scale: 0.8 }}
              animate={{ opacity: 1, y: -60, scale: 1 }}
              exit={{ opacity: 0 }}
-             transition={{ duration: 1.5, ease: "easeOut" }}
+             transition={{ duration: 0.75, ease: "easeOut" }}
              className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] font-bold text-sm px-3 py-1 rounded-full shadow-lg pointer-events-none ${dt.type === 'price' ? 'bg-emerald-100 text-emerald-700 border border-emerald-200' : 'bg-rose-100 text-rose-700 border border-rose-200'}`}
           >
             {dt.type === 'price' ? <TrendingDown size={14} className="inline mr-1" /> : <AlertTriangle size={14} className="inline mr-1" />}
@@ -206,7 +206,7 @@ export default function WarRoomSimulator() {
             <ArrowLeft size={18} />
           </Link>
           <div className="flex items-center gap-3 border-l border-slate-200 pl-4">
-            <img src="/logo_transparent.png" alt="ProcGen" className="w-7 h-7 object-contain" />
+            <img loading="lazy" decoding="async"  src="/logo_transparent.png" alt="ProcGen" className="w-7 h-7 object-contain" />
             <span className="font-bold text-lg text-slate-900 tracking-tight">ProcGen</span>
           </div>
           <div className="flex items-center gap-2 text-slate-500 font-medium text-sm ml-2 border-l border-slate-200 pl-4">

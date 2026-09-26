@@ -183,7 +183,7 @@ export default function DarkPoolDashboard() {
                <div className="absolute top-[80px] w-10 h-10 bg-[#064e3b] border border-emerald-600/50 rounded-full flex items-center justify-center shadow-[0_0_20px_rgba(5,150,105,0.4)]">
                  <Globe size={14} className="text-emerald-500" />
                </div>
-               <motion.div animate={{ height: [0, 150, 0], opacity: [0, 1, 0], top: ['100px', '250px', '250px'] }} transition={{ duration: 2, repeat: Infinity }} className="absolute w-0.5 bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,1)]"></motion.div>
+               <motion.div animate={{ height: [0, 150, 0], opacity: [0, 1, 0], top: ['100px', '250px', '250px'] }} transition={{ duration: 1, repeat: Infinity }} className="absolute w-0.5 bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,1)]"></motion.div>
              </motion.div>
 
              <motion.div animate={{ rotate: -360 }} transition={{ duration: 35, repeat: Infinity, ease: "linear" }} className="absolute inset-0 flex items-center justify-center">

@@ -1,16 +1,15 @@
-﻿const fs = require('fs');
-let code = fs.readFileSync('src/app/page.tsx', 'utf8');
+const fs = require('fs');
 
-// Fix the bad import
-code = code.replace(
-  "import Link from 'next/link';, { useState } from 'react';",
-  "import { useState } from 'react';"
-);
+let page = fs.readFileSync('src/app/page.tsx', 'utf8');
 
-// We still need to make sure Link is imported, so let's just add it at the top manually if not there
-if (!code.includes("import Link from 'next/link';")) {
-  code = "import Link from 'next/link';\n" + code;
+if (!page.includes('FileText,')) {
+    page = page.replace(
+        /import\s+\{\s*([^}]+)\s*\}\s+from\s+['"]lucide-react['"]/,
+        (match, group) => {
+            return \`import { \${group.trim()}, FileText } from 'lucide-react'\`;
+        }
+    );
 }
 
-fs.writeFileSync('src/app/page.tsx', code, 'utf8');
-console.log("Fixed imports");
+fs.writeFileSync('src/app/page.tsx', page);
+console.log('Fixed FileText import.');

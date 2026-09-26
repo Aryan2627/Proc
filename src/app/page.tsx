@@ -47,7 +47,7 @@ export default function LandingPage() {
 // Smooth Scrolling (Lenis)
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.3,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
@@ -88,7 +88,7 @@ export default function LandingPage() {
       x: Math.random() * 2000, // Spanning wider
       y: Math.random() * -300 - 100, // Starting above
       delay: Math.random() * 5,
-      duration: Math.random() * 4 + 2
+      duration: Math.random() * 2 + 1
     })));
   }, []);
 
@@ -117,7 +117,7 @@ export default function LandingPage() {
 
   const fadeIn: any = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } }
   };
   
   const staggerContainer: any = {
@@ -145,7 +145,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-8 lg:gap-12">
             <div className="flex items-center gap-3">
-              <img src="/logo_transparent.png" alt="ProcGen Logo" className="w-8 h-8 object-contain scale-110" />
+              <img loading="lazy" decoding="async" src="/logo_transparent.png" alt="ProcGen Logo" className="w-8 h-8 object-contain scale-110" />
                 <span className="font-bold text-2xl tracking-tight text-[#0B101E] ml-1">ProcGen</span>
             </div>
             
@@ -276,7 +276,7 @@ export default function LandingPage() {
             initial={{ opacity: 0, y: 50 }} 
             whileInView={{ opacity: 1, y: 0 }} 
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.4 }}
             className="text-center max-w-4xl mx-auto mb-20"
           >
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.2] mb-6 text-white max-w-3xl mx-auto">
@@ -292,7 +292,7 @@ export default function LandingPage() {
             initial={{ opacity: 0, scale: 0.95, y: 40 }}
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            transition={{ delay: 0.2, duration: 1, ease: "easeOut" }}
+            transition={{ delay: 0.2, duration: 0.25, ease: "easeOut" }}
             className="relative bg-white/5 border border-white/10 rounded-[2.5rem] p-8 md:p-12 backdrop-blur-2xl flex flex-col lg:flex-row items-center justify-between gap-12 shadow-2xl"
           >
              {/* Left: Raw Data Sources */}
@@ -326,7 +326,7 @@ export default function LandingPage() {
                 <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-white/10 -translate-y-1/2 rounded-full overflow-hidden">
                   <motion.div 
                     animate={{ x: ["-100%", "200%"] }} 
-                    transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                    transition={{ duration: 0.6, repeat: Infinity, ease: "linear" }}
                     className="w-1/2 h-full bg-gradient-to-r from-transparent via-blue-400 to-transparent shadow-[0_0_20px_rgba(59,130,246,1)]"
                   />
                 </div>
@@ -334,7 +334,7 @@ export default function LandingPage() {
                 <div className="lg:hidden absolute top-0 left-1/2 h-full w-1 bg-white/10 -translate-x-1/2 rounded-full overflow-hidden">
                   <motion.div 
                     animate={{ y: ["-100%", "200%"] }} 
-                    transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                    transition={{ duration: 0.6, repeat: Infinity, ease: "linear" }}
                     className="h-1/2 w-full bg-gradient-to-b from-transparent via-blue-400 to-transparent shadow-[0_0_20px_rgba(59,130,246,1)]"
                   />
                 </div>
@@ -358,7 +358,7 @@ export default function LandingPage() {
                    <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-[50px] group-hover:bg-blue-500/20 transition-colors"></div>
                    
                    <div className="w-24 h-24 bg-gradient-to-br from-blue-500 to-blue-700 rounded-3xl flex items-center justify-center mb-6 shadow-2xl transform rotate-3 group-hover:rotate-6 transition-transform duration-500 border border-white/20">
-                      <img src="/dorc-logo.png" alt="Dorc AI" className="w-14 h-14 object-contain filter brightness-0 invert drop-shadow-md" />
+                      <img loading="lazy" decoding="async" src="/dorc-logo.png" alt="Dorc AI" className="w-14 h-14 object-contain filter brightness-0 invert drop-shadow-md" />
                    </div>
                    <div className="text-2xl font-black text-white mb-3 tracking-tight">Dorc AI Agent</div>
                    <div className="text-sm text-blue-200 leading-relaxed font-medium">
@@ -405,7 +405,7 @@ export default function LandingPage() {
               </div>
               <div className="w-full md:w-1/2 bg-slate-50 rounded-3xl border border-slate-200 p-8 shadow-xl relative overflow-hidden group">
                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[80px] rounded-full"></div>
-                 <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Sourcing Dashboard" className="rounded-xl shadow-lg border border-slate-200 group-hover:scale-105 transition-transform duration-700" />
+                 <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Sourcing Dashboard" className="rounded-xl shadow-lg border border-slate-200 group-hover:scale-105 transition-transform duration-700" />
               </div>
             </div>
 
@@ -427,7 +427,7 @@ export default function LandingPage() {
               </div>
               <div className="w-full md:w-1/2 bg-slate-50 rounded-3xl border border-slate-200 p-8 shadow-xl relative overflow-hidden group">
                  <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full"></div>
-                 <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800" alt="Negotiation Agent" className="rounded-xl shadow-lg border border-slate-200 group-hover:scale-105 transition-transform duration-700" />
+                 <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800" alt="Negotiation Agent" className="rounded-xl shadow-lg border border-slate-200 group-hover:scale-105 transition-transform duration-700" />
               </div>
             </div>
 
@@ -449,7 +449,7 @@ export default function LandingPage() {
               </div>
               <div className="w-full md:w-1/2 bg-slate-50 rounded-3xl border border-slate-200 p-8 shadow-xl relative overflow-hidden group">
                  <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 blur-[80px] rounded-full"></div>
-                 <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800" alt="Spend Analytics" className="rounded-xl shadow-lg border border-slate-200 group-hover:scale-105 transition-transform duration-700" />
+                 <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800" alt="Spend Analytics" className="rounded-xl shadow-lg border border-slate-200 group-hover:scale-105 transition-transform duration-700" />
               </div>
             </div>
 
@@ -457,18 +457,18 @@ export default function LandingPage() {
         </div>
       </section>
 
-      <section id="features" className="py-24 bg-transparent"><motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.7 }}>
+      <section id="features" className="py-24 bg-transparent"><motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.35 }}>
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto mb-20 relative">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
             
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.25 }}>
               <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-50/80 border border-blue-200/60 text-blue-700 font-bold text-sm tracking-wider uppercase mb-8 shadow-sm backdrop-blur-sm">
                  <Sparkles size={16} className="text-blue-600" /> The Core Platform
               </div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.25, delay: 0.1 }}>
               <h2 className="text-4xl md:text-[56px] font-black tracking-tighter text-slate-900 mb-6 leading-[1.1]">
                 Features built for <br className="hidden md:block" />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
@@ -477,7 +477,7 @@ export default function LandingPage() {
               </h2>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.25, delay: 0.2 }}>
               <p className="text-xl text-slate-600 leading-relaxed font-medium max-w-2xl mx-auto">
                 Dorc AI isn't just a chatbot wrapper. It reads your ERP, analyzes live vendor matrices, and orchestrates negotiations end-to-end without human intervention.
               </p>
@@ -505,7 +505,7 @@ export default function LandingPage() {
                     {/* Animated Scanner Line */}
                     <motion.div 
                         animate={{ top: ['0%', '100%', '0%'] }} 
-                        transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+                        transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                         className="absolute left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent shadow-[0_0_15px_rgba(59,130,246,1)] z-20"
                     />
                     
@@ -557,7 +557,7 @@ export default function LandingPage() {
                               key={i} 
                               initial={{ height: 0 }} 
                               whileInView={{ height: `${height}%` }}
-                              transition={{ duration: 0.8, delay: i * 0.1, ease: "easeOut" }}
+                              transition={{ duration: 0.4, delay: i * 0.1, ease: "easeOut" }}
                               className={`w-full rounded-t-md transition-colors ${i === 3 ? 'bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.3)]' : 'bg-slate-200 group-hover:bg-slate-300'}`}
                           />
                       ))}
@@ -632,16 +632,16 @@ export default function LandingPage() {
                  
                  {/* Central Node */}
                  <div className="absolute w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center shadow-[0_0_30px_rgba(37,99,235,0.8)] z-20">
-                    <img src="/dorc-logo.png" alt="Dorc AI" className="w-8 h-8 object-contain filter brightness-0 invert drop-shadow-sm" />
+                    <img loading="lazy" decoding="async" src="/dorc-logo.png" alt="Dorc AI" className="w-8 h-8 object-contain filter brightness-0 invert drop-shadow-sm" />
                  </div>
                  
                  {/* Orbiting / Connected Nodes */}
-                 <motion.div animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} className="absolute w-[280px] h-[280px] border border-white/5 rounded-full flex items-center justify-center">
+                 <motion.div animate={{ rotate: 360 }} transition={{ duration: 5, repeat: Infinity, ease: "linear" }} className="absolute w-[280px] h-[280px] border border-white/5 rounded-full flex items-center justify-center">
                     <div onClick={() => setActiveAgent("fraud")} className="absolute top-0 w-8 h-8 bg-slate-800 border-2 border-slate-500 rounded-full -translate-y-1/2 shadow-lg cursor-pointer hover:scale-150 hover:bg-slate-700 transition-all z-30"></div>
                     <div onClick={() => setActiveAgent("cost")} className="absolute bottom-0 w-8 h-8 bg-slate-800 border-2 border-slate-500 rounded-full translate-y-1/2 shadow-lg cursor-pointer hover:scale-150 hover:bg-slate-700 transition-all z-30"></div>
                  </motion.div>
                  
-                 <motion.div animate={{ rotate: -360 }} transition={{ duration: 15, repeat: Infinity, ease: "linear" }} className="absolute w-[180px] h-[180px] border border-white/5 rounded-full flex items-center justify-center">
+                 <motion.div animate={{ rotate: -360 }} transition={{ duration: 7, repeat: Infinity, ease: "linear" }} className="absolute w-[180px] h-[180px] border border-white/5 rounded-full flex items-center justify-center">
                     <div onClick={() => setActiveAgent("discovery")} className="absolute left-0 w-6 h-6 bg-cyan-600 border-2 border-cyan-400 rounded-full -translate-x-1/2 shadow-[0_0_15px_rgba(6,182,212,0.8)] cursor-pointer hover:scale-150 transition-all z-30"></div>
                     <div onClick={() => setActiveAgent("award")} className="absolute right-0 w-6 h-6 bg-indigo-600 border-2 border-indigo-400 rounded-full translate-x-1/2 shadow-[0_0_15px_rgba(99,102,241,0.8)] cursor-pointer hover:scale-150 transition-all z-30"></div>
                  </motion.div>
@@ -809,7 +809,7 @@ export default function LandingPage() {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
               <div className="col-span-2">
                 <div className="flex items-center gap-3 mb-6">
-                  <img src="/logo_transparent.png" alt="ProcGen Logo" className="w-8 h-8 object-contain filter brightness-0 invert scale-110" />
+                  <img loading="lazy" decoding="async" src="/logo_transparent.png" alt="ProcGen Logo" className="w-8 h-8 object-contain filter brightness-0 invert scale-110" />
                   <span className="font-bold text-2xl tracking-tight text-white ml-1">ProcGen</span>
                 </div>
                 <p className="text-slate-400 leading-relaxed max-w-sm mb-8">

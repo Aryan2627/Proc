@@ -87,7 +87,7 @@ export default function CareersPage() {
       <div className="fixed inset-0 pointer-events-none z-0">
         <motion.div 
           animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3], rotate: [0, 90, 0] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
           className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-violet-600/20 blur-[150px] rounded-full mix-blend-screen"
         />
         <motion.div 
@@ -117,13 +117,13 @@ export default function CareersPage() {
 
       <main className="relative z-10 pt-36 pb-20 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-24 relative">
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.25 }}>
             <span className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-sm font-semibold tracking-wide mb-6 shadow-[0_0_20px_rgba(139,92,246,0.2)]">
               <Sparkles className="w-4 h-4" /> WE ARE HIRING
             </span>
           </motion.div>
           
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} className="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-[1.1]">
+          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.1 }} className="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-[1.1]">
             Build the Future of <br className="hidden md:block"/>
             <span className="relative">
               <span className="absolute inset-0 blur-2xl opacity-40 bg-gradient-to-r from-violet-500 to-cyan-500 text-transparent bg-clip-text">Enterprise Tech</span>
@@ -131,7 +131,7 @@ export default function CareersPage() {
             </span>
           </motion.h1>
           
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.2 }} className="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
             We are looking for driven, ambitious interns to join our fast-growing team. 
             Help us redefine how companies negotiate and manage software globally.
           </motion.p>

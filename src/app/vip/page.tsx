@@ -30,7 +30,7 @@ export default function VIPRegistration() {
     setFormState('success');
   };
 
-  const fadeIn = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8 } } };
+  const fadeIn = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.4 } } };
   const stagger = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.1 } } };
 
   return (
@@ -138,12 +138,12 @@ export default function VIPRegistration() {
           <motion.div 
             initial={{ opacity: 0, x: 100, rotateY: 30 }} 
             animate={{ opacity: 1, x: 0, rotateY: 0 }} 
-            transition={{ duration: 1.2, type: "spring", bounce: 0.4 }}
+            transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}
             className="hidden lg:flex justify-center items-center perspective-[1500px]"
           >
             <motion.div 
               animate={{ rotateY: [0, 10, -10, 0], rotateX: [0, 5, -5, 0], y: [0, -20, 0] }} 
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               className="relative w-full max-w-md aspect-[1/1.5] rounded-3xl"
               style={{ transformStyle: "preserve-3d" }}
             >
@@ -154,7 +154,7 @@ export default function VIPRegistration() {
               <div className="absolute inset-0 bg-[#0a0a0a]/90 backdrop-blur-2xl rounded-3xl border-2 border-white/20 p-8 flex flex-col overflow-hidden shadow-[inset_0_0_50px_rgba(255,255,255,0.05)]">
                 
                 {/* Shiny Sweep effect */}
-                <motion.div animate={{ x: ['-200%', '200%'] }} transition={{ duration: 4, repeat: Infinity, ease: "linear", repeatDelay: 3 }} className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 z-20 pointer-events-none"></motion.div>
+                <motion.div animate={{ x: ['-200%', '200%'] }} transition={{ duration: 2, repeat: Infinity, ease: "linear", repeatDelay: 3 }} className="absolute inset-0 w-1/2 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-12 z-20 pointer-events-none"></motion.div>
 
                 {/* Ticket Punches */}
                 <div className="absolute -left-6 top-[60%] w-12 h-12 bg-[#000] rounded-full border-r-2 border-white/20 shadow-[inset_-10px_0_20px_rgba(0,0,0,1)] z-10"></div>

@@ -10,7 +10,7 @@ export default function AILab() {
   
 useEffect(() => {
     const lenis = new Lenis({
-      duration: 1.2,
+      duration: 0.6,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
     function raf(time: number) {
@@ -26,7 +26,7 @@ useEffect(() => {
       x: Math.random() * 2000,
       y: Math.random() * -300 - 100,
       delay: Math.random() * 5,
-      duration: Math.random() * 4 + 2
+      duration: Math.random() * 2 + 1
     })));
   }, []);
 
@@ -38,7 +38,7 @@ useEffect(() => {
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-8 lg:gap-12">
             <Link href="/" className="flex items-center gap-3 cursor-pointer">
-              <img src="/logo_transparent.png" alt="ProcGen" className="w-8 h-8 object-contain filter brightness-0 invert" />
+              <img loading="lazy" decoding="async"  src="/logo_transparent.png" alt="ProcGen" className="w-8 h-8 object-contain filter brightness-0 invert" />
               <span className="font-bold text-xl tracking-tight text-white">ProcGen</span>
             </Link>
             
@@ -89,21 +89,21 @@ useEffect(() => {
         
         <div className="w-full max-w-6xl mx-auto px-6 relative z-10 flex flex-col items-center">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-sm font-bold tracking-wide mb-8"
           >
             <FlaskConical size={16} /> ProcGen Research
           </motion.div>
 
           <motion.h1 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }}
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.1 }}
             className="text-6xl md:text-[88px] font-black tracking-tighter mb-8 leading-[1.05] text-white w-full text-center"
           >
             Inventing the <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">Autonomous</span><br className="hidden md:block" /> Supply Chain.
           </motion.h1>
           
           <motion.p 
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3, delay: 0.2 }}
             className="text-xl md:text-2xl text-slate-400 leading-relaxed font-medium max-w-3xl mb-12"
           >
             The ProcGen AI Lab is our dedicated research group focused on Multi-Agent Swarms, Enterprise Context Layers, and the mathematics of procurement.
@@ -266,7 +266,7 @@ useEffect(() => {
             <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
               <div className="col-span-2">
                 <div className="flex items-center gap-3 mb-6">
-                  <img src="/logo_transparent.png" alt="ProcGen" className="w-8 h-8 object-contain filter brightness-0 invert opacity-80" />
+                  <img loading="lazy" decoding="async"  src="/logo_transparent.png" alt="ProcGen" className="w-8 h-8 object-contain filter brightness-0 invert opacity-80" />
                   <span className="font-bold text-xl tracking-tight text-slate-300">ProcGen</span>
                 </div>
                 <p className="text-slate-500 leading-relaxed max-w-sm mb-8">
