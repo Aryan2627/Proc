@@ -268,7 +268,7 @@ export default function LandingPage() {
       {/* --- ATLAN BENTO BOX / FEATURES SECTION --- */}
       
       {/* --- PIPELINE MANIFESTO SECTION --- */}
-      <section className="py-32 relative overflow-hidden bg-[#02040A] text-white border-b border-white/5">
+      <section className="pt-32 pb-16 relative overflow-hidden bg-[#02040A] text-white">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[500px] bg-blue-600/10 blur-[150px] rounded-full pointer-events-none"></div>
         
         <div className="max-w-7xl mx-auto px-6 relative z-10">
@@ -370,6 +370,9 @@ export default function LandingPage() {
         </div>
       </section>
 
+      
+      {/* --- TRANSITION BLEND --- */}
+      <div className="w-full h-48 bg-gradient-to-b from-[#02040A] to-transparent pointer-events-none -mt-1"></div>
       
       {/* --- DORC FEATURES DETAILED SECTION --- */}
       <section id="dorc-features" className="py-24 bg-transparent border-b border-slate-200">
