@@ -739,7 +739,7 @@ export default function LandingPage() {
         </section>
 
       {/* --- MEGA BOTTOM CTA --- */}
-      <section className="py-32 bg-blue-600 text-white text-center relative overflow-hidden">
+      <section className="pt-24 pb-32 bg-gradient-to-b from-[#000511] via-blue-800 to-blue-600 text-white text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.15),transparent)]"></div>
         
