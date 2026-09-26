@@ -654,8 +654,11 @@ export default function LandingPage() {
         </div>
       </motion.div>
       </section>
+      {/* --- TRANSITION BLEND TO GOVERNANCE --- */}
+      <div className="w-full h-48 bg-gradient-to-b from-transparent to-[#000511] pointer-events-none -mb-1"></div>
+      
       {/* --- GOVERNANCE & CONTROL SECTION --- */}
-        <section className="py-32 relative overflow-hidden bg-[#000511] border-t border-white/5">
+        <section className="pt-16 pb-32 relative overflow-hidden bg-[#000511]">
           {/* Subtle grid background */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b20_1px,transparent_1px),linear-gradient(to_bottom,#1e293b20_1px,transparent_1px)] bg-[size:3rem_3rem] [mask-image:radial-gradient(ellipse_70%_70%_at_50%_50%,#000_20%,transparent_100%)]"></div>
           
