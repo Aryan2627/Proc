@@ -82,13 +82,13 @@ export default function CareersPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#020202] text-white selection:bg-violet-500/30 overflow-x-hidden font-sans">
+    <div className="min-h-screen bg-[#0B101E] text-white selection:bg-blue-500/30 overflow-x-hidden font-sans">
       {/* Animated Background Gradients */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <motion.div 
           animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3], rotate: [0, 90, 0] }}
           transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-violet-600/20 blur-[150px] rounded-full mix-blend-screen"
+          className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-blue-600/20 blur-[150px] rounded-full mix-blend-screen"
         />
         <motion.div 
           animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2], rotate: [0, -90, 0] }}
@@ -99,26 +99,24 @@ export default function CareersPage() {
       </div>
 
       {/* Navbar */}
-      <nav className="fixed w-full z-50 top-0 pt-6 px-6">
-        <motion.div 
-          initial={{ y: -50, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ type: "spring", damping: 20 }}
-          className="max-w-5xl mx-auto bg-[#0a0a0a]/60 backdrop-blur-2xl border border-white/5 shadow-[0_10px_40px_rgba(0,0,0,0.5),inset_0_1px_0_rgba(255,255,255,0.1)] rounded-full h-16 flex items-center justify-between px-6 relative overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-[100%] animate-[shimmer_3s_infinite]"></div>
-          <Link href="/" className="font-bold text-xl tracking-tight text-white relative z-10 flex items-center gap-2">
-            <div className="w-6 h-6 bg-gradient-to-br from-violet-500 to-cyan-400 rounded-lg shadow-lg"></div>
-            Proc<span className="text-violet-400">Gen</span>
+      <nav className="fixed w-full z-50 top-0 bg-[#0B101E]/80 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 shadow-[0_0_15px_rgba(37,99,235,0.5)] group-hover:shadow-[0_0_25px_rgba(37,99,235,0.8)] transition-all">
+              <img loading="lazy" decoding="async" src="/logo_transparent.png" alt="ProcGen Logo" className="w-8 h-8 object-contain scale-110 filter brightness-0 invert" />
+            </div>
+            <span className="font-bold text-2xl tracking-tight text-white ml-1">ProcGen</span>
           </Link>
-          <Link href="/" className="text-sm font-medium text-zinc-400 hover:text-white transition-colors relative z-10">
-            Back to Home
-          </Link>
-        </motion.div>
+          <div className="hidden md:flex items-center gap-8">
+            <Link href="/careers" className="text-sm font-semibold text-white transition-colors">Careers</Link>
+          </div>
+        </div>
       </nav>
 
       <main className="relative z-10 pt-36 pb-20 px-6 max-w-7xl mx-auto">
         <div className="text-center mb-24 relative">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.25 }}>
-            <span className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 text-sm font-semibold tracking-wide mb-6 shadow-[0_0_20px_rgba(139,92,246,0.2)]">
+            <span className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-sm font-semibold tracking-wide mb-6 shadow-[0_0_20px_rgba(37,99,235,0.2)]">
               <Sparkles className="w-4 h-4" /> WE ARE HIRING
             </span>
           </motion.div>
@@ -126,8 +124,8 @@ export default function CareersPage() {
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.1 }} className="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-[1.1]">
             Build the Future of <br className="hidden md:block"/>
             <span className="relative">
-              <span className="absolute inset-0 blur-2xl opacity-40 bg-gradient-to-r from-violet-500 to-cyan-500 text-transparent bg-clip-text">Enterprise Tech</span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-cyan-400">Enterprise Tech</span>
+              <span className="absolute inset-0 blur-2xl opacity-40 bg-gradient-to-r from-blue-500 to-cyan-500 text-transparent bg-clip-text">Enterprise Tech</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Enterprise Tech</span>
             </span>
           </motion.h1>
           
@@ -156,19 +154,19 @@ export default function CareersPage() {
                 }}
                 className={`group relative p-6 md:p-8 rounded-3xl cursor-pointer transition-all duration-500 overflow-hidden ${
                   selectedRole === pos.id 
-                  ? 'bg-gradient-to-b from-violet-900/40 to-black/60 border border-violet-500/50 shadow-[0_10px_40px_rgba(139,92,246,0.15)]' 
+                  ? 'bg-gradient-to-b from-violet-900/40 to-black/60 border border-blue-500/50 shadow-[0_10px_40px_rgba(37,99,235,0.15)]' 
                   : 'bg-white/[0.02] border border-white/5 hover:border-white/10 hover:bg-white/[0.04]'
                 }`}
               >
                 {/* Active Indicator Glow */}
                 {selectedRole === pos.id && (
-                  <motion.div layoutId="activeGlow" className="absolute -inset-px rounded-3xl bg-gradient-to-b from-violet-500/20 to-transparent opacity-50 pointer-events-none" />
+                  <motion.div layoutId="activeGlow" className="absolute -inset-px rounded-3xl bg-gradient-to-b from-blue-500/20 to-transparent opacity-50 pointer-events-none" />
                 )}
 
                 <div className="relative z-10 flex flex-col h-full">
                   <div className="flex justify-between items-start mb-4">
                     <div>
-                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-violet-300 transition-colors">{pos.title}</h3>
+                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">{pos.title}</h3>
                       <div className="flex items-center gap-3 text-sm text-zinc-400">
                         <span className="flex items-center gap-1.5"><Briefcase className="w-4 h-4" /> {pos.department}</span>
                         <span className="w-1 h-1 bg-zinc-600 rounded-full"></span>
@@ -180,7 +178,7 @@ export default function CareersPage() {
                   <p className="text-zinc-400/80 text-sm leading-relaxed mb-6 line-clamp-2">{pos.description}</p>
                   
                   <div className="mt-auto pt-5 border-t border-white/10 flex justify-between items-center">
-                    <span className={`text-sm font-bold flex items-center gap-1 transition-colors ${selectedRole === pos.id ? 'text-violet-400' : 'text-zinc-500 group-hover:text-white'}`}>
+                    <span className={`text-sm font-bold flex items-center gap-1 transition-colors ${selectedRole === pos.id ? 'text-blue-400' : 'text-zinc-500 group-hover:text-white'}`}>
                       {selectedRole === pos.id ? 'Currently viewing' : 'View role'} <ChevronRight className="w-4 h-4" />
                     </span>
                     <button 
@@ -193,7 +191,7 @@ export default function CareersPage() {
                           setTimeout(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }), 100);
                         }
                       }}
-                      className="bg-white/5 hover:bg-violet-600 border border-white/10 hover:border-violet-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] flex items-center gap-2 relative z-20"
+                      className="bg-white/5 hover:bg-blue-600 border border-white/10 hover:border-blue-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] flex items-center gap-2 relative z-20"
                     >
                       Apply <span className="hidden sm:inline">Now</span>
                     </button>
@@ -212,7 +210,7 @@ export default function CareersPage() {
                   initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
                   className="h-full min-h-[500px] border border-dashed border-white/10 rounded-[2rem] flex flex-col items-center justify-center bg-gradient-to-b from-white/[0.02] to-transparent backdrop-blur-sm relative overflow-hidden"
                 >
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(139,92,246,0.05)_0%,transparent_70%)]"></div>
+                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.05)_0%,transparent_70%)]"></div>
                   <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mb-6 shadow-inner border border-white/10">
                     <Briefcase className="w-8 h-8 text-zinc-500" />
                   </div>
@@ -225,10 +223,10 @@ export default function CareersPage() {
                 <motion.div 
                   key="details"
                   initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ type: 'spring' as const, damping: 25, stiffness: 200 }}
-                  className="bg-[#0a0a0a]/80 border border-white/10 p-8 md:p-12 rounded-[2rem] backdrop-blur-xl shadow-2xl relative overflow-hidden"
+                  className="bg-[#02040A]/80 border border-white/10 p-8 md:p-12 rounded-[2rem] backdrop-blur-xl shadow-2xl relative overflow-hidden"
                 >
                   {/* Subtle Top Glow */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent"></div>
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
                   
                   <div className="mb-8">
                     <span className="inline-block px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold rounded-full mb-6 uppercase tracking-widest">{selectedPos.department}</span>
@@ -239,12 +237,12 @@ export default function CareersPage() {
                   <div className="grid md:grid-cols-2 gap-10 mb-12">
                     <div className="space-y-4">
                       <h4 className="text-white font-bold flex items-center gap-2 text-lg">
-                        <CheckCircle2 className="w-5 h-5 text-violet-400" /> What you'll do
+                        <CheckCircle2 className="w-5 h-5 text-blue-400" /> What you'll do
                       </h4>
                       <ul className="space-y-3">
                         {selectedPos.responsibilities.map((r, i) => (
                           <li key={i} className="text-zinc-400 text-sm flex items-start gap-2">
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-violet-500/50 shrink-0"></span>
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500/50 shrink-0"></span>
                             <span className="leading-relaxed">{r}</span>
                           </li>
                         ))}
@@ -267,7 +265,7 @@ export default function CareersPage() {
 
                   <button 
                     onClick={() => setIsApplying(true)}
-                    className="w-full py-5 rounded-2xl bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-black text-lg transition-all shadow-[0_10px_30px_rgba(139,92,246,0.3)] hover:shadow-[0_15px_40px_rgba(139,92,246,0.5)] hover:-translate-y-1 flex justify-center items-center gap-2 group"
+                    className="w-full py-5 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-black text-lg transition-all shadow-[0_10px_30px_rgba(37,99,235,0.3)] hover:shadow-[0_15px_40px_rgba(37,99,235,0.5)] hover:-translate-y-1 flex justify-center items-center gap-2 group"
                   >
                     Start Your Application <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                   </button>
@@ -278,9 +276,9 @@ export default function CareersPage() {
                 <motion.div 
                   key="form"
                   initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ type: 'spring' as const, damping: 25, stiffness: 200 }}
-                  className="bg-[#0a0a0a]/90 border border-white/10 p-8 md:p-12 rounded-[2rem] backdrop-blur-xl shadow-2xl relative overflow-hidden"
+                  className="bg-[#02040A]/90 border border-white/10 p-8 md:p-12 rounded-[2rem] backdrop-blur-xl shadow-2xl relative overflow-hidden"
                 >
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-violet-500"></div>
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
 
                   <div className="flex items-center gap-4 mb-10">
                     <button 
@@ -302,7 +300,7 @@ export default function CareersPage() {
                       </div>
                       <h3 className="text-3xl font-black mb-3">Application Received!</h3>
                       <p className="text-zinc-400 max-w-sm mx-auto mb-10">Thank you for applying. Our team will review your profile and get back to you shortly if there's a match.</p>
-                      <button onClick={() => {setStatus('idle'); setSelectedRole(null); setIsApplying(false);}} className="text-sm font-bold text-violet-400 hover:text-violet-300 hover:underline">
+                      <button onClick={() => {setStatus('idle'); setSelectedRole(null); setIsApplying(false);}} className="text-sm font-bold text-blue-400 hover:text-blue-300 hover:underline">
                         Browse other open roles
                       </button>
                     </motion.div>
@@ -311,27 +309,27 @@ export default function CareersPage() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div className="space-y-2">
                           <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Full Name</label>
-                          <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-violet-500 focus:bg-violet-500/5 transition-all shadow-inner" placeholder="Jane Doe" />
+                          <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all shadow-inner" placeholder="Jane Doe" />
                         </div>
                         <div className="space-y-2">
                           <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Email Address</label>
-                          <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-violet-500 focus:bg-violet-500/5 transition-all shadow-inner" placeholder="jane@example.com" />
+                          <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all shadow-inner" placeholder="jane@example.com" />
                         </div>
                       </div>
                       
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Phone Number</label>
-                        <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-violet-500 focus:bg-violet-500/5 transition-all shadow-inner" placeholder="+1 (555) 000-0000" />
+                        <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all shadow-inner" placeholder="+1 (555) 000-0000" />
                       </div>
 
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Resume Link <span className="text-zinc-600 normal-case font-normal">(Drive, LinkedIn, Site)</span></label>
-                        <input required type="url" value={formData.resume} onChange={e => setFormData({...formData, resume: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-violet-500 focus:bg-violet-500/5 transition-all shadow-inner" placeholder="https://..." />
+                        <input required type="url" value={formData.resume} onChange={e => setFormData({...formData, resume: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all shadow-inner" placeholder="https://..." />
                       </div>
 
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Why ProcGen?</label>
-                        <textarea required rows={4} value={formData.coverLetter} onChange={e => setFormData({...formData, coverLetter: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-violet-500 focus:bg-violet-500/5 transition-all resize-none shadow-inner" placeholder="Tell us why you'd be a great fit..."></textarea>
+                        <textarea required rows={4} value={formData.coverLetter} onChange={e => setFormData({...formData, coverLetter: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all resize-none shadow-inner" placeholder="Tell us why you'd be a great fit..."></textarea>
                       </div>
 
                       {status === 'error' && (
