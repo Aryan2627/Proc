@@ -1046,80 +1046,76 @@ export default function LandingPage() {
       {/* --- AI SDR CHAT WIDGET --- */}
         <button
           onClick={() => setIsChatOpen(true)}
-          className={`fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-tr from-blue-700 to-blue-500 text-white rounded-full shadow-[0_0_30px_rgba(37,99,235,0.5)] border border-blue-400/30 flex items-center justify-center hover:scale-110 transition-all duration-300 z-[90] ${isChatOpen ? 'hidden' : 'flex'}`}
+          className={`fixed bottom-6 right-6 w-16 h-16 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-blue-700 transition-transform hover:scale-105 z-[90] ${isChatOpen ? 'hidden' : 'flex'}`}
         >
-          <MessageCircle size={28} className="drop-shadow-lg" />
+          <MessageCircle size={32} />
         </button>
 
       <AnimatePresence>
         {isChatOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.95 }}
-              className="fixed bottom-6 right-6 w-[360px] bg-[#000511]/95 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-[0_0_40px_rgba(37,99,235,0.15)] z-[100] overflow-hidden flex flex-col"
-            >
-              {/* Header */}
-              <div className="bg-gradient-to-r from-blue-900/40 to-transparent p-4 flex items-center justify-between border-b border-white/10">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(37,99,235,0.2)]">
-                    <Bot size={20} />
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-sm text-white tracking-wide">Dorc AI SDR</h4>
-                    <div className="flex items-center gap-1.5 mt-0.5">
-                      <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_5px_rgba(34,197,94,0.8)]" />
-                      <p className="text-[10px] text-green-400 uppercase tracking-widest font-semibold">Online</p>
-                    </div>
-                  </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            className="fixed bottom-6 right-6 w-[350px] bg-white border border-slate-200 rounded-2xl shadow-2xl z-[100] overflow-hidden flex flex-col"
+          >
+            {/* Header */}
+            <div className="bg-blue-600 p-4 flex items-center justify-between text-white">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm shadow-sm">
+                  <Bot size={18} />
                 </div>
-                <button onClick={() => setIsChatOpen(false)} className="text-slate-400 hover:text-white transition-colors bg-white/5 hover:bg-white/10 p-1.5 rounded-full">
-                  <X size={18} />
+                <div>
+                  <h4 className="font-bold text-sm leading-tight">Dorc AI SDR</h4>
+                  <p className="text-[10px] text-blue-100 uppercase tracking-widest">Online</p>
+                </div>
+              </div>
+              <button onClick={() => setIsChatOpen(false)} className="text-blue-100 hover:text-white transition-colors">
+                <X size={20} />
+              </button>
+            </div>
+
+            {/* Messages Body */}
+            <div className="h-[320px] p-4 overflow-y-auto bg-slate-50 flex flex-col gap-3">
+              {chatMessages.map((msg, i) => (
+                <div key={i} className={`max-w-[85%] p-3 rounded-2xl text-sm shadow-sm ${msg.role === 'ai' ? 'bg-white border border-slate-200 text-slate-800 self-start rounded-tl-sm' : 'bg-blue-600 text-white self-end rounded-tr-sm'}`}>
+                  {msg.content}
+                </div>
+              ))}
+            </div>
+
+            {/* Input Area */}
+            <div className="p-3 border-t border-slate-200 bg-white">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  if(!currentMessage.trim()) return;
+                  const msgText = currentMessage;
+                  const newMsgs = [...chatMessages, { role: 'user', content: msgText }];
+                  setChatMessages(newMsgs);
+                  setCurrentMessage('');
+                  // Sophisticated AI Reply
+                  setTimeout(() => {
+                     const aiResponse = generateAIResponse(msgText, newMsgs);
+                     setChatMessages([...newMsgs, { role: 'ai', content: aiResponse }]);
+                  }, 600 + Math.random() * 800); // Realistic variable typing delay
+                }}
+                className="flex items-center gap-2"
+              >
+                <input
+                  type="text"
+                  value={currentMessage}
+                  onChange={(e) => setCurrentMessage(e.target.value)}
+                  placeholder="Type your message..."
+                  className="flex-1 bg-slate-100 border border-slate-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-slate-900"
+                />
+                <button type="submit" className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 shrink-0 shadow-sm transition-transform hover:scale-105 disabled:opacity-50" disabled={!currentMessage.trim()}>
+                  <Send size={16} className="-ml-0.5" />
                 </button>
-              </div>
-
-              {/* Messages Body */}
-              <div className="h-[360px] p-4 overflow-y-auto bg-transparent flex flex-col gap-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
-                {chatMessages.map((msg, i) => (
-                  <div key={i} className={`max-w-[85%] p-3.5 text-[0.85rem] leading-relaxed ${msg.role === 'ai' ? 
-'bg-slate-800/60 border border-white/5 text-slate-200 self-start rounded-2xl rounded-tl-sm shadow-sm' : 
-'bg-blue-600 text-white self-end rounded-2xl rounded-tr-sm shadow-[0_0_15px_rgba(37,99,235,0.4)]'}`}>
-                    {msg.content}
-                  </div>
-                ))}
-              </div>
-
-              {/* Input Area */}
-              <div className="p-3 border-t border-white/10 bg-slate-900/50">
-                <form
-                  onSubmit={(e) => {
-                    e.preventDefault();
-                    if(!currentMessage.trim()) return;
-                    const msgText = currentMessage;
-                    const newMsgs = [...chatMessages, { role: 'user', content: msgText }];
-                    setChatMessages(newMsgs);
-                    setCurrentMessage('');
-                    setTimeout(() => {
-                       const aiResponse = generateAIResponse(msgText, newMsgs);
-                       setChatMessages([...newMsgs, { role: 'ai', content: aiResponse }]);
-                    }, 600 + Math.random() * 800);
-                  }}
-                  className="flex items-center gap-2"
-                >
-                  <input
-                    type="text"
-                    value={currentMessage}
-                    onChange={(e) => setCurrentMessage(e.target.value)}
-                    placeholder="Type a message..."
-                    className="flex-1 bg-[#0B101E] border border-white/10 text-white placeholder:text-slate-500 rounded-xl px-4 py-2.5 text-sm outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
-                  />
-                  <button type="submit" className="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center hover:bg-blue-500 transition-colors shadow-[0_0_10px_rgba(37,99,235,0.3)] shrink-0">
-                    <Send size={16} className="ml-0.5" />
-                  </button>
-                </form>
-              </div>
-            </motion.div>
-          )}
+              </form>
+            </div>
+          </motion.div>
+        )}
       </AnimatePresence>
 
     </div>
