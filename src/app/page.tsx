@@ -7,6 +7,7 @@ import { motion, AnimatePresence, useScroll, useSpring, useInView } from 'framer
 
 export default function LandingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success'>('idle');
   const [formData, setFormData] = useState({ name: '', email: '', company: '' });
 
@@ -228,7 +229,7 @@ export default function LandingPage() {
 
           <div className="hidden md:flex items-center gap-6">
             
-            <button onClick={() => setIsModalOpen(true)} className="text-[15px] font-bold bg-blue-600 text-white px-5 py-2.5 rounded-lg shadow-sm hover:bg-blue-700 hover:shadow-md transition-all flex items-center gap-2">
+            <button onClick={() => setIsVideoModalOpen(true)} className="text-[15px] font-bold bg-blue-600 text-white px-5 py-2.5 rounded-lg shadow-sm hover:bg-blue-700 hover:shadow-md transition-all flex items-center gap-2">
               Request Demo
             </button>
           </div>
@@ -286,7 +287,7 @@ export default function LandingPage() {
             </motion.p>
             
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
-              <button onClick={() => setIsModalOpen(true)} className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold px-8 py-4 rounded-xl hover:bg-blue-500 transition-all text-base shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]">
+              <button onClick={() => setIsVideoModalOpen(true)} className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold px-8 py-4 rounded-xl hover:bg-blue-500 transition-all text-base shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]">
                 Take a Tour <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
               <a href="#features" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/5 text-white border border-white/10 font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all text-base backdrop-blur-sm">
@@ -977,7 +978,30 @@ export default function LandingPage() {
       </footer>
 
 
-      {/* --- CONNECT WITH SALES MODAL --- */}
+      
+        {/* --- VIDEO MODAL --- */}
+        <AnimatePresence>
+          {isVideoModalOpen && (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsVideoModalOpen(false)} className="absolute inset-0 bg-slate-900/80 backdrop-blur-md" />
+              <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} className="relative w-full max-w-5xl bg-[#000511] border border-white/10 rounded-2xl shadow-2xl overflow-hidden aspect-video flex items-center justify-center">
+                <button onClick={() => setIsVideoModalOpen(false)} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-10 bg-black/50 p-2 rounded-full">
+                  <X size={24} />
+                </button>
+                <iframe 
+                  src="https://drive.google.com/file/d/14P6lwqlfwFQnRTEGHK1yK60pIGzk3Gbj/preview" 
+                  width="100%" 
+                  height="100%" 
+                  allow="autoplay" 
+                  allowFullScreen
+                  className="w-full h-full border-0"
+                />
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+
+        {/* --- CONNECT WITH SALES MODAL --- */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
