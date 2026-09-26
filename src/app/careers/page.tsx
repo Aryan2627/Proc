@@ -1,46 +1,61 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
-import { Briefcase, MapPin, Sparkles, ChevronRight, CheckCircle2, ArrowLeft, Send } from 'lucide-react';
+import { Terminal, Cpu, Zap, Fingerprint, Crosshair, ArrowLeft, Send, Network, ShieldAlert, Eye, Code2, Database } from 'lucide-react';
 
 export default function CareersPage() {
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
   const [isApplying, setIsApplying] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', resume: '', coverLetter: '' });
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-  const [errorMsg, setErrorMsg] = useState('');
+  const [formData, setFormData] = useState({ name: '', email: '', resume: '', coverLetter: '' });
+  const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [terminalText, setTerminalText] = useState('');
+  
+  const fullTerminalText = '> ESTABLISHING SECURE UPLINK TO DORC AI NEURAL CORE...\n> CONNECTION STABLE.\n> ANALYZING INCOMING HUMAN METRICS...\n> 3 CRITICAL NODES REQUIRE HUMAN OVERSIGHT.\n> INITIATE RECRUITMENT_PROTOCOL.EXE';
+
+  useEffect(() => {
+    let i = 0;
+    const typing = setInterval(() => {
+      setTerminalText(fullTerminalText.slice(0, i));
+      i++;
+      if (i > fullTerminalText.length) clearInterval(typing);
+    }, 30);
+    return () => clearInterval(typing);
+  }, []);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   const positions = [
     {
       id: 'strategy-intern',
-      title: 'Strategy Intern',
+      title: 'Strategy Operations (Node 1)',
       department: 'Corporate Strategy',
-      type: 'Internship',
-      location: 'Remote / Global',
-      description: 'Work closely with our executive team to shape the future of enterprise procurement. You will analyze market trends, evaluate potential partnerships, and build strategic growth models.',
-      requirements: ['Strong analytical skills', 'Familiarity with SaaS business models', 'Excellent written communication'],
-      responsibilities: ['Conduct market research', 'Draft internal strategy memos', 'Assist in partnership evaluation']
+      type: 'Level 1 Clearance',
+      icon: <Network className="w-6 h-6 text-cyan-400" />,
+      description: 'Human oversight required for macro-level expansion. Architect market models, evaluate ecosystem vulnerabilities, and map the expansion of our autonomous procurement network.',
     },
     {
       id: 'research-intern',
-      title: 'Research Associate Intern',
-      department: 'Data & Insights',
-      type: 'Internship',
-      location: 'Remote / Global',
-      description: 'Dive deep into B2B software pricing and vendor landscapes. Your research will directly power our AI Negotiator models and provide critical insights to our top-tier enterprise clients.',
-      requirements: ['Data-driven mindset', 'Attention to detail', 'Experience with Excel/Sheets'],
-      responsibilities: ['Gather pricing data for major SaaS tools', 'Structure data for AI training', 'Publish internal market reports']
+      title: 'Data Intelligence (Node 2)',
+      department: 'Neural Training',
+      type: 'Level 1 Clearance',
+      icon: <Database className="w-6 h-6 text-blue-400" />,
+      description: 'Feed the swarm. Construct high-density B2B pricing datasets, synthesize vendor metadata, and directly train the Dorc AI Negotiator algorithms.',
     },
     {
       id: 'bdr-intern',
-      title: 'Business Development (BDR) Intern',
-      department: 'Sales',
-      type: 'Internship',
-      location: 'Remote / Global',
-      description: 'Be the tip of the spear for ProcGen\'s growth. You will identify key enterprise prospects, craft compelling outreach, and learn the fundamentals of high-ticket B2B SaaS sales.',
-      requirements: ['High energy and resilience', 'Desire to learn enterprise sales', 'Strong interpersonal skills'],
-      responsibilities: ['Identify target enterprise accounts', 'Craft personalized outreach campaigns', 'Shadow discovery calls with Account Executives']
+      title: 'Growth Infiltration (Node 3)',
+      department: 'Expansion',
+      type: 'Level 1 Clearance',
+      icon: <Crosshair className="w-6 h-6 text-indigo-400" />,
+      description: 'Act as the tip of the spear. Identify enterprise vulnerabilities, execute targeted outreach vectors, and establish initial neural links with Fortune 500 targets.',
     }
   ];
 
@@ -57,311 +72,198 @@ export default function CareersPage() {
       
       if (res.ok) {
         setStatus('success');
-        setFormData({ name: '', email: '', phone: '', resume: '', coverLetter: '' });
+        setFormData({ name: '', email: '', resume: '', coverLetter: '' });
       } else {
-        const errData = await res.json().catch(() => ({}));
-        setErrorMsg(errData.error || 'Server returned ' + res.status);
-        setStatus('error');
+        setStatus('idle');
+        alert('Transmission failed. Check network connection.');
       }
     } catch (error: any) {
-      setErrorMsg(error.message || 'Network error');
-      setStatus('error');
+      setStatus('idle');
+      alert('Transmission failed. Check network connection.');
     }
   };
 
   const selectedPos = positions.find(p => p.id === selectedRole);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { type: 'spring' as const, stiffness: 100, damping: 15 } }
-  };
-
   return (
-    <div className="min-h-screen bg-[#0B101E] text-white selection:bg-blue-500/30 overflow-x-hidden font-sans">
-      {/* Animated Background Gradients */}
-      <div className="fixed inset-0 pointer-events-none z-0">
+    <div className="min-h-screen bg-[#02040A] text-white overflow-hidden font-mono selection:bg-cyan-500/30 relative">
+      
+      {/* MOUSE SPOTLIGHT */}
+      <div 
+        className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-300"
+        style={{
+          background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(34,211,238,0.06), transparent 40%)`
+        }}
+      />
+
+      {/* BACKGROUND EFFECTS */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+        
+        {/* Animated Grid */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#00ffff0a_1px,transparent_1px),linear-gradient(to_bottom,#00ffff0a_1px,transparent_1px)] bg-[size:4rem_4rem] [perspective:1000px]">
+          <motion.div 
+            animate={{ backgroundPosition: ['0px 0px', '0px 64px'] }} 
+            transition={{ repeat: Infinity, duration: 2, ease: 'linear' }}
+            className="absolute inset-0 bg-[linear-gradient(to_right,#00ffff0a_1px,transparent_1px),linear-gradient(to_bottom,#00ffff0a_1px,transparent_1px)] bg-[size:4rem_4rem]"
+          />
+        </div>
+
+        {/* Central Core Glow */}
         <motion.div 
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3], rotate: [0, 90, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-          className="absolute top-[-20%] left-[-10%] w-[60%] h-[60%] bg-blue-600/20 blur-[150px] rounded-full mix-blend-screen"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/20 blur-[150px] rounded-full mix-blend-screen"
         />
-        <motion.div 
-          animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2], rotate: [0, -90, 0] }}
-          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-cyan-600/10 blur-[150px] rounded-full mix-blend-screen"
-        />
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay"></div>
       </div>
 
-      {/* Navbar */}
-      <nav className="fixed w-full z-50 top-0 bg-[#0B101E]/80 backdrop-blur-xl border-b border-white/5 transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      {/* NAVBAR */}
+      <nav className="fixed w-full z-50 top-0 border-b border-cyan-500/20 bg-[#02040A]/80 backdrop-blur-xl">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 shadow-[0_0_15px_rgba(37,99,235,0.5)] group-hover:shadow-[0_0_25px_rgba(37,99,235,0.8)] transition-all">
-              <img loading="lazy" decoding="async" src="/logo_transparent.png" alt="ProcGen Logo" className="w-8 h-8 object-contain scale-110 filter brightness-0 invert" />
+            <div className="relative flex items-center justify-center w-8 h-8 rounded-lg bg-black border border-cyan-500/30 shadow-[0_0_15px_rgba(34,211,238,0.3)]">
+              <Cpu className="w-4 h-4 text-cyan-400 group-hover:animate-pulse" />
             </div>
-            <span className="font-bold text-2xl tracking-tight text-white ml-1">ProcGen</span>
+            <span className="font-bold tracking-widest text-white uppercase text-sm">Dorc.AI_Core</span>
           </Link>
-          <div className="hidden md:flex items-center gap-8">
-            <Link href="/careers" className="text-sm font-semibold text-white transition-colors">Careers</Link>
+          <div className="flex items-center gap-4 text-xs font-bold text-cyan-400 tracking-widest">
+            <span className="animate-pulse flex items-center gap-2"><div className="w-2 h-2 bg-cyan-400 rounded-full"></div> SYSTEM_ONLINE</span>
           </div>
         </div>
       </nav>
 
-      <main className="relative z-10 pt-36 pb-20 px-6 max-w-7xl mx-auto">
-        <div className="text-center mb-24 relative">
-          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.25 }}>
-            <span className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-300 text-sm font-semibold tracking-wide mb-6 shadow-[0_0_20px_rgba(37,99,235,0.2)]">
-              <Sparkles className="w-4 h-4" /> WE ARE HIRING
-            </span>
-          </motion.div>
-          
-          <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.1 }} className="text-6xl md:text-8xl font-black tracking-tighter mb-6 leading-[1.1]">
-            Build the Future of <br className="hidden md:block"/>
-            <span className="relative">
-              <span className="absolute inset-0 blur-2xl opacity-40 bg-gradient-to-r from-blue-500 to-cyan-500 text-transparent bg-clip-text">Enterprise Tech</span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Enterprise Tech</span>
-            </span>
-          </motion.h1>
-          
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.25, delay: 0.2 }} className="text-lg md:text-xl text-zinc-400 max-w-3xl mx-auto leading-relaxed">
-            We are looking for driven, ambitious interns to join our fast-growing team. 
-            Help us redefine how companies negotiate and manage software globally.
-          </motion.p>
-        </div>
-
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-          {/* Left Panel: Roles List */}
-          <motion.div 
-            variants={containerVariants} initial="hidden" animate="visible" 
-            className="lg:col-span-5 space-y-4"
-          >
-            {positions.map((pos) => (
-              <motion.div 
-                key={pos.id}
-                variants={itemVariants}
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                onClick={() => {
-                  setSelectedRole(pos.id);
-                  setIsApplying(false);
-                  setStatus('idle');
-                }}
-                className={`group relative p-6 md:p-8 rounded-3xl cursor-pointer transition-all duration-500 overflow-hidden ${
-                  selectedRole === pos.id 
-                  ? 'bg-gradient-to-b from-violet-900/40 to-black/60 border border-blue-500/50 shadow-[0_10px_40px_rgba(37,99,235,0.15)]' 
-                  : 'bg-white/[0.02] border border-white/5 hover:border-white/10 hover:bg-white/[0.04]'
-                }`}
-              >
-                {/* Active Indicator Glow */}
-                {selectedRole === pos.id && (
-                  <motion.div layoutId="activeGlow" className="absolute -inset-px rounded-3xl bg-gradient-to-b from-blue-500/20 to-transparent opacity-50 pointer-events-none" />
-                )}
-
-                <div className="relative z-10 flex flex-col h-full">
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <h3 className="text-2xl font-bold text-white mb-2 group-hover:text-blue-300 transition-colors">{pos.title}</h3>
-                      <div className="flex items-center gap-3 text-sm text-zinc-400">
-                        <span className="flex items-center gap-1.5"><Briefcase className="w-4 h-4" /> {pos.department}</span>
-                        <span className="w-1 h-1 bg-zinc-600 rounded-full"></span>
-                        <span className="flex items-center gap-1.5 text-cyan-400/80"><MapPin className="w-4 h-4" /> {pos.location}</span>
-                      </div>
-                    </div>
+      <main className="relative z-10 pt-32 pb-20 px-6 max-w-7xl mx-auto">
+        <AnimatePresence mode="wait">
+          {!isApplying ? (
+            <motion.div key="dashboard" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0, scale: 0.95 }} transition={{ duration: 0.5 }}>
+              
+              {/* TERMINAL HEADER */}
+              <div className="mb-20 max-w-3xl mx-auto">
+                <div className="bg-black/50 border border-cyan-500/30 rounded-lg p-6 shadow-[0_0_30px_rgba(34,211,238,0.1)] backdrop-blur-md relative overflow-hidden">
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent opacity-50"></div>
+                  <div className="flex items-center gap-2 mb-4 text-slate-500 text-xs border-b border-slate-800 pb-2">
+                    <Terminal size={14} /> terminal.exe — dorc_recruitment_v2.0
                   </div>
-                  
-                  <p className="text-zinc-400/80 text-sm leading-relaxed mb-6 line-clamp-2">{pos.description}</p>
-                  
-                  <div className="mt-auto pt-5 border-t border-white/10 flex justify-between items-center">
-                    <span className={`text-sm font-bold flex items-center gap-1 transition-colors ${selectedRole === pos.id ? 'text-blue-400' : 'text-zinc-500 group-hover:text-white'}`}>
-                      {selectedRole === pos.id ? 'Currently viewing' : 'View role'} <ChevronRight className="w-4 h-4" />
-                    </span>
-                    <button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedRole(pos.id);
-                        setIsApplying(true);
-                        setStatus('idle');
-                        if (window.innerWidth < 1024) {
-                          setTimeout(() => window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' }), 100);
-                        }
-                      }}
-                      className="bg-white/5 hover:bg-blue-600 border border-white/10 hover:border-blue-500 text-white px-5 py-2.5 rounded-xl text-sm font-bold transition-all hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] flex items-center gap-2 relative z-20"
-                    >
-                      Apply <span className="hidden sm:inline">Now</span>
-                    </button>
+                  <div className="text-cyan-400 font-mono text-sm leading-relaxed whitespace-pre-wrap min-h-[120px]">
+                    {terminalText}
+                    <span className="animate-pulse">_</span>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </motion.div>
+              </div>
 
-          {/* Right Panel: Details or Form */}
-          <div className="lg:col-span-7 lg:sticky lg:top-24 h-full min-h-[600px]">
-            <AnimatePresence mode="wait">
-              {!selectedRole && (
-                <motion.div 
-                  key="empty"
-                  initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
-                  className="h-full min-h-[500px] border border-dashed border-white/10 rounded-[2rem] flex flex-col items-center justify-center bg-gradient-to-b from-white/[0.02] to-transparent backdrop-blur-sm relative overflow-hidden"
-                >
-                  <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.05)_0%,transparent_70%)]"></div>
-                  <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mb-6 shadow-inner border border-white/10">
-                    <Briefcase className="w-8 h-8 text-zinc-500" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white mb-2">Select a position</h3>
-                  <p className="text-zinc-500 text-center max-w-xs">Click on any role from the list to view the full description and requirements.</p>
-                </motion.div>
-              )}
+              {/* NODE GRID */}
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-black text-white tracking-widest uppercase mb-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">Open Nodes</h2>
+                <p className="text-cyan-500/80 text-sm tracking-widest font-bold">SELECT A VECTOR TO INITIATE UPLINK</p>
+              </div>
 
-              {selectedRole && !isApplying && selectedPos && (
-                <motion.div 
-                  key="details"
-                  initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ type: 'spring' as const, damping: 25, stiffness: 200 }}
-                  className="bg-[#02040A]/80 border border-white/10 p-8 md:p-12 rounded-[2rem] backdrop-blur-xl shadow-2xl relative overflow-hidden"
-                >
-                  {/* Subtle Top Glow */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
-                  
-                  <div className="mb-8">
-                    <span className="inline-block px-3 py-1 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-bold rounded-full mb-6 uppercase tracking-widest">{selectedPos.department}</span>
-                    <h2 className="text-4xl font-black mb-4 tracking-tight">{selectedPos.title}</h2>
-                    <p className="text-lg text-zinc-400 leading-relaxed">{selectedPos.description}</p>
-                  </div>
-                  
-                  <div className="grid md:grid-cols-2 gap-10 mb-12">
-                    <div className="space-y-4">
-                      <h4 className="text-white font-bold flex items-center gap-2 text-lg">
-                        <CheckCircle2 className="w-5 h-5 text-blue-400" /> What you'll do
-                      </h4>
-                      <ul className="space-y-3">
-                        {selectedPos.responsibilities.map((r, i) => (
-                          <li key={i} className="text-zinc-400 text-sm flex items-start gap-2">
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-blue-500/50 shrink-0"></span>
-                            <span className="leading-relaxed">{r}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className="space-y-4">
-                      <h4 className="text-white font-bold flex items-center gap-2 text-lg">
-                        <Sparkles className="w-5 h-5 text-cyan-400" /> Requirements
-                      </h4>
-                      <ul className="space-y-3">
-                        {selectedPos.requirements.map((r, i) => (
-                          <li key={i} className="text-zinc-400 text-sm flex items-start gap-2">
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan-500/50 shrink-0"></span>
-                            <span className="leading-relaxed">{r}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <button 
-                    onClick={() => setIsApplying(true)}
-                    className="w-full py-5 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-500 hover:to-cyan-500 text-white font-black text-lg transition-all shadow-[0_10px_30px_rgba(37,99,235,0.3)] hover:shadow-[0_15px_40px_rgba(37,99,235,0.5)] hover:-translate-y-1 flex justify-center items-center gap-2 group"
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {positions.map((pos, idx) => (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.5 + (idx * 0.2), duration: 0.5 }}
+                    key={pos.id}
+                    onHoverStart={() => setSelectedRole(pos.id)}
+                    className="group relative bg-black/40 border border-cyan-500/20 hover:border-cyan-400 rounded-xl p-8 backdrop-blur-md transition-all cursor-pointer overflow-hidden shadow-[0_0_15px_rgba(34,211,238,0.05)] hover:shadow-[0_0_30px_rgba(34,211,238,0.2)]"
                   >
-                    Start Your Application <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </button>
-                </motion.div>
-              )}
-
-              {selectedRole && isApplying && (
-                <motion.div 
-                  key="form"
-                  initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ type: 'spring' as const, damping: 25, stiffness: 200 }}
-                  className="bg-[#02040A]/90 border border-white/10 p-8 md:p-12 rounded-[2rem] backdrop-blur-xl shadow-2xl relative overflow-hidden"
-                >
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 to-blue-500"></div>
-
-                  <div className="flex items-center gap-4 mb-10">
-                    <button 
-                      onClick={() => setIsApplying(false)} 
-                      className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 hover:text-white text-zinc-400 transition-all"
-                    >
-                      <ArrowLeft className="w-5 h-5" />
-                    </button>
-                    <div>
-                      <h2 className="text-2xl font-black">Apply Now</h2>
-                      <p className="text-sm text-zinc-500">for {selectedPos?.title}</p>
-                    </div>
-                  </div>
-                  
-                  {status === 'success' ? (
-                    <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-16">
-                      <div className="w-24 h-24 bg-green-500/10 border border-green-500/20 text-green-400 rounded-full flex items-center justify-center mx-auto mb-8">
-                        <CheckCircle2 className="w-12 h-12" />
-                      </div>
-                      <h3 className="text-3xl font-black mb-3">Application Received!</h3>
-                      <p className="text-zinc-400 max-w-sm mx-auto mb-10">Thank you for applying. Our team will review your profile and get back to you shortly if there's a match.</p>
-                      <button onClick={() => {setStatus('idle'); setSelectedRole(null); setIsApplying(false);}} className="text-sm font-bold text-blue-400 hover:text-blue-300 hover:underline">
-                        Browse other open roles
-                      </button>
-                    </motion.div>
-                  ) : (
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div className="space-y-2">
-                          <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Full Name</label>
-                          <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all shadow-inner" placeholder="Jane Doe" />
-                        </div>
-                        <div className="space-y-2">
-                          <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Email Address</label>
-                          <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all shadow-inner" placeholder="jane@example.com" />
-                        </div>
+                    {/* Hover Scanline */}
+                    <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent via-cyan-400/10 to-transparent -translate-y-full group-hover:animate-[scan_2s_ease-in-out_infinite]"></div>
+                    
+                    <div className="relative z-10">
+                      <div className="w-12 h-12 bg-cyan-950/50 border border-cyan-500/30 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] transition-all">
+                        {pos.icon}
                       </div>
                       
-                      <div className="space-y-2">
-                        <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Phone Number</label>
-                        <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all shadow-inner" placeholder="+1 (555) 000-0000" />
-                      </div>
-
-                      <div className="space-y-2">
-                        <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Resume Link <span className="text-zinc-600 normal-case font-normal">(Drive, LinkedIn, Site)</span></label>
-                        <input required type="url" value={formData.resume} onChange={e => setFormData({...formData, resume: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all shadow-inner" placeholder="https://..." />
-                      </div>
-
-                      <div className="space-y-2">
-                        <label className="text-xs font-bold text-zinc-400 uppercase tracking-wider">Why ProcGen?</label>
-                        <textarea required rows={4} value={formData.coverLetter} onChange={e => setFormData({...formData, coverLetter: e.target.value})} className="w-full bg-black/40 border border-white/10 rounded-xl px-5 py-4 text-white focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all resize-none shadow-inner" placeholder="Tell us why you'd be a great fit..."></textarea>
-                      </div>
-
-                      {status === 'error' && (
-                        <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="p-4 rounded-xl bg-red-500/10 border border-red-500/20">
-                          <p className="text-red-400 text-sm font-bold mb-1">Application Failed</p>
-                          <p className="text-red-400/80 text-xs font-mono break-words">{errorMsg || 'Please try again.'}</p>
-                        </motion.div>
-                      )}
-
-                      <button 
-                        type="submit" 
-                        disabled={status === 'submitting'}
-                        className="w-full py-4 mt-4 rounded-xl bg-white hover:bg-zinc-200 text-black font-black text-lg transition-all disabled:opacity-50 flex justify-center items-center gap-3 group"
-                      >
-                        {status === 'submitting' ? (
-                          <>
-                            <span className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full animate-spin"></span> Processing
-                          </>
-                        ) : (
-                          <>
-                            Submit Application <Send className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                          </>
-                        )}
+                      <div className="text-[10px] text-cyan-500 font-bold mb-2 tracking-[0.2em]">{pos.department} // {pos.type}</div>
+                      <h3 className="text-xl font-bold text-white mb-4 tracking-wide group-hover:text-cyan-300 transition-colors">{pos.title}</h3>
+                      <p className="text-slate-400 text-sm leading-relaxed mb-8">{pos.description}</p>
+                      
+                      <button onClick={() => { setSelectedRole(pos.id); setIsApplying(true); }} className="w-full py-3 border border-cyan-500/50 text-cyan-400 font-bold tracking-[0.2em] text-[10px] uppercase rounded hover:bg-cyan-500 hover:text-black transition-colors flex items-center justify-center gap-2">
+                        Initiate Sequence <Zap size={14} />
                       </button>
-                    </form>
-                  )}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div key="form" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 1.05 }} transition={{ duration: 0.5 }} className="max-w-2xl mx-auto mt-10">
+              
+              <div className="bg-black/60 border border-cyan-500/40 rounded-2xl p-8 md:p-12 shadow-[0_0_50px_rgba(34,211,238,0.15)] backdrop-blur-xl relative overflow-hidden">
+                
+                {/* Decorative Tech Elements */}
+                <div className="absolute top-4 right-4 text-cyan-500/20"><ShieldAlert size={60} strokeWidth={1} /></div>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
+                
+                <button onClick={() => setIsApplying(false)} className="flex items-center gap-2 text-slate-400 hover:text-cyan-400 transition-colors mb-8 text-xs font-bold tracking-[0.2em] uppercase">
+                  <ArrowLeft size={14} /> Abort Sequence
+                </button>
+
+                <div className="mb-10 relative z-10">
+                  <h2 className="text-3xl font-black text-white tracking-widest uppercase mb-2">Secure Uplink</h2>
+                  <p className="text-cyan-400 text-xs font-bold tracking-[0.2em]">DESTINATION: <span className="text-white">{selectedPos?.title}</span></p>
+                </div>
+
+                {status === 'success' ? (
+                  <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-12 relative z-10">
+                    <div className="w-24 h-24 mx-auto border-2 border-cyan-400 rounded-full flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(34,211,238,0.4)] relative">
+                      <div className="absolute inset-0 rounded-full border-2 border-cyan-400 animate-ping opacity-20"></div>
+                      <Fingerprint className="w-10 h-10 text-cyan-400" />
+                    </div>
+                    <h3 className="text-2xl font-black tracking-widest text-white mb-2 uppercase">Identity Verified</h3>
+                    <p className="text-slate-400 text-sm">Your data block has been successfully transmitted to the neural core. Await further instructions via comm-link.</p>
+                    <button onClick={() => {setStatus('idle'); setIsApplying(false);}} className="mt-8 px-8 py-3 border border-cyan-500/30 text-cyan-400 text-[10px] font-bold tracking-[0.2em] uppercase rounded hover:bg-cyan-500/10 transition-colors">
+                      Return to Grid
+                    </button>
+                  </motion.div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] flex items-center gap-2"><Eye size={12}/> Operative Name</label>
+                        <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} className="w-full bg-black/80 border border-slate-800 rounded-none px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:shadow-[0_0_15px_rgba(34,211,238,0.2)] transition-all font-mono text-sm placeholder:text-slate-700" placeholder="Enter designation..." />
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] flex items-center gap-2"><Zap size={12}/> Comm Link (Email)</label>
+                        <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} className="w-full bg-black/80 border border-slate-800 rounded-none px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:shadow-[0_0_15px_rgba(34,211,238,0.2)] transition-all font-mono text-sm placeholder:text-slate-700" placeholder="address@domain.com" />
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] flex items-center gap-2"><Code2 size={12}/> Encrypted Data Block (Resume URL)</label>
+                      <input required type="url" value={formData.resume} onChange={e => setFormData({...formData, resume: e.target.value})} className="w-full bg-black/80 border border-slate-800 rounded-none px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:shadow-[0_0_15px_rgba(34,211,238,0.2)] transition-all font-mono text-sm placeholder:text-slate-700" placeholder="https://..." />
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-bold text-cyan-500 uppercase tracking-[0.2em] flex items-center gap-2"><Terminal size={12}/> Initialization parameters (Cover Letter)</label>
+                      <textarea required rows={4} value={formData.coverLetter} onChange={e => setFormData({...formData, coverLetter: e.target.value})} className="w-full bg-black/80 border border-slate-800 rounded-none px-4 py-3 text-white focus:outline-none focus:border-cyan-500 focus:shadow-[0_0_15px_rgba(34,211,238,0.2)] transition-all font-mono text-sm resize-none placeholder:text-slate-700" placeholder="Why are you suited for the swarm?"></textarea>
+                    </div>
+
+                    <button type="submit" disabled={status === 'submitting'} className="w-full py-4 mt-6 bg-cyan-500 hover:bg-cyan-400 text-black font-black text-sm tracking-[0.2em] uppercase transition-all disabled:opacity-50 flex justify-center items-center gap-3 relative overflow-hidden group rounded-sm shadow-[0_0_20px_rgba(34,211,238,0.4)] hover:shadow-[0_0_30px_rgba(34,211,238,0.6)]">
+                      {status === 'submitting' ? (
+                        <>TRANSMITTING DATA...</>
+                      ) : (
+                        <>
+                          <span className="relative z-10 flex items-center gap-2">Execute Uplink <Send size={16} /></span>
+                          <div className="absolute top-0 left-0 w-full h-full bg-white/20 -translate-x-full group-hover:animate-[scan_1s_ease-in-out_infinite]"></div>
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
+
+      <style jsx global>{`
+        @keyframes scan {
+          0% { transform: translateY(-100%); }
+          100% { transform: translateY(100%); }
+        }
+      `}</style>
     </div>
   );
 }
