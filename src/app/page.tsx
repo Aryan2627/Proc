@@ -244,22 +244,22 @@ export default function LandingPage() {
         <section className="py-16 bg-gradient-to-b from-[#0B101E] to-[#02040A] border-b border-white/5 relative z-10">
           <div className="max-w-7xl mx-auto px-6 relative z-10">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:divide-x divide-white/5 text-center">
-              <div className="flex flex-col">
+              <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="flex flex-col">
                 <span className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-2">$12B+</span>
                 <span className="text-sm text-slate-400 font-medium uppercase tracking-wider">Spend Managed</span>
-              </div>
-              <div className="flex flex-col">
+              </motion.div>
+              <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="flex flex-col">
                 <span className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-2">3.2M</span>
                 <span className="text-sm text-slate-400 font-medium uppercase tracking-wider">Contracts Analyzed</span>
-              </div>
-              <div className="flex flex-col">
+              </motion.div>
+              <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="flex flex-col">
                 <span className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-2">99.9%</span>
                 <span className="text-sm text-slate-400 font-medium uppercase tracking-wider">Data Accuracy</span>
-              </div>
-              <div className="flex flex-col">
+              </motion.div>
+              <motion.div initial={{ opacity: 0, scale: 0.9, y: 20 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="flex flex-col">
                 <span className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400 tracking-tight mb-2">Zero</span>
                 <span className="text-sm text-slate-400 font-medium uppercase tracking-wider">AI Hallucinations</span>
-              </div>
+              </motion.div>
             </div>
           </div>
         </section>
@@ -377,8 +377,8 @@ export default function LandingPage() {
       {/* --- DORC FEATURES DETAILED SECTION --- */}
       <section id="dorc-features" className="py-24 bg-transparent border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center max-w-3xl mx-auto mb-20">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-bold text-sm tracking-wide mb-6 shadow-sm">
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.5 }} className="text-center max-w-3xl mx-auto mb-20">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-bold text-sm tracking-wide mb-6 shadow-sm">
                <Zap size={16} className="text-blue-600" /> Dorc Features
             </div>
             <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-6">
@@ -386,12 +386,12 @@ export default function LandingPage() {
             </h2>
             <p className="text-lg text-slate-600 font-medium">
               We built Dorc AI to handle the entire procurement lifecycle end-to-end. Clients use Dorc to automate sourcing, negotiate contracts, and stop rogue spend.
-            </p>
-          </div>
+              </p>
+            </motion.div>
 
-          <div className="space-y-24">
+            <div className="space-y-24">
             {/* Feature 1 */}
-            <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.6 }} className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
               <div className="w-full md:w-1/2">
                 <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
                   <Search size={24} />
@@ -410,10 +410,10 @@ export default function LandingPage() {
                  <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[80px] rounded-full"></div>
                  <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Sourcing Dashboard" className="rounded-xl shadow-lg border border-slate-200 group-hover:scale-105 transition-transform duration-700" />
               </div>
-            </div>
+            </motion.div>
 
             {/* Feature 2 */}
-            <div className="flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-20">
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.6 }} className="flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-20">
               <div className="w-full md:w-1/2">
                 <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
                   <Handshake size={24} />
@@ -432,10 +432,10 @@ export default function LandingPage() {
                  <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full"></div>
                  <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800" alt="Negotiation Agent" className="rounded-xl shadow-lg border border-slate-200 group-hover:scale-105 transition-transform duration-700" />
               </div>
-            </div>
+            </motion.div>
 
             {/* Feature 3 */}
-            <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.6 }} className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
               <div className="w-full md:w-1/2">
                 <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
                   <ShieldAlert size={24} />
@@ -454,7 +454,7 @@ export default function LandingPage() {
                  <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 blur-[80px] rounded-full"></div>
                  <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800" alt="Spend Analytics" className="rounded-xl shadow-lg border border-slate-200 group-hover:scale-105 transition-transform duration-700" />
               </div>
-            </div>
+            </motion.div>
 
           </div>
         </div>
@@ -749,8 +749,8 @@ export default function LandingPage() {
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.15),transparent)]"></div>
         
-        <div className="max-w-4xl mx-auto px-6 relative z-10">
-          <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight">Bridge the context gap. <br/>Ship AI that works.</h2>
+        <motion.div initial={{ opacity: 0, scale: 0.95, y: 40 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="max-w-4xl mx-auto px-6 relative z-10">
+            <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tight">Bridge the context gap. <br/>Ship AI that works.</h2>
           <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
             Join the world's most innovative supply chains. Deploy Dorc AI today and transform your procurement from a cost center into a strategic weapon.
           </p>
@@ -760,10 +760,10 @@ export default function LandingPage() {
             </button>
             <button onClick={() => setIsModalOpen(true)} className="bg-blue-700 text-white border border-blue-500 font-bold text-lg px-10 py-5 rounded-2xl hover:bg-blue-800 transition-colors flex items-center justify-center gap-2">
               <PlayCircle size={20} /> Watch 2-min Demo
-            </button>
-          </div>
-        </div>
-      </section>
+              </button>
+            </div>
+          </motion.div>
+        </section>
 
       
       
