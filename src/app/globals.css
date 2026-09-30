@@ -3,5 +3,10 @@
 @tailwind utilities;
 
 html, body {
-  
+  background-color: #fafafa;
+  background-image: 
+    linear-gradient(to right, #e2e8f0 1px, transparent 1px),
+    linear-gradient(to bottom, #e2e8f0 1px, transparent 1px);
+  background-size: 80px 80px;
+  color: #0f172a;
 }
