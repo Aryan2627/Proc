@@ -433,90 +433,216 @@ export default function LandingPage() {
       {/* --- ATLAN BENTO BOX / FEATURES SECTION --- */}
       
       {/* --- DORC FEATURES DETAILED SECTION --- */}
+      
       <section id="dorc-features" className="py-24 bg-transparent border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.5 }} className="text-center max-w-3xl mx-auto mb-20">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-bold text-sm tracking-wide mb-6 shadow-sm">
-               <Zap size={16} className="text-blue-600" /> Dorc Features
+          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.5 }} className="text-center max-w-3xl mx-auto mb-24">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 font-bold text-sm tracking-wide mb-6 shadow-sm">
+               <Bot size={16} className="text-blue-600" /> ProcGen AI Architecture
             </div>
             <h2 className="text-4xl md:text-5xl font-black tracking-tight text-slate-900 mb-6">
-              Everything you need for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">autonomous procurement.</span>
+              4 Specialized <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">AI Agents.</span>
             </h2>
-            <p className="text-lg text-slate-600 font-medium">
-              We built Dorc AI to handle the entire procurement lifecycle end-to-end. Clients use Dorc to automate sourcing, negotiate contracts, and stop rogue spend.
-              </p>
-            </motion.div>
+            <p className="text-lg text-slate-600 font-medium leading-relaxed">
+              We don't use generic chatbots. ProcGen is powered by a multi-agent system where dedicated AI teammates handle specific parts of the procurement lifecycle.
+            </p>
+          </motion.div>
 
-            <div className="space-y-24">
-            {/* Feature 1 */}
+          <div className="space-y-32">
+            {/* AGENT 1 */}
             <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.6 }} className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
               <div className="w-full md:w-1/2">
-                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
+                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner border border-blue-200">
                   <Search size={24} />
                 </div>
-                <h3 className="text-3xl font-bold text-slate-900 mb-4">Autonomous Sourcing & Discovery</h3>
-                <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                  Dorc AI instantly analyzes your internal PRs (Purchase Requisitions) and automatically scans global supplier databases. It creates shortlists, runs compliance checks, and scores vendors based on historical performance—saving your team weeks of manual research.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 size={18} className="text-blue-600"/> Automated vendor shortlisting</li>
-                  <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 size={18} className="text-blue-600"/> Live compliance & risk scanning</li>
-                  <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 size={18} className="text-blue-600"/> ESG and diversity tracking</li>
-                </ul>
+                <h3 className="text-3xl font-bold text-slate-900 mb-3">1. Procurement Agent</h3>
+                <p className="text-xl text-blue-600 font-medium mb-6">"Find what I need."</p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {['Requirement understanding', 'Supplier discovery', 'Supplier qualification', 'RFQ creation', 'RFQ distribution', 'Supplier follow-ups', 'Supplier database search'].map(tag => (
+                    <span key={tag} className="px-3 py-1.5 bg-slate-100 border border-slate-200 text-slate-600 text-[13px] font-semibold rounded-lg">{tag}</span>
+                  ))}
+                </div>
               </div>
-              <div className="w-full md:w-1/2 bg-slate-50 rounded-3xl border border-slate-200 p-8 shadow-xl relative overflow-hidden group">
-                 <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/10 blur-[80px] rounded-full"></div>
-                 <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Sourcing Dashboard" className="rounded-xl shadow-lg border border-slate-200 group-hover:scale-105 transition-transform duration-700" />
+              <div className="w-full md:w-1/2">
+                <div className="bg-white rounded-3xl border border-slate-200 shadow-[0_10px_40px_rgba(0,0,0,0.08)] p-6 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-[50px] rounded-full"></div>
+                  <div className="flex items-start gap-4 mb-6">
+                    <div className="w-8 h-8 rounded-full bg-slate-200 flex-shrink-0"></div>
+                    <div className="bg-slate-100 rounded-2xl rounded-tl-sm p-4 text-slate-700 text-[15px] shadow-sm">
+                      "I need 5,000 units of industrial gloves."
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4 flex-row-reverse">
+                    <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white flex-shrink-0 shadow-md"><Bot size={16}/></div>
+                    <div className="bg-blue-600 rounded-2xl rounded-tr-sm p-4 text-white text-[15px] shadow-sm text-right">
+                      I found 14 suitable suppliers in our database. I have qualified 8 of them based on compliance metrics and automatically started the RFQ process.
+                    </div>
+                  </div>
+                </div>
               </div>
             </motion.div>
 
-            {/* Feature 2 */}
+            {/* AGENT 2 */}
             <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.6 }} className="flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-20">
               <div className="w-full md:w-1/2">
-                <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
-                  <Handshake size={24} />
+                <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner border border-indigo-200">
+                  <Activity size={24} />
                 </div>
-                <h3 className="text-3xl font-bold text-slate-900 mb-4">Smart Contract Negotiation</h3>
-                <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                  Our proprietary AI Agents act as your digital negotiators. Dorc interacts directly with suppliers via email or our "War-Room" portal to drive down costs, enforce net-60 payment terms, and lock in SLAs without human intervention.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 size={18} className="text-emerald-600"/> Automated RFQ generation & sending</li>
-                  <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 size={18} className="text-emerald-600"/> AI-driven price pushback & leverage</li>
-                  <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 size={18} className="text-emerald-600"/> Digital contracting & e-signatures</li>
-                </ul>
+                <h3 className="text-3xl font-bold text-slate-900 mb-3">2. Sourcing Agent</h3>
+                <p className="text-xl text-indigo-600 font-medium mb-6">"Analyze the options."</p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {['Quote extraction', 'Quote comparison', 'Price benchmarking', 'Total-cost analysis', 'MOQ comparison', 'Payment-term comparison', 'Delivery comparison', 'Supplier score', 'Historical pricing', 'Recommendation'].map(tag => (
+                    <span key={tag} className="px-3 py-1.5 bg-slate-100 border border-slate-200 text-slate-600 text-[13px] font-semibold rounded-lg">{tag}</span>
+                  ))}
+                </div>
               </div>
-              <div className="w-full md:w-1/2 bg-slate-50 rounded-3xl border border-slate-200 p-8 shadow-xl relative overflow-hidden group">
-                 <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full"></div>
-                 <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&q=80&w=800" alt="Negotiation Agent" className="rounded-xl shadow-lg border border-slate-200 group-hover:scale-105 transition-transform duration-700" />
+              <div className="w-full md:w-1/2">
+                <div className="bg-white rounded-3xl border border-slate-200 shadow-[0_10px_40px_rgba(0,0,0,0.08)] p-6 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 blur-[50px] rounded-full"></div>
+                  <h4 className="text-sm font-bold text-slate-900 mb-4 uppercase tracking-wider flex items-center gap-2"><Trophy size={16} className="text-amber-500"/> Sourcing Recommendation</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between p-4 rounded-xl border border-indigo-200 bg-indigo-50/50 shadow-sm relative overflow-hidden">
+                      <div className="absolute left-0 top-0 bottom-0 w-1 bg-indigo-500"></div>
+                      <div>
+                        <div className="font-bold text-slate-900 flex items-center gap-2">Supplier B <span className="px-2 py-0.5 bg-indigo-100 text-indigo-700 text-[10px] uppercase rounded-full">Recommended</span></div>
+                        <div className="text-xs text-slate-500 mt-1">Highest supplier score</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold text-slate-900">₹87 / unit</div>
+                        <div className="text-xs text-slate-500 mt-1">15 days delivery</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between p-4 rounded-xl border border-slate-100 bg-slate-50 opacity-70">
+                      <div>
+                        <div className="font-bold text-slate-900">Supplier C</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold text-slate-900">₹90 / unit</div>
+                        <div className="text-xs text-slate-500 mt-1">9 days delivery</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-between p-4 rounded-xl border border-slate-100 bg-slate-50 opacity-70">
+                      <div>
+                        <div className="font-bold text-slate-900">Supplier A</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="font-bold text-slate-900">₹92 / unit</div>
+                        <div className="text-xs text-slate-500 mt-1">7 days delivery</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-4 p-3 bg-slate-100 rounded-lg text-[13px] text-slate-600 italic">
+                    "Trade-off: Supplier B offers the best total-cost, though delivery is 6 days slower. Preparing sourcing recommendation..."
+                  </div>
+                </div>
               </div>
             </motion.div>
 
-            {/* Feature 3 */}
+            {/* AGENT 3 */}
             <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.6 }} className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
               <div className="w-full md:w-1/2">
-                <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner">
-                  <ShieldAlert size={24} />
+                <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner border border-emerald-200">
+                  <Handshake size={24} />
                 </div>
-                <h3 className="text-3xl font-bold text-slate-900 mb-4">Real-Time Spend Control</h3>
-                <p className="text-lg text-slate-600 leading-relaxed mb-6">
-                  Stop rogue spend before the money leaves your accounts. Dorc AI implements a strict 3-way matching engine (PO to GRN to Invoice) and automatically flags anomalies, duplicate invoices, and unapproved price hikes.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 size={18} className="text-purple-600"/> 3-way invoice matching</li>
-                  <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 size={18} className="text-purple-600"/> Rogue spend & fraud detection</li>
-                  <li className="flex items-center gap-3 text-slate-700 font-medium"><CheckCircle2 size={18} className="text-purple-600"/> Budget limit enforcement</li>
-                </ul>
+                <h3 className="text-3xl font-bold text-slate-900 mb-3">3. Negotiation Agent</h3>
+                <p className="text-xl text-emerald-600 font-medium mb-6">"Get better commercial terms."</p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {['Negotiation strategy', 'Historical price analysis', 'Market benchmark', 'Target price', 'Counter-offer generation', 'Supplier communication', 'Negotiation tracking', 'Savings calculation'].map(tag => (
+                    <span key={tag} className="px-3 py-1.5 bg-slate-100 border border-slate-200 text-slate-600 text-[13px] font-semibold rounded-lg">{tag}</span>
+                  ))}
+                </div>
               </div>
-              <div className="w-full md:w-1/2 bg-slate-50 rounded-3xl border border-slate-200 p-8 shadow-xl relative overflow-hidden group">
-                 <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 blur-[80px] rounded-full"></div>
-                 <img loading="lazy" decoding="async" src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&q=80&w=800" alt="Spend Analytics" className="rounded-xl shadow-lg border border-slate-200 group-hover:scale-105 transition-transform duration-700" />
+              <div className="w-full md:w-1/2">
+                <div className="bg-slate-900 rounded-3xl border border-slate-800 shadow-[0_10px_40px_rgba(0,0,0,0.2)] p-8 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-[50px] rounded-full"></div>
+                  <div className="flex items-center justify-between mb-8 pb-6 border-b border-slate-800">
+                    <div>
+                      <div className="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Current Quote</div>
+                      <div className="text-3xl font-bold text-white">₹92.00</div>
+                    </div>
+                    <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center"><ArrowRight size={16} className="text-slate-400"/></div>
+                    <div className="text-right">
+                      <div className="text-emerald-400 text-xs font-bold uppercase tracking-widest mb-1">Target Price</div>
+                      <div className="text-3xl font-bold text-emerald-400">₹87.00</div>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-slate-400">Historical Price (2025)</span>
+                      <span className="text-white font-medium">₹86.00</span>
+                    </div>
+                    <div className="flex justify-between items-center text-sm">
+                      <span className="text-slate-400">Market Benchmark</span>
+                      <span className="text-white font-medium">₹88.50</span>
+                    </div>
+                    <div className="flex justify-between items-center p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl mt-4">
+                      <span className="text-emerald-400 font-bold text-sm">Suggested Opening Offer</span>
+                      <span className="text-emerald-400 font-bold text-lg">₹85.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* AGENT 4 */}
+            <motion.div initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.6 }} className="flex flex-col md:flex-row-reverse items-center gap-12 lg:gap-20">
+              <div className="w-full md:w-1/2">
+                <div className="w-12 h-12 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mb-6 shadow-inner border border-amber-200">
+                  <Shield size={24} />
+                </div>
+                <h3 className="text-3xl font-bold text-slate-900 mb-3">4. Procurement Ops Agent</h3>
+                <p className="text-xl text-amber-600 font-medium mb-6">"Make sure the purchase actually happens."</p>
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {['PO generation', 'PO tracking', 'Delivery tracking', 'Supplier reminders', 'Delay detection', 'GRN/invoice matching', 'Contract/SLA monitoring', 'Supplier performance', 'Risk alerts', 'Procurement analytics'].map(tag => (
+                    <span key={tag} className="px-3 py-1.5 bg-slate-100 border border-slate-200 text-slate-600 text-[13px] font-semibold rounded-lg">{tag}</span>
+                  ))}
+                </div>
+              </div>
+              <div className="w-full md:w-1/2">
+                <div className="bg-white rounded-3xl border border-slate-200 shadow-[0_10px_40px_rgba(0,0,0,0.08)] p-6 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-amber-500/10 blur-[50px] rounded-full"></div>
+                  
+                  <div className="space-y-4 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-amber-400 before:to-slate-200">
+                    
+                    <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                      <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-amber-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <CheckCircle2 size={16} />
+                      </div>
+                      <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-amber-200 bg-amber-50/50 shadow-sm">
+                        <div className="font-bold text-slate-900 text-sm">PO Generated</div>
+                        <div className="text-xs text-slate-500 mt-1">Synced to ERP automatically</div>
+                      </div>
+                    </div>
+                    
+                    <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                      <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-amber-500 text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                         <CheckCircle2 size={16} />
+                      </div>
+                      <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-amber-200 bg-amber-50/50 shadow-sm">
+                        <div className="font-bold text-slate-900 text-sm">GRN/Invoice Match</div>
+                        <div className="text-xs text-slate-500 mt-1">Zero discrepancies found</div>
+                      </div>
+                    </div>
+
+                    <div className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group">
+                      <div className="flex items-center justify-center w-10 h-10 rounded-full border-4 border-white bg-slate-200 text-slate-400 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                         <Search size={16} />
+                      </div>
+                      <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-slate-100 bg-white shadow-sm opacity-50">
+                        <div className="font-bold text-slate-400 text-sm">Delivery Tracking</div>
+                        <div className="text-xs text-slate-400 mt-1">Pending arrival</div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
               </div>
             </motion.div>
 
           </div>
         </div>
       </section>
+
 
       <section id="features" className="py-24 bg-transparent"><motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.35 }}>
         <div className="max-w-7xl mx-auto px-6">
