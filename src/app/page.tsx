@@ -357,21 +357,21 @@ export default function LandingPage() {
           >
              {/* Left: Raw Data Sources */}
              <div className="w-full lg:w-1/4 flex flex-col gap-5 relative z-10">
-                <div className="bg-white/80 backdrop-blur-md border border-slate-700/50 p-5 rounded-2xl shadow-[0_0_30px_rgba(37,99,235,0.15)] flex items-center gap-4 hover:border-slate-500 transition-colors">
+                <div className="bg-white/5 backdrop-blur-md border border-slate-700/50 p-5 rounded-2xl shadow-[0_0_30px_rgba(37,99,235,0.15)] flex items-center gap-4 hover:border-slate-500 transition-colors">
                    <div className="w-12 h-12 bg-[#0f172a]/5 rounded-xl flex items-center justify-center text-slate-300 shadow-[0_0_15px_rgba(255,255,255,0.05)]"><Globe size={24}/></div>
                    <div>
                      <div className="text-base font-bold text-white">SAP Ariba</div>
                      <div className="text-xs text-slate-400 font-medium tracking-wide uppercase mt-0.5">Unstructured POs</div>
                    </div>
                 </div>
-                <div className="bg-white/80 backdrop-blur-md border border-slate-700/50 p-5 rounded-2xl shadow-[0_0_30px_rgba(37,99,235,0.15)] flex items-center gap-4 hover:border-slate-500 transition-colors">
+                <div className="bg-white/5 backdrop-blur-md border border-slate-700/50 p-5 rounded-2xl shadow-[0_0_30px_rgba(37,99,235,0.15)] flex items-center gap-4 hover:border-slate-500 transition-colors">
                    <div className="w-12 h-12 bg-[#0f172a]/5 rounded-xl flex items-center justify-center text-slate-300 shadow-[0_0_15px_rgba(255,255,255,0.05)]"><TerminalSquare size={24}/></div>
                    <div>
                      <div className="text-base font-bold text-white">Legacy ERP</div>
                      <div className="text-xs text-slate-400 font-medium tracking-wide uppercase mt-0.5">Raw Inventory</div>
                    </div>
                 </div>
-                <div className="bg-white/80 backdrop-blur-md border border-slate-700/50 p-5 rounded-2xl shadow-[0_0_30px_rgba(37,99,235,0.15)] flex items-center gap-4 hover:border-slate-500 transition-colors">
+                <div className="bg-white/5 backdrop-blur-md border border-slate-700/50 p-5 rounded-2xl shadow-[0_0_30px_rgba(37,99,235,0.15)] flex items-center gap-4 hover:border-slate-500 transition-colors">
                    <div className="w-12 h-12 bg-[#0f172a]/5 rounded-xl flex items-center justify-center text-slate-300 shadow-[0_0_15px_rgba(255,255,255,0.05)]"><Network size={24}/></div>
                    <div>
                      <div className="text-base font-bold text-white">SharePoint</div>
@@ -983,7 +983,7 @@ export default function LandingPage() {
         <AnimatePresence>
           {isVideoModalOpen && (
             <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsVideoModalOpen(false)} className="absolute inset-0 bg-white/80 backdrop-blur-md" />
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsVideoModalOpen(false)} className="absolute inset-0 bg-white/5 backdrop-blur-md" />
               <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} className="relative w-full max-w-5xl bg-[#000511] border border-white/10 rounded-2xl shadow-[0_0_50px_rgba(37,99,235,0.2)] overflow-hidden aspect-video flex items-center justify-center">
                 <button onClick={() => setIsVideoModalOpen(false)} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-10 bg-black/50 p-2 rounded-full">
                   <X size={24} />
@@ -1121,3 +1121,4 @@ export default function LandingPage() {
     </div>
   );
 }
+
