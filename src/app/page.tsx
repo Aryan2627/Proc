@@ -278,11 +278,11 @@ export default function LandingPage() {
             <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-400/40 text-slate-200 text-sm font-semibold tracking-wide mb-8 backdrop-blur-sm bg-blue-950/50 shadow-[0_0_15px_rgba(59,130,246,0.3)]"><div className="w-2.5 h-2.5 rounded-full bg-emerald-400"></div> The Context Layer for AI</motion.div>
             
             <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl lg:text-[80px] font-bold tracking-tight text-white mb-6 leading-[1.05] max-w-5xl">
-              Your AI doesn't know your business. <span className="text-cyan-400">Let's fix that.</span>
+              Your AI doesn't know your supply chain. <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Let's fix that.</span>
             </motion.h1>
             
             <motion.p variants={fadeIn} className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mb-10 leading-relaxed font-normal">
-              Build a shared understanding of your data, your business logic, and your institutional knowledge, and make it available to every AI tool you run.
+              Enterprise procurement fails not because of vendors, but because of missing context. ProcGen unifies your ERP, PDFs, and negotiations into one autonomous control tower.
             </motion.p>
             
             <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
