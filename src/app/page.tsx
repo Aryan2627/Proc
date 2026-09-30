@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 import { Bot, Fingerprint, ArrowRight, CheckCircle2, Menu, Sparkles, X, Swords, Activity, Network, Receipt, Monitor, ChevronRight, ChevronDown, Plus, Shield, Zap, Target, MessageCircle, Send, Globe, Database, Lock, Trophy, Star, ArrowUpRight, PlayCircle, TerminalSquare, FileText, Search, Handshake, ShieldAlert } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useSpring, useInView } from 'framer-motion';
+import ArchitectureDiagram from '../components/ArchitectureDiagram';
 
 export default function LandingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -435,7 +436,7 @@ export default function LandingPage() {
       <div className="w-full h-48 bg-gradient-to-b from-[#02040A] to-transparent pointer-events-none -mt-1"></div>
       
       {/* --- DORC FEATURES DETAILED SECTION --- */}
-      <section id="dorc-features" className="py-24 bg-transparent border-b border-white/10">
+      <section className="py-24 bg-[#0a1128] border-b border-white/5 relative overflow-hidden"><ArchitectureDiagram /></section>`n      <section id="dorc-features" className="py-24 bg-transparent border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.5 }} className="text-center max-w-3xl mx-auto mb-20">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-900/20 border border-blue-100 text-blue-300 font-bold text-sm tracking-wide mb-6 shadow-sm">
@@ -1121,4 +1122,5 @@ export default function LandingPage() {
     </div>
   );
 }
+
 
