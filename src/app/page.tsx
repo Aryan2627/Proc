@@ -2,7 +2,7 @@
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from 'react';
 import Lenis from 'lenis';
-import { Bot, Fingerprint, ArrowRight, CheckCircle2, Menu, Sparkles, X, Swords, Activity, Network, Receipt, Monitor, ChevronRight, ChevronDown, Plus, Shield, Zap, Target, MessageCircle, Send, Globe, Database, Lock, Trophy, Star, ArrowUpRight, PlayCircle, TerminalSquare, FileText, Search, Handshake, ShieldAlert } from 'lucide-react';
+import { Bot, Fingerprint, ArrowRight, CheckCircle2, Menu, Sparkles, X, Swords, Activity, Network, Receipt, Monitor, ChevronRight, ChevronDown, Plus, Shield, Zap, Target, MessageCircle, Send, Globe, Database, Lock, Trophy, Star, ArrowUpRight, PlayCircle, TerminalSquare, FileText, Search, Handshake, ShieldAlert, Layout } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useSpring, useInView } from 'framer-motion';
 import ArchitectureDiagram from '../components/ArchitectureDiagram';
 
@@ -1125,5 +1125,6 @@ export default function LandingPage() {
     </div>
   );
 }
+
 
 
