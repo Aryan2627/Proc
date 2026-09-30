@@ -211,8 +211,109 @@ export default function LandingPage() {
             </div>
             
             <div className="hidden lg:flex items-center gap-8 text-[15px] font-semibold text-slate-700">
-              <div className="flex items-center gap-1.5 hover:text-blue-600 cursor-pointer transition-colors group py-5">
+              <div className="flex items-center gap-1.5 hover:text-blue-600 cursor-pointer transition-colors group py-5 relative">
                 Platform <ChevronDown size={14} className="text-slate-400 group-hover:text-blue-600 group-hover:-rotate-180 transition-all duration-300" />
+                
+                {/* MEGA MENU */}
+                <div className="absolute top-full left-0 w-[950px] bg-white border border-slate-200 shadow-[0_20px_50px_rgba(0,0,0,0.1)] rounded-2xl p-6 opacity-0 pointer-events-none translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-[100] overflow-hidden cursor-default text-slate-900" style={{ backgroundImage: 'linear-gradient(to right, #f1f5f9 1px, transparent 1px), linear-gradient(to bottom, #f1f5f9 1px, transparent 1px)', backgroundSize: '40px 40px' }}>
+                  
+                  <div className="flex gap-6 relative z-10">
+                    
+                    {/* LEFT COLUMN */}
+                    <div className="flex-1 flex flex-col gap-4">
+                      {/* Enterprise Data Graph */}
+                      <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:border-blue-200 transition-colors cursor-pointer group/card">
+                        <div className="flex items-center justify-between mb-3">
+                          <h3 className="text-lg font-bold text-slate-900">Procurement Data Graph</h3>
+                        </div>
+                        <p className="text-sm text-slate-500 mb-6 leading-relaxed">Connect all your business systems and pull context across your supply chain into one living graph.</p>
+                        <div className="flex flex-col gap-2">
+                          <div className="flex items-center gap-3 bg-slate-50 rounded-lg p-3 hover:bg-slate-100 transition-colors">
+                            <div className="w-8 h-8 rounded bg-blue-100 text-blue-600 flex items-center justify-center"><Network size={16} /></div>
+                            <span className="font-semibold text-sm">Connectors & Apps</span>
+                            <ArrowUpRight size={14} className="ml-auto text-slate-400 opacity-0 group-hover/card:opacity-100 transition-opacity" />
+                          </div>
+                          <div className="flex items-center gap-3 bg-slate-50 rounded-lg p-3 hover:bg-slate-100 transition-colors">
+                            <div className="w-8 h-8 rounded bg-blue-100 text-blue-600 flex items-center justify-center"><Database size={16} /></div>
+                            <span className="font-semibold text-sm">Spend Lineage</span>
+                            <ArrowUpRight size={14} className="ml-auto text-slate-400 opacity-0 group-hover/card:opacity-100 transition-opacity" />
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Data Marketplace */}
+                      <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:border-blue-200 transition-colors cursor-pointer group/card">
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-2">
+                            <div className="w-6 h-6 rounded text-blue-600 flex items-center justify-center"><Layout size={18} /></div>
+                            <h3 className="text-lg font-bold text-slate-900">Supplier Marketplace</h3>
+                          </div>
+                          <ArrowUpRight size={16} className="text-blue-600 opacity-0 group-hover/card:opacity-100 transition-opacity" />
+                        </div>
+                        <p className="text-sm text-slate-500 mb-4">Give humans the context they need to understand your vendors.</p>
+                        <div className="flex items-center gap-3 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+                          EVERYWHERE YOU WORK |
+                          <span className="flex items-center gap-1 border border-slate-200 rounded px-2 py-1 text-slate-600 bg-slate-50"><MessageCircle size={12}/> Slack</span>
+                          <span className="flex items-center gap-1 border border-slate-200 rounded px-2 py-1 text-slate-600 bg-slate-50"><Bot size={12}/> Teams</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* RIGHT COLUMN */}
+                    <div className="flex-1 flex flex-col gap-4">
+                      {/* Context Agents */}
+                      <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:border-blue-200 transition-colors cursor-pointer group/card2">
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-2">
+                            <div className="w-6 h-6 rounded text-blue-600 flex items-center justify-center"><Bot size={18} /></div>
+                            <h3 className="text-lg font-bold text-slate-900">Autonomous Agents</h3>
+                          </div>
+                          <ArrowUpRight size={16} className="text-blue-600 opacity-0 group-hover/card2:opacity-100 transition-opacity" />
+                        </div>
+                        <p className="text-sm text-slate-500 mb-4">AI teammates that document tacit knowledge and make your data AI-ready.</p>
+                        <div className="flex flex-wrap gap-2">
+                          <span className="text-[11px] font-medium border border-slate-200 rounded px-2 py-1 text-slate-600 bg-slate-50">Intake</span>
+                          <span className="text-[11px] font-medium border border-slate-200 rounded px-2 py-1 text-slate-600 bg-slate-50">Approvals</span>
+                          <span className="text-[11px] font-medium border border-slate-200 rounded px-2 py-1 text-slate-600 bg-slate-50">Sourcing</span>
+                          <span className="text-[11px] font-medium border border-slate-200 rounded px-2 py-1 text-slate-600 bg-slate-50">Audit</span>
+                        </div>
+                      </div>
+
+                      {/* Context Engineering Studio */}
+                      <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:border-blue-200 transition-colors cursor-pointer group/card2">
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-2">
+                            <div className="w-6 h-6 rounded text-blue-600 flex items-center justify-center"><Activity size={18} /></div>
+                            <h3 className="text-lg font-bold text-slate-900">Workflow Studio</h3>
+                          </div>
+                          <ArrowUpRight size={16} className="text-blue-600 opacity-0 group-hover/card2:opacity-100 transition-opacity" />
+                        </div>
+                        <p className="text-sm text-slate-500 mb-4">Bootstrap, test, and ship the business understanding every AI needs.</p>
+                        <div className="flex items-center gap-2 text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+                          DEPLOY ANYWHERE |
+                          <span className="flex items-center gap-1 border border-slate-200 rounded px-2 py-1 text-slate-600 bg-slate-50"><Database size={12}/> SAP</span>
+                          <span className="flex items-center gap-1 border border-slate-200 rounded px-2 py-1 text-slate-600 bg-slate-50"><Globe size={12}/> Oracle</span>
+                        </div>
+                      </div>
+
+                      {/* Context Lakehouse */}
+                      <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:border-blue-200 transition-colors cursor-pointer group/card2">
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="flex items-center gap-2">
+                            <div className="w-6 h-6 rounded text-blue-600 flex items-center justify-center"><Search size={18} /></div>
+                            <h3 className="text-lg font-bold text-slate-900">Context Lakehouse</h3>
+                          </div>
+                          <ArrowUpRight size={16} className="text-blue-600 opacity-0 group-hover/card2:opacity-100 transition-opacity" />
+                        </div>
+                        <p className="text-sm text-slate-500 mb-3">The world's first context store engineered natively for AI.</p>
+                        <div className="grid grid-cols-2 gap-2 text-xs text-slate-500">
+                          <span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-pink-400"></div> Contract-native</span>
+                          <span className="flex items-center gap-1.5"><div className="w-1.5 h-1.5 rounded-full bg-pink-400"></div> Vector AI search</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div className="flex items-center gap-1.5 hover:text-blue-600 cursor-pointer transition-colors group py-5">
                 Solutions <ChevronDown size={14} className="text-slate-400 group-hover:text-blue-600 group-hover:-rotate-180 transition-all duration-300" />
