@@ -5,7 +5,7 @@ import { Bot, Swords, FileText, Activity, MessageCircle, Database, Globe, Networ
 
 export default function ArchitectureDiagram() {
   return (
-    <div className="relative w-full max-w-6xl mx-auto py-20 px-4 md:px-8 overflow-hidden font-sans">
+    <div className="relative w-full max-w-6xl mx-auto pt-6 pb-20 px-4 md:px-8 overflow-hidden font-sans">
       
       <style>
         {`
@@ -173,4 +173,5 @@ export default function ArchitectureDiagram() {
     </div>
   );
 }
+
 

@@ -240,7 +240,7 @@ export default function LandingPage() {
 
 
       {/* --- HIGH-CONTRAST HERO (ATLAN VIBE) --- */}
-      <header className="relative pt-32 pb-24 md:pt-48 md:pb-32 z-10 bg-[#0B101E] overflow-hidden">
+      <header className="relative pt-32 pb-48 md:pt-48 md:pb-64 z-10 bg-[#152060]">
         {/* Subtle grid pattern background */}
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
         {/* Cool Blueprint Grid Pattern */}
@@ -275,30 +275,39 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-6 relative text-center flex flex-col items-center">
           <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="flex flex-col items-center">
             
-            <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-400/20 text-blue-300 text-xs font-semibold tracking-wide mb-8 backdrop-blur-sm">
-              <Sparkles size={14} /> Meet Dorc AI: The Procurement Agent
-            </motion.div>
+            <motion.div variants={fadeIn} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-blue-400/40 text-slate-200 text-sm font-semibold tracking-wide mb-8 backdrop-blur-sm bg-blue-950/50 shadow-[0_0_15px_rgba(59,130,246,0.3)]"><div className="w-2.5 h-2.5 rounded-full bg-emerald-400"></div> The Context Layer for AI</motion.div>
             
             <motion.h1 variants={fadeIn} className="text-5xl md:text-7xl lg:text-[80px] font-bold tracking-tight text-white mb-6 leading-[1.05] max-w-5xl">
-              Your AI doesn't know your supply chain. <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Let’s fix that.</span>
+              Your AI doesn't know your business. <span className="text-cyan-400">Let's fix that.</span>
             </motion.h1>
             
             <motion.p variants={fadeIn} className="max-w-2xl mx-auto text-lg md:text-xl text-slate-400 mb-10 leading-relaxed font-normal">
-              Enterprise procurement fails not because of vendors, but because of missing context. ProcGen unifies your ERP, PDFs, and negotiations into one autonomous control tower.
+              Build a shared understanding of your data, your business logic, and your institutional knowledge, and make it available to every AI tool you run.
             </motion.p>
             
-            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
-              <button onClick={() => setIsVideoModalOpen(true)} className="group w-full sm:w-auto flex items-center justify-center gap-2 bg-blue-600 text-white font-semibold px-8 py-4 rounded-xl hover:bg-blue-500 transition-all text-base shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)]">
-                Take a Tour <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+            <motion.div variants={fadeIn} className="flex flex-col sm:flex-row items-center justify-center gap-6 w-full">
+              <button onClick={() => setIsVideoModalOpen(true)} className="bg-white text-[#0f172a] font-bold px-8 py-3.5 rounded-xl hover:bg-slate-100 transition-all text-[15px] shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                Talk to Us
               </button>
-              <a href="#features" className="w-full sm:w-auto flex items-center justify-center gap-2 bg-white/5 text-white border border-white/10 font-semibold px-8 py-4 rounded-xl hover:bg-white/10 transition-all text-base backdrop-blur-sm">
-                Explore the Platform
+              <a href="#features" className="text-white font-semibold text-[15px] hover:text-slate-200 transition-colors underline underline-offset-[6px] decoration-2 decoration-white/40 hover:decoration-white">
+                See How it Works
               </a>
             </motion.div>
           </motion.div>
         </div>
         
           </header>
+      
+      {/* --- ARCHITECTURE DIAGRAM OVERLAP --- */}
+      <section className="relative z-20 px-4 md:px-6 -mt-32 max-w-[1400px] mx-auto mb-24">
+        <div className="bg-white/20 p-[1px] rounded-[2.5rem] shadow-[0_0_60px_rgba(59,130,246,0.3)] backdrop-blur-md">
+          <div className="bg-[#fafafa] rounded-[2.5rem] w-full min-h-[500px] overflow-hidden shadow-2xl relative pt-4 md:pt-8">
+            <div className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-white to-transparent pointer-events-none z-0"></div>
+            <ArchitectureDiagram />
+          </div>
+        </div>
+      </section>
+
 
       
               {/* --- IMPACT METRICS (DARK THEME BRIDGE) --- */}
@@ -329,7 +338,6 @@ export default function LandingPage() {
       {/* --- ATLAN BENTO BOX / FEATURES SECTION --- */}
       
       {/* --- DORC FEATURES DETAILED SECTION --- */}
-      <section className="py-24 border-b border-slate-200 relative overflow-hidden"><ArchitectureDiagram /></section>
       <section id="dorc-features" className="py-24 bg-transparent border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.5 }} className="text-center max-w-3xl mx-auto mb-20">
@@ -813,7 +821,7 @@ export default function LandingPage() {
         </section>
 
       {/* --- MEGA FOOTER --- */}
-      <footer className="bg-[#0B101E] pt-24 pb-12 text-slate-400 text-sm">
+      <footer className="bg-[#152060] pt-24 pb-12 text-slate-400 text-sm">
         <div className="max-w-7xl mx-auto px-6">
             <div className="grid grid-cols-2 md:grid-cols-5 gap-12 mb-20">
               <div className="col-span-2">
