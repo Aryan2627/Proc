@@ -1,7 +1,7 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Play, Shield, Network, Cpu, CheckCircle2, Zap, Lock, BarChart3 } from 'lucide-react';
+import { ArrowRight, Play, Shield, Network, Cpu, CheckCircle2, Zap, Lock, BarChart3, Search, Activity, FileText } from 'lucide-react';
 
 const AGENTS = [
   {
@@ -34,10 +34,136 @@ const AGENTS = [
   }
 ];
 
+const ActiveAgentAnimation = ({ agentId }: { agentId: string }) => {
+  const [step, setStep] = useState(0);
+
+  // Simple animation loop driver
+  useEffect(() => {
+    setStep(0);
+    const interval = setInterval(() => {
+      setStep(s => (s + 1) % 4);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [agentId]);
+
+  if (agentId === 'niti') {
+    return (
+      <div className="p-8 h-full flex flex-col bg-slate-50">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="font-bold text-slate-800 text-lg">Vendor Negotiation: Acme Corp</h3>
+          <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-bold">Active Session</span>
+        </div>
+        <div className="flex-1 space-y-4">
+          <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-sm transition-all">
+            <div className="text-xs text-slate-400 mb-1">Incoming Quote</div>
+            <div className="font-bold text-slate-700">10,000 units @ $150/unit</div>
+          </div>
+          <div className={`transition-all duration-500 ${step >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+             <div className="flex items-center gap-2 text-sm text-blue-600 mb-2">
+                <Activity size={16} className="animate-spin" /> Analyzing historical contracts & should-cost models...
+             </div>
+          </div>
+          <div className={`bg-blue-600 p-4 rounded-xl border border-blue-700 shadow-lg text-white transition-all duration-500 ${step >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <div className="text-xs text-blue-200 mb-1">NITI Counter-Offer Generated</div>
+            <div className="font-bold text-lg mb-2">Targeting $132/unit (Net-60 terms)</div>
+            <div className="w-full bg-blue-800 rounded-full h-1.5 mt-4 overflow-hidden">
+               <div className={`bg-white h-full transition-all duration-1000 ${step >= 3 ? 'w-full' : 'w-0'}`}></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (agentId === 'anveshan') {
+    return (
+      <div className="p-8 h-full flex flex-col bg-slate-50">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="font-bold text-slate-800 text-lg">Global Sourcing Scan</h3>
+          <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-bold">Deep Web</span>
+        </div>
+        <div className="flex-1 space-y-4">
+          <div className="flex items-center gap-4 bg-white p-4 rounded-xl border border-slate-200">
+            <Search size={24} className={step >= 1 ? 'text-indigo-600' : 'text-slate-300'} />
+            <div className="flex-1">
+              <div className="text-sm font-bold text-slate-700">Scanning 1,400+ Suppliers</div>
+              <div className="w-full bg-slate-100 rounded-full h-1.5 mt-2">
+                 <div className={`bg-indigo-500 h-full transition-all duration-1000 ${step >= 1 ? 'w-full' : 'w-[10%]'}`}></div>
+              </div>
+            </div>
+          </div>
+          <div className={`bg-white p-4 rounded-xl border border-emerald-200 shadow-sm transition-all duration-500 ${step >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <div className="flex items-center justify-between">
+              <div className="font-bold text-slate-700">TechFlow Logistics GmbH</div>
+              <span className="text-emerald-600 text-xs font-bold flex items-center gap-1"><CheckCircle2 size={14}/> SOC-2 Verified</span>
+            </div>
+            <div className="text-xs text-slate-500 mt-2">ESG Score: 94/100 | Risk: Low</div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (agentId === 'tark') {
+    return (
+      <div className="p-8 h-full flex flex-col bg-slate-50">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="font-bold text-slate-800 text-lg">PO-992341 Validation</h3>
+          <span className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold">Ops Validation</span>
+        </div>
+        <div className="flex-1 space-y-4">
+          {[
+            { id: 1, text: '3-Way Invoice Match Verified' },
+            { id: 2, text: 'Budget Allocation Confirmed' },
+            { id: 3, text: 'Approval Routed to VP Finance' }
+          ].map((item, idx) => (
+            <div key={item.id} className={`flex items-center gap-3 bg-white p-4 rounded-xl border border-slate-200 transition-all duration-500 ${step >= idx + 1 ? 'opacity-100' : 'opacity-30'}`}>
+              <CheckCircle2 size={20} className={step >= idx + 1 ? 'text-emerald-500' : 'text-slate-300'} />
+              <div className="font-medium text-slate-700">{item.text}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // garuda
+  return (
+    <div className="p-8 h-full flex flex-col bg-slate-50">
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="font-bold text-slate-800 text-lg">Real-Time Risk Monitor</h3>
+        <span className="px-3 py-1 bg-red-100 text-red-700 rounded-full text-xs font-bold animate-pulse">Alert</span>
+      </div>
+      <div className="flex-1 space-y-4">
+        <div className="bg-red-50 p-4 rounded-xl border border-red-200">
+          <div className="text-red-700 font-bold mb-1">Supply Chain Disruption Detected</div>
+          <div className="text-sm text-red-600">Port strike in Hamburg. Estimated delay: 4-6 days.</div>
+        </div>
+        <div className={`bg-white p-4 rounded-xl border border-slate-200 shadow-sm transition-all duration-500 ${step >= 1 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+           <div className="font-bold text-slate-700 text-sm mb-2">Impact Analysis</div>
+           <div className="flex justify-between text-xs text-slate-500 border-b pb-2 mb-2">
+             <span>Shipments Affected</span> <span className="font-bold text-slate-800">3 POs</span>
+           </div>
+           <div className="flex justify-between text-xs text-slate-500">
+             <span>Value at Risk</span> <span className="font-bold text-slate-800">$1.2M</span>
+           </div>
+        </div>
+        <div className={`bg-blue-50 p-4 rounded-xl border border-blue-200 transition-all duration-500 ${step >= 2 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+           <div className="text-blue-700 font-bold text-sm">Mitigation Action Taken</div>
+           <div className="text-xs text-blue-600 mt-1">GARUDA has automatically drafted rerouting instructions and supplier notices.</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+
 export default function AutonomousAgentsPage() {
   const [activeAgentId, setActiveAgentId] = useState(AGENTS[0].id);
-
   const activeAgent = AGENTS.find((a) => a.id === activeAgentId) || AGENTS[0];
+
+  const [activeSoftwareId, setActiveSoftwareId] = useState(AGENTS[0].id);
+  const activeSoftwareAgent = AGENTS.find((a) => a.id === activeSoftwareId) || AGENTS[0];
 
   return (
     <div style={{ minHeight: '100vh', backgroundColor: '#ffffff', color: '#0f172a', fontFamily: 'system-ui, sans-serif' }}>
@@ -63,7 +189,7 @@ export default function AutonomousAgentsPage() {
         </button>
       </header>
 
-      <main style={{ maxWidth: '1100px', margin: '0 auto', padding: '80px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: '80px 20px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         
         {/* Top Typography */}
         <div style={{ textAlign: 'center', maxWidth: '800px', marginBottom: '60px' }}>
@@ -187,6 +313,79 @@ export default function AutonomousAgentsPage() {
           </div>
 
         </div>
+
+        {/* Animated Software Scrolling Showcase Section */}
+        <div className="mt-32 w-full flex flex-col md:flex-row gap-12">
+          {/* Left Sidebar (Sticky Tab Selector) */}
+          <div className="w-full md:w-[320px] flex-shrink-0 flex flex-col pt-8">
+            <h3 className="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6 px-4">Watch them work</h3>
+            <div className="flex flex-col gap-2 relative">
+              {/* Animated selection indicator bar */}
+              <div 
+                className="absolute left-0 w-1 bg-blue-600 rounded-r-lg transition-all duration-300"
+                style={{ 
+                  height: '40px', 
+                  top: (AGENTS.findIndex(a => a.id === activeSoftwareId) * 64) + "px",
+                  marginTop: '12px'
+                }}
+              />
+              {AGENTS.map((agent) => (
+                <button
+                  key={agent.id}
+                  onClick={() => setActiveSoftwareId(agent.id)}
+                  className={`text-left px-6 py-4 rounded-xl font-bold transition-all h-[64px] ${activeSoftwareId === agent.id ? 'bg-slate-50 text-slate-900 shadow-sm border border-slate-100' : 'text-slate-400 hover:text-slate-600 hover:bg-slate-50/50 border border-transparent'}`}
+                >
+                  <div className="flex items-center gap-3">
+                    <img src={agent.image} alt={agent.name} className={`w-8 h-8 rounded object-cover transition-opacity ${activeSoftwareId === agent.id ? 'opacity-100' : 'opacity-50'}`} />
+                    {agent.name}
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {/* Case Study Card like in Atlan mockup */}
+            <div className="bg-white border border-slate-200 rounded-xl p-6 shadow-sm mt-12">
+               <div className="text-blue-600 text-xs font-bold mb-2 uppercase tracking-widest flex items-center gap-2">
+                 <FileText size={14} /> Case Study
+               </div>
+               <h4 className="font-bold text-slate-900 mb-2">Inside GlobalCorp's Agentic Rollout</h4>
+               <p className="text-sm text-slate-600 mb-6">How GlobalCorp deployed 4 Context Agents to automate 30,000 POs in two weeks, saving $2M.</p>
+               <button className="w-full py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm font-bold text-slate-700 hover:bg-slate-100 transition-colors">Read the full story</button>
+            </div>
+          </div>
+
+          {/* Right Content Panel (Animated UI) */}
+          <div className="flex-1">
+            <h2 className="text-3xl font-bold text-slate-900 mb-8 leading-tight">
+              Agents that read raw enterprise metadata to build foundational context.
+            </h2>
+            
+            <div className="w-full bg-blue-600 rounded-3xl p-2 sm:p-6 shadow-2xl overflow-hidden relative" style={{ minHeight: '550px' }}>
+              <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)', backgroundSize: '24px 24px' }}></div>
+              
+              <div className="bg-white w-full h-[500px] rounded-xl shadow-2xl border border-slate-200 overflow-hidden flex flex-col relative z-10">
+                
+                {/* Mockup Header */}
+                <div className="border-b border-slate-100 p-4 flex items-center gap-4 bg-white z-20 shadow-sm">
+                  <img src={activeSoftwareAgent.image} alt={activeSoftwareAgent.name} className="w-10 h-10 rounded-lg object-cover shadow-sm" />
+                  <div>
+                    <div className="font-bold text-slate-900 flex items-center gap-2">
+                      {activeSoftwareAgent.name} 
+                      <span className="px-2 py-0.5 bg-slate-100 text-slate-500 rounded text-[10px] uppercase tracking-wider">{activeSoftwareAgent.role}</span>
+                    </div>
+                    <div className="text-xs text-slate-500 mt-0.5">{activeSoftwareAgent.description}</div>
+                  </div>
+                </div>
+
+                {/* Simulated Software View */}
+                <div className="flex-1 bg-slate-50 overflow-hidden relative">
+                   <ActiveAgentAnimation agentId={activeSoftwareId} />
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
       
         {/* Advanced Architecture Section */}
         <div style={{ marginTop: '120px', width: '100%', maxWidth: '1100px' }}>
@@ -272,7 +471,6 @@ export default function AutonomousAgentsPage() {
             </div>
           </div>
         </div>
-
       </main>
     </div>
   );
