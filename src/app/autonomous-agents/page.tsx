@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, Shield, Network, Cpu, CheckCircle2, Zap, Lock, BarChart3 } from 'lucide-react';
 
 const AGENTS = [
   {
@@ -187,6 +187,92 @@ export default function AutonomousAgentsPage() {
           </div>
 
         </div>
+      
+        {/* Advanced Architecture Section */}
+        <div style={{ marginTop: '120px', width: '100%', maxWidth: '1100px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, letterSpacing: '-0.5px', marginBottom: '16px' }}>The Engine Behind the Agents</h2>
+            <p style={{ fontSize: '1.1rem', color: '#64748b', maxWidth: '600px', margin: '0 auto' }}>
+              Our agents are not generic wrappers. They are deterministic state machines powered by your live enterprise context.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+            {/* Step 1 */}
+            <div style={{ padding: '32px', backgroundColor: '#f8fafc', borderRadius: '20px', border: '1px solid #e2e8f0' }}>
+              <div style={{ width: '48px', height: '48px', backgroundColor: '#e0e7ff', color: '#4f46e5', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                <Network size={24} />
+              </div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '12px' }}>1. Data Ingestion</h3>
+              <p style={{ color: '#475569', lineHeight: 1.6, fontSize: '0.95rem' }}>
+                We pull structured and unstructured data across your ERPs, emails, and PDFs using Live Vision OCR and native integrations.
+              </p>
+            </div>
+            {/* Step 2 */}
+            <div style={{ padding: '32px', backgroundColor: '#f8fafc', borderRadius: '20px', border: '1px solid #e2e8f0' }}>
+              <div style={{ width: '48px', height: '48px', backgroundColor: '#dbeafe', color: '#2563eb', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                <Cpu size={24} />
+              </div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '12px' }}>2. Context Lakehouse</h3>
+              <p style={{ color: '#475569', lineHeight: 1.6, fontSize: '0.95rem' }}>
+                Data is normalized into a semantic graph. The AI understands the exact relationship between a vendor, a PO, and historical pricing.
+              </p>
+            </div>
+            {/* Step 3 */}
+            <div style={{ padding: '32px', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '20px' }}>
+              <div style={{ width: '48px', height: '48px', backgroundColor: '#dcfce7', color: '#16a34a', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+                <Zap size={24} />
+              </div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '12px', color: '#166534' }}>3. Autonomous Execution</h3>
+              <p style={{ color: '#15803d', lineHeight: 1.6, fontSize: '0.95rem' }}>
+                The agent swarm acts on the graph to negotiate, source, and approve workflows at 100x human speed.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Security & Guardrails */}
+        <div style={{ marginTop: '120px', width: '100%', backgroundColor: '#0f172a', borderRadius: '32px', padding: '80px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '60px' }}>
+          <div style={{ flex: 1 }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '6px 12px', backgroundColor: 'rgba(255,255,255,0.1)', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 600, marginBottom: '24px' }}>
+              <Shield size={16} color="#60a5fa" /> Enterprise Guardrails
+            </div>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, lineHeight: 1.1, marginBottom: '24px' }}>
+              Absolute Control.<br/>Zero Rogue Executions.
+            </h2>
+            <p style={{ color: '#94a3b8', fontSize: '1.1rem', lineHeight: 1.6, marginBottom: '32px', maxWidth: '500px' }}>
+              We don't believe in unchecked AI. ProcGen runs on a strict Human-in-the-Loop (HITL) architecture. High-risk POs and multi-million dollar negotiations are intercepted for cryptographic certification.
+            </p>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px', listStyle: 'none', padding: 0, margin: 0 }}>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#f8fafc', fontWeight: 500 }}><CheckCircle2 size={20} color="#34d399" /> Deterministic Output Validation</li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#f8fafc', fontWeight: 500 }}><CheckCircle2 size={20} color="#34d399" /> SOC-2 Type II Certified</li>
+              <li style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#f8fafc', fontWeight: 500 }}><CheckCircle2 size={20} color="#34d399" /> Role-Based Approval Routing</li>
+            </ul>
+          </div>
+          
+          <div style={{ flex: 1, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+            <div style={{ backgroundColor: 'rgba(255,255,255,0.05)', padding: '30px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.1)' }}>
+              <div style={{ color: '#60a5fa', marginBottom: '12px' }}><Lock size={32} /></div>
+              <div style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '8px' }}>100%</div>
+              <div style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Data Isolation Guarantee</div>
+            </div>
+            <div style={{ backgroundColor: 'rgba(255,255,255,0.05)', padding: '30px', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.1)' }}>
+              <div style={{ color: '#34d399', marginBottom: '12px' }}><BarChart3 size={32} /></div>
+              <div style={{ fontSize: '2rem', fontWeight: 800, marginBottom: '8px' }}>40x</div>
+              <div style={{ color: '#94a3b8', fontSize: '0.9rem' }}>Average ROI (Days 1-60)</div>
+            </div>
+            <div style={{ gridColumn: '1 / -1', backgroundColor: '#1e3a8a', padding: '30px', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div>
+                <div style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '4px' }}>Ready to deploy?</div>
+                <div style={{ color: '#bfdbfe', fontSize: '0.95rem' }}>Talk to our integration engineers today.</div>
+              </div>
+              <button style={{ backgroundColor: 'white', color: '#1e3a8a', border: 'none', padding: '12px 24px', borderRadius: '8px', fontWeight: 700, cursor: 'pointer' }}>
+                Book Demo
+              </button>
+            </div>
+          </div>
+        </div>
+
       </main>
     </div>
   );
