@@ -387,46 +387,26 @@ export default function AutonomousAgentsPage() {
           </div>
         </div>
       
-        {/* Advanced Architecture Section */}
+        {/* Advanced Architecture Section (Now Video Embed) */}
         <div style={{ marginTop: '120px', width: '100%', maxWidth: '1100px' }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, letterSpacing: '-0.5px', marginBottom: '16px' }}>The Engine Behind the Agents</h2>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, letterSpacing: '-0.5px', marginBottom: '16px' }}>See the Swarm in Action</h2>
             <p style={{ fontSize: '1.1rem', color: '#64748b', maxWidth: '600px', margin: '0 auto' }}>
-              Our agents are not generic wrappers. They are deterministic state machines powered by your live enterprise context.
+              Watch how our deterministic AI agents execute complex enterprise workflows.
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
-            {/* Step 1 */}
-            <div style={{ padding: '32px', backgroundColor: '#f8fafc', borderRadius: '20px', border: '1px solid #e2e8f0' }}>
-              <div style={{ width: '48px', height: '48px', backgroundColor: '#e0e7ff', color: '#4f46e5', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-                <Network size={24} />
-              </div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '12px' }}>1. Data Ingestion</h3>
-              <p style={{ color: '#475569', lineHeight: 1.6, fontSize: '0.95rem' }}>
-                We pull structured and unstructured data across your ERPs, emails, and PDFs using Live Vision OCR and native integrations.
-              </p>
-            </div>
-            {/* Step 2 */}
-            <div style={{ padding: '32px', backgroundColor: '#f8fafc', borderRadius: '20px', border: '1px solid #e2e8f0' }}>
-              <div style={{ width: '48px', height: '48px', backgroundColor: '#dbeafe', color: '#2563eb', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-                <Cpu size={24} />
-              </div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '12px' }}>2. Context Lakehouse</h3>
-              <p style={{ color: '#475569', lineHeight: 1.6, fontSize: '0.95rem' }}>
-                Data is normalized into a semantic graph. The AI understands the exact relationship between a vendor, a PO, and historical pricing.
-              </p>
-            </div>
-            {/* Step 3 */}
-            <div style={{ padding: '32px', backgroundColor: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '20px' }}>
-              <div style={{ width: '48px', height: '48px', backgroundColor: '#dcfce7', color: '#16a34a', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
-                <Zap size={24} />
-              </div>
-              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '12px', color: '#166534' }}>3. Autonomous Execution</h3>
-              <p style={{ color: '#15803d', lineHeight: 1.6, fontSize: '0.95rem' }}>
-                The agent swarm acts on the graph to negotiate, source, and approve workflows at 100x human speed.
-              </p>
-            </div>
+          <div style={{ width: '100%', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)', border: '1px solid #e2e8f0', backgroundColor: '#000', position: 'relative' }}>
+             {/* Invisible overlay to absolutely prevent clicking/pausing on mobile or desktop */}
+             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 10, pointerEvents: 'auto' }} />
+             <video 
+               src="/demo-video.mp4" 
+               autoPlay 
+               loop 
+               playsInline
+               controls={false}
+               style={{ width: '100%', height: 'auto', display: 'block', pointerEvents: 'none', objectFit: 'cover' }}
+             />
           </div>
         </div>
 
