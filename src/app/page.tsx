@@ -259,7 +259,7 @@ export default function LandingPage() {
                     {/* RIGHT COLUMN */}
                     <div className="flex-1 flex flex-col gap-4">
                       {/* Context Agents */}
-                      <Link href="/p/agents" className="block bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] hover:border-blue-100 hover:shadow-[0_8px_25px_-5px_rgba(0,0,0,0.05)] transition-all group/card2">
+                      <Link href="/autonomous-agents" className="block bg-white border border-slate-100 rounded-2xl p-6 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.05)] hover:border-blue-100 hover:shadow-[0_8px_25px_-5px_rgba(0,0,0,0.05)] transition-all group/card2">
                         <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center gap-2">
                             <div className="w-5 h-5 rounded text-blue-600 flex items-center justify-center"><Bot size={18} /></div>
