@@ -389,26 +389,55 @@ export default function AutonomousAgentsPage() {
           </div>
         </div>
       
-        {/* Advanced Architecture Section (Now Video Embed) */}
-        <div style={{ marginTop: '120px', width: '100%', maxWidth: '1100px' }}>
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 800, letterSpacing: '-0.5px', marginBottom: '16px' }}>See the Swarm in Action</h2>
-            <p style={{ fontSize: '1.1rem', color: '#64748b', maxWidth: '600px', margin: '0 auto' }}>
-              Watch how our deterministic AI agents execute complex enterprise workflows.
+        
+        {/* Advanced Video Showcase Section */}
+        <div className="mt-40 w-full max-w-[1200px] relative flex flex-col items-center">
+          
+          {/* Background Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[60%] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none z-0"></div>
+
+          <div className="text-center mb-12 relative z-10">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50/80 border border-blue-200 text-blue-600 font-bold text-[11px] tracking-widest uppercase mb-6 backdrop-blur-sm shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Live Simulation
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight mb-6" style={{ fontFamily: 'system-ui, sans-serif' }}>
+              See the Swarm <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">in Action.</span>
+            </h2>
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto font-medium" style={{ fontFamily: 'system-ui, sans-serif' }}>
+              Watch how our deterministic AI agents seamlessly orchestrate complex enterprise workflows end-to-end.
             </p>
           </div>
 
-          <div style={{ width: '100%', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)', border: '1px solid #e2e8f0', backgroundColor: '#000', position: 'relative' }}>
-             {/* Invisible overlay to absolutely prevent clicking/pausing on mobile or desktop */}
-             <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 10, pointerEvents: 'auto' }} />
-             <video 
-               src="/demo-video.mp4" 
-               autoPlay 
-               loop 
-               playsInline
-               controls={false}
-               style={{ width: '100%', height: 'auto', display: 'block', pointerEvents: 'none', objectFit: 'cover' }}
-             />
+          {/* Cinematic Browser Frame */}
+          <div className="relative w-full max-w-[900px] rounded-2xl bg-white border border-slate-200 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.1)] overflow-hidden z-10 group">
+            
+            {/* Browser Header */}
+            <div className="h-12 bg-slate-50 border-b border-slate-200 flex items-center px-4 gap-4">
+              <div className="flex gap-2">
+                <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                <div className="w-3 h-3 rounded-full bg-amber-400"></div>
+                <div className="w-3 h-3 rounded-full bg-green-400"></div>
+              </div>
+              <div className="flex-1 max-w-md mx-auto bg-white border border-slate-200 rounded-md h-7 flex items-center justify-center text-[11px] text-slate-400 font-medium font-mono">
+                procgen.ai/live-swarm-demo
+              </div>
+              <div className="w-10"></div> {/* Spacer for symmetry */}
+            </div>
+
+            {/* Video Container */}
+            <div className="relative w-full bg-slate-900 flex justify-center items-center overflow-hidden">
+               {/* Invisible overlay */}
+               <div className="absolute inset-0 z-20 pointer-events-auto cursor-default"></div>
+               <video 
+                 src="/demo-video.mp4" 
+                 autoPlay 
+                 loop 
+                 muted
+                 playsInline
+                 controls={false}
+                 className="w-full h-auto object-cover pointer-events-none opacity-95 transition-opacity duration-700 group-hover:opacity-100"
+               />
+            </div>
           </div>
         </div>
 
