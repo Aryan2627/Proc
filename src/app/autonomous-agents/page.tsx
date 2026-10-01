@@ -4,60 +4,6 @@ import Link from 'next/link';
 import { ArrowRight, Play, Shield, Network, Cpu, CheckCircle2, Zap, Lock, BarChart3, Search, Activity, FileText } from 'lucide-react';
 
 
-const UnstoppableVideo = () => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Aggressive play attempt
-    const attemptPlay = async () => {
-      try {
-        await video.play();
-      } catch (error) {
-        // Browser blocked unmuted autoplay. Mute it and play it so it at least plays visually.
-        video.muted = true;
-        video.play().catch((e: any) => console.error('Video strictly blocked:', e));
-      }
-    };
-
-    attemptPlay();
-
-    // The moment the user clicks or scrolls anywhere, unmute it
-    const handleInteraction = () => {
-      if (video && video.muted) {
-        video.muted = false;
-        video.play().catch((e: any) => {});
-      }
-    };
-
-    window.addEventListener('click', handleInteraction, { once: true });
-    window.addEventListener('touchstart', handleInteraction, { once: true });
-    window.addEventListener('scroll', handleInteraction, { once: true });
-
-    return () => {
-      window.removeEventListener('click', handleInteraction);
-      window.removeEventListener('touchstart', handleInteraction);
-      window.removeEventListener('scroll', handleInteraction);
-    };
-  }, []);
-
-  return (
-    <div style={{ width: '100%', borderRadius: '24px', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)', border: '1px solid #e2e8f0', backgroundColor: '#000', position: 'relative', cursor: 'default' }}>
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, zIndex: 10, pointerEvents: 'auto' }} />
-      <video 
-        ref={videoRef}
-        src="/demo-video.mp4" 
-        autoPlay 
-        loop 
-        playsInline
-        controls={false}
-        style={{ width: '100%', height: 'auto', display: 'block', pointerEvents: 'none', objectFit: 'cover' }}
-      />
-    </div>
-  );
-};
 
 const AGENTS = [
   {
