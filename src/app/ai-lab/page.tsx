@@ -303,6 +303,7 @@ useEffect(() => {
                   <li><Link href="/" className="hover:text-indigo-400 transition-colors">About Us</Link></li>
                   <li><Link href="/careers" className="hover:text-indigo-400 transition-colors">Careers</Link></li>
                   <li><Link href="/ai-lab" className="text-indigo-400 hover:text-indigo-300 transition-colors font-bold">AI Lab</Link></li>
+                  <li><Link href="/vendor-register" className="hover:text-indigo-400 transition-colors">Vendor Registration</Link></li>
                 </ul>
               </div>
             </div>

@@ -194,6 +194,7 @@ export default function EnterpriseContextLayer() {
                   <li><Link href="/" className="hover:text-blue-400 transition-colors">About Us</Link></li>
                   <li><Link href="/careers" className="hover:text-blue-400 transition-colors">Careers (We're Hiring!)</Link></li>
                   <li><Link href="/know/enterprise-context-layer" className="hover:text-blue-400 transition-colors">Resources</Link></li>
+                  <li><Link href="/vendor-register" className="hover:text-blue-400 transition-colors">Vendor Registration</Link></li>
                 </ul>
               </div>
             </div>
