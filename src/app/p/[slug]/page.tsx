@@ -1,3 +1,19 @@
+
+import { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const title = slug.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+  
+  return {
+    title: `${title} | ProcGen`,
+    description: `Learn how ProcGen's AI-driven platform solves challenges related to ${title.toLowerCase()} in enterprise procurement.`,
+    alternates: {
+      canonical: `https://procgen.ai/p/${slug}`
+    }
+  };
+}
+
 import React from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Sparkles, CheckCircle2 } from 'lucide-react';
