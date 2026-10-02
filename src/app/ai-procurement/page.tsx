@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'AI Procurement & Autonomous Sourcing | ProcGen',
   description: 'Leverage the ProcGen AI Swarm to autonomously run reverse auctions, negotiate contracts, and evaluate supplier risk in real-time.',
   alternates: {
-    canonical: 'https://procgen.ai/ai-procurement'
+    canonical: 'https://procgen.in/ai-procurement'
   }
 };
 

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Vendor Onboarding Software | ProcGen',
   description: 'Learn how ProcGen solves complex supply chain challenges with advanced vendor onboarding built for the modern enterprise.',
   alternates: {
-    canonical: 'https://procgen.ai/vendor-onboarding'
+    canonical: 'https://procgen.in/vendor-onboarding'
   }
 };
 

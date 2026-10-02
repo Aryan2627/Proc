@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Purchase Order Software | ProcGen',
   description: 'Learn how ProcGen solves complex supply chain challenges with advanced purchase order software built for the modern enterprise.',
   alternates: {
-    canonical: 'https://procgen.ai/purchase-order-software'
+    canonical: 'https://procgen.in/purchase-order-software'
   }
 };
 

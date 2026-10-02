@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Vendor Management Software (VMS) | ProcGen',
   description: 'Onboard, evaluate, and collaborate with your suppliers using a unified, secure vendor management platform.',
   alternates: {
-    canonical: 'https://procgen.ai/vendor-management'
+    canonical: 'https://procgen.in/vendor-management'
   }
 };
 

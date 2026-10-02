@@ -419,7 +419,7 @@ export default function AutonomousAgentsPage() {
                 <div className="w-3 h-3 rounded-full bg-green-400"></div>
               </div>
               <div className="flex-1 max-w-md mx-auto bg-white border border-slate-200 rounded-md h-7 flex items-center justify-center text-[11px] text-slate-400 font-medium font-mono">
-                procgen.ai/live-swarm-demo
+                procgen.in/live-swarm-demo
               </div>
               <div className="w-10"></div> {/* Spacer for symmetry */}
             </div>

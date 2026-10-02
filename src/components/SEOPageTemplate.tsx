@@ -19,7 +19,7 @@ export default function SEOPageTemplate({ title, h1, description, features, bene
     '@type': 'WebPage',
     name: title,
     description: description,
-    url: `https://procgen.ai/${canonicalSlug}`
+    url: `https://procgen.in/${canonicalSlug}`
   };
 
   const faqSchema = faqs.length > 0 ? {
@@ -48,7 +48,7 @@ export default function SEOPageTemplate({ title, h1, description, features, bene
             {description}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="https://app.procgen.ai/signup" className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-full transition-colors flex items-center justify-center gap-2">
+            <Link href="https://app.procgen.in/signup" className="px-8 py-4 bg-cyan-500 hover:bg-cyan-400 text-slate-900 font-bold rounded-full transition-colors flex items-center justify-center gap-2">
               Start Free Trial <ArrowRight size={20} />
             </Link>
             <Link href="/autonomous-agents" className="px-8 py-4 bg-slate-800 hover:bg-slate-700 text-white font-semibold rounded-full transition-colors border border-slate-700">

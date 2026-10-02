@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Enterprise Procurement Software | ProcGen',
   description: `Streamline your purchasing workflows, automate purchase orders, and manage vendors seamlessly with ProcGen's enterprise procurement software.`,
   alternates: {
-    canonical: 'https://procgen.ai/procurement-software'
+    canonical: 'https://procgen.in/procurement-software'
   }
 };
 

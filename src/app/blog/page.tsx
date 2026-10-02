@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Procurement & AI Blog | ProcGen',
   description: 'Read the latest insights on enterprise procurement, AI sourcing automation, and vendor management best practices.',
   alternates: {
-    canonical: 'https://procgen.ai/blog'
+    canonical: 'https://procgen.in/blog'
   }
 };
 

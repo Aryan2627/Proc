@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Procurement Automation Software | ProcGen',
   description: 'Learn how ProcGen solves complex supply chain challenges with advanced procurement automation built for the modern enterprise.',
   alternates: {
-    canonical: 'https://procgen.ai/procurement-automation'
+    canonical: 'https://procgen.in/procurement-automation'
   }
 };
 

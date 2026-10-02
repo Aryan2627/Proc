@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/', '/admin/', '/dashboard/', '/test/'],
     },
-    sitemap: 'https://procgen.ai/sitemap.xml',
+    sitemap: 'https://procgen.in/sitemap.xml',
   };
 }
