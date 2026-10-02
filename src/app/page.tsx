@@ -247,7 +247,7 @@ export default function LandingPage() {
                             <h3 className="text-[17px] font-bold text-slate-900">Supplier Marketplace</h3>
                           </div>
                         </div>
-                        <p className="text-[13px] text-slate-500 mb-5 leading-relaxed">Give humans the context they need to understand your vendors.</p>
+                        <p className="text-[13px] text-slate-600 mb-5 leading-relaxed">Give humans the context they need to understand your vendors.</p>
                         <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                           EVERYWHERE YOU WORK <span className="text-slate-300">|</span>
                           <span className="flex items-center gap-1 border border-slate-200 rounded-md px-2 py-1 text-slate-500 bg-white shadow-sm hover:border-slate-300 transition-colors"><MessageCircle size={10}/> SLACK</span>
@@ -266,7 +266,7 @@ export default function LandingPage() {
                             <h3 className="text-[17px] font-bold text-slate-900">Autonomous Agents</h3>
                           </div>
                         </div>
-                        <p className="text-[13px] text-slate-500 mb-5 leading-relaxed">AI teammates that document tacit knowledge and make your data AI-ready.</p>
+                        <p className="text-[13px] text-slate-600 mb-5 leading-relaxed">AI teammates that document tacit knowledge and make your data AI-ready.</p>
                         <div className="flex flex-wrap gap-2">
                           <span className="text-[11px] font-medium border border-slate-200 rounded-md px-2.5 py-1 text-slate-500 bg-white shadow-sm hover:border-blue-300 transition-colors">Intake</span>
                           <span className="text-[11px] font-medium border border-slate-200 rounded-md px-2.5 py-1 text-slate-500 bg-white shadow-sm hover:border-blue-300 transition-colors">Approvals</span>
@@ -283,7 +283,7 @@ export default function LandingPage() {
                             <h3 className="text-[17px] font-bold text-slate-900">Workflow Studio</h3>
                           </div>
                         </div>
-                        <p className="text-[13px] text-slate-500 mb-5 leading-relaxed">Bootstrap, test, and ship the business understanding every AI needs.</p>
+                        <p className="text-[13px] text-slate-600 mb-5 leading-relaxed">Bootstrap, test, and ship the business understanding every AI needs.</p>
                         <div className="flex items-center gap-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
                           DEPLOY ANYWHERE <span className="text-slate-300">|</span>
                           <span className="flex items-center gap-1 border border-slate-200 rounded-md px-2 py-1 text-slate-500 bg-white shadow-sm hover:border-slate-300 transition-colors"><Database size={10}/> SAP</span>
@@ -299,7 +299,7 @@ export default function LandingPage() {
                             <h3 className="text-[17px] font-bold text-slate-900">Context Lakehouse</h3>
                           </div>
                         </div>
-                        <p className="text-[13px] text-slate-500 mb-4 leading-relaxed">The world's first context store engineered natively for AI.</p>
+                        <p className="text-[13px] text-slate-600 mb-4 leading-relaxed">The world's first context store engineered natively for AI.</p>
                         <div className="grid grid-cols-2 gap-y-2 text-[13px] text-slate-500 font-medium">
                           <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-pink-400"></div> Contract-native</span>
                           <span className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-pink-400"></div> Vector AI search</span>
@@ -329,7 +329,7 @@ export default function LandingPage() {
               Request Demo
             </button>
           </div>
-          <button className="lg:hidden text-slate-600"><Menu size={24} /></button>
+          <button aria-label="Open menu" className="lg:hidden text-slate-600"><Menu size={24} /></button>
         </div>
       </nav>
 
@@ -337,7 +337,7 @@ export default function LandingPage() {
       {/* --- HIGH-CONTRAST HERO (ATLAN VIBE) --- */}
       <header className="relative pt-32 pb-48 md:pt-48 md:pb-64 z-10 bg-[#152060]">
         {/* Subtle grid pattern background */}
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-slate-900/5 opacity-20 brightness-100 contrast-150 mix-blend-overlay"></div>
         {/* Cool Blueprint Grid Pattern */}
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f620_1px,transparent_1px),linear-gradient(to_bottom,#3b82f620_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_20%,#000_60%,transparent_100%)]"></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#3b82f610_1px,transparent_1px),linear-gradient(to_bottom,#3b82f610_1px,transparent_1px)] bg-[size:1rem_1rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_20%,#000_60%,transparent_100%)]"></div>
@@ -787,7 +787,7 @@ export default function LandingPage() {
 
             {/* Bento Card 4: Wide */}
             <div className="md:col-span-3 bg-[#0A0F1C] rounded-[2rem] border border-slate-800 p-10 flex flex-col md:flex-row justify-between items-center gap-10 hover:border-slate-700 hover:shadow-2xl transition-all duration-500 relative overflow-hidden text-white group">
-              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.15] mix-blend-overlay"></div>
+              <div className="absolute inset-0 bg-slate-900/5 opacity-[0.15] mix-blend-overlay"></div>
               <div className="absolute top-1/2 left-1/2 w-[800px] h-[300px] bg-blue-600/20 blur-[120px] rounded-full pointer-events-none transform -translate-x-1/2 -translate-y-1/2 group-hover:bg-blue-600/30 transition-colors duration-700"></div>
               
               <div className="relative z-10 md:w-1/2">
@@ -914,7 +914,7 @@ export default function LandingPage() {
                     <motion.div initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: 2.2, duration: 0.3 }} className="mt-6 p-4 border border-indigo-500/30 bg-indigo-500/10 rounded-xl flex items-center justify-between">
                       <div>
                         <div className="text-indigo-300 font-bold font-sans">Authorization Required</div>
-                        <div className="text-slate-400 text-xs font-sans mt-1">Review logs and approve PO-9942</div>
+                        <div className="text-slate-500 text-xs font-sans mt-1">Review logs and approve PO-9942</div>
                       </div>
                       <button className="bg-indigo-600 text-white font-sans font-bold py-2 px-4 rounded-lg hover:bg-indigo-500 transition-colors shadow-lg shadow-indigo-500/25 flex items-center gap-2">
                         <Fingerprint size={16} /> Certify
@@ -930,7 +930,7 @@ export default function LandingPage() {
 
       {/* --- MEGA BOTTOM CTA --- */}
       <section className="pt-24 pb-32 bg-gradient-to-b from-[#000511] via-blue-700 to-[#0B101E] text-white text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay"></div>
+        <div className="absolute inset-0 bg-slate-900/5 opacity-20 mix-blend-overlay"></div>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.15),transparent)]"></div>
         
         <motion.div initial={{ opacity: 0, scale: 0.95, y: 40 }} whileInView={{ opacity: 1, scale: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="max-w-4xl mx-auto px-6 relative z-10">
@@ -1110,7 +1110,7 @@ export default function LandingPage() {
             <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsVideoModalOpen(false)} className="absolute inset-0 bg-slate-900/80 backdrop-blur-md" />
               <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} className="relative w-full max-w-5xl bg-[#000511] border border-white/10 rounded-2xl shadow-2xl overflow-hidden aspect-video flex items-center justify-center">
-                <button onClick={() => setIsVideoModalOpen(false)} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-10 bg-black/50 p-2 rounded-full">
+                <button aria-label="Close video" onClick={() => setIsVideoModalOpen(false)} className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-10 bg-black/50 p-2 rounded-full">
                   <X size={24} />
                 </button>
                 <iframe 
@@ -1132,7 +1132,7 @@ export default function LandingPage() {
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsModalOpen(false)} className="absolute inset-0 bg-slate-900/40 backdrop-blur-sm" />
             <motion.div initial={{ opacity: 0, scale: 0.95, y: 20 }} animate={{ opacity: 1, scale: 1, y: 0 }} exit={{ opacity: 0, scale: 0.95, y: 20 }} className="relative w-full max-w-md bg-white border border-slate-200 rounded-3xl shadow-2xl p-8 overflow-hidden">
-              <button onClick={() => setIsModalOpen(false)} className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 transition-colors">
+              <button aria-label="Close modal" onClick={() => setIsModalOpen(false)} className="absolute top-6 right-6 text-slate-400 hover:text-slate-900 transition-colors">
                 <X size={20} />
               </button>
 
@@ -1169,8 +1169,8 @@ export default function LandingPage() {
 
 
       {/* --- AI SDR CHAT WIDGET --- */}
-        <button
-          onClick={() => setIsChatOpen(true)}
+        <button aria-label="Open chat" 
+            onClick={() => setIsChatOpen(true)}
           className={`fixed bottom-6 right-6 w-16 h-16 bg-blue-600 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-blue-700 transition-transform hover:scale-105 z-[90] ${isChatOpen ? 'hidden' : 'flex'}`}
         >
           <MessageCircle size={32} />
@@ -1195,7 +1195,7 @@ export default function LandingPage() {
                   <p className="text-[10px] text-blue-100 uppercase tracking-widest">Online</p>
                 </div>
               </div>
-              <button onClick={() => setIsChatOpen(false)} className="text-blue-100 hover:text-white transition-colors">
+              <button aria-label="Close chat" onClick={() => setIsChatOpen(false)} className="text-blue-100 hover:text-white transition-colors">
                 <X size={20} />
               </button>
             </div>
@@ -1234,7 +1234,7 @@ export default function LandingPage() {
                   placeholder="Type your message..."
                   className="flex-1 bg-slate-100 border border-slate-200 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 text-slate-900"
                 />
-                <button type="submit" className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 shrink-0 shadow-sm transition-transform hover:scale-105 disabled:opacity-50" disabled={!currentMessage.trim()}>
+                <button aria-label="Send message" type="submit" className="w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center hover:bg-blue-700 shrink-0 shadow-sm transition-transform hover:scale-105 disabled:opacity-50" disabled={!currentMessage.trim()}>
                   <Send size={16} className="-ml-0.5" />
                 </button>
               </form>
