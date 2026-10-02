@@ -9,7 +9,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${title} | ProcGen`,
     description: `Learn how ProcGen's AI-driven platform solves challenges related to ${title.toLowerCase()} in enterprise procurement.`,
     alternates: {
-      canonical: `https://procgen.in/p/${slug}`
+      canonical: `https://www.procgen.in/p/${slug}`
     }
   };
 }

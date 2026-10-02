@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'Procure-to-Pay (P2P) Software | ProcGen',
   description: 'Digitize your entire procure-to-pay cycle. From initial purchase requisition to final invoice matching and payment processing.',
   alternates: {
-    canonical: 'https://procgen.in/procure-to-pay'
+    canonical: 'https://www.procgen.in/procure-to-pay'
   }
 };
 

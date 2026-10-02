@@ -6,7 +6,7 @@ import StructuredData, { organizationSchema, softwareSchema } from "../component
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://procgen.in'),
+  metadataBase: new URL('https://www.procgen.in'),
   title: {
     template: '%s | ProcGen',
     default: 'ProcGen | AI Enterprise Procurement & Vendor Management',
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://procgen.in',
+    url: 'https://www.procgen.in',
     siteName: 'ProcGen',
     title: 'ProcGen | AI Enterprise Procurement Software',
     description: 'Automate purchase requests and manage vendors with AI.',

@@ -14,8 +14,8 @@ export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
   name: 'ProcGen',
-  url: 'https://procgen.in',
-  logo: 'https://procgen.in/logo_cyan.png',
+  url: 'https://www.procgen.in',
+  logo: 'https://www.procgen.in/logo_cyan.png',
   description: 'Enterprise procurement software and AI sourcing automation.',
   sameAs: [
     'https://www.linkedin.com/company/procgen'

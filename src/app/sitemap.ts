@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://procgen.in';
+  const baseUrl = 'https://www.procgen.in';
 
   const routes = [
     '',

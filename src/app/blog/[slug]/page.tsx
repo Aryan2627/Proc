@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
     title: `${title} | ProcGen Blog`,
     description: `Read our comprehensive guide and insights on ${title.toLowerCase()} in enterprise procurement.`,
     alternates: {
-      canonical: `https://procgen.in/blog/${params.slug}`
+      canonical: `https://www.procgen.in/blog/${params.slug}`
     }
   };
 }
@@ -27,7 +27,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     author: [{
       '@type': 'Organization',
       name: 'ProcGen Editorial Team',
-      url: 'https://procgen.in'
+      url: 'https://www.procgen.in'
     }]
   };
 
@@ -35,9 +35,9 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://procgen.in' },
-      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://procgen.in/blog' },
-      { '@type': 'ListItem', position: 3, name: title, item: `https://procgen.in/blog/${params.slug}` }
+      { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://www.procgen.in' },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://www.procgen.in/blog' },
+      { '@type': 'ListItem', position: 3, name: title, item: `https://www.procgen.in/blog/${params.slug}` }
     ]
   };
 

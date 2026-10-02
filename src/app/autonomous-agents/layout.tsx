@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'AI Procurement Agents | Anveshan, Niti, Tark, Garuda',
   description: 'Meet the ProcGen AI Swarm. Autonomous sourcing, negotiation, risk assessment, and delivery agents built for enterprise procurement.',
   alternates: {
-    canonical: 'https://procgen.in/autonomous-agents'
+    canonical: 'https://www.procgen.in/autonomous-agents'
   }
 };
 

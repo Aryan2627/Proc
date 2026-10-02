@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: 'RFQ Management Software | ProcGen',
   description: 'Learn how ProcGen solves complex supply chain challenges with advanced rfq management built for the modern enterprise.',
   alternates: {
-    canonical: 'https://procgen.in/rfq-management'
+    canonical: 'https://www.procgen.in/rfq-management'
   }
 };
 

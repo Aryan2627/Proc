@@ -19,7 +19,7 @@ export default function SEOPageTemplate({ title, h1, description, features, bene
     '@type': 'WebPage',
     name: title,
     description: description,
-    url: `https://procgen.in/${canonicalSlug}`
+    url: `https://www.procgen.in/${canonicalSlug}`
   };
 
   const faqSchema = faqs.length > 0 ? {
